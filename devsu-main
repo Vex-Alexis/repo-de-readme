@@ -1,5 +1,9 @@
-# Proyecto Base Implementando Clean Architecture
+# repo-de-readme
 
+
+## Antes de Iniciar (TEST)
+
+Empezaremos por explicar los diferentes componentes del proyectos y partiremos de los componentes externos, continuando con los componentes core de negocio (dominio) y por último el inicio y configuración de la aplicación.
 
 devsu-java/
 ├── cliente-service/            # Microservicio de clientes
@@ -13,7 +17,3 @@ devsu-java/
 │   └── db/
 │       ├── 01_DataBase.sql    # Script de creación de tablas
 │       └── 02_Populate.sql    # Script con datos de prueba
-
-
-
-  
