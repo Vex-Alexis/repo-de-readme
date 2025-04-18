@@ -10,8 +10,8 @@ Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociad
 - [Clonar y levantar el proyecto](#-clonar-y-levantar-el-proyecto)
 - [Documentacion swagger](#-documentación-swagger)
 - [Endpoints](#-endpoints)
-- [Descripcion de Endpoints](#-descripcion-de-endpoints)
-- [Pruebas](#pruebas)
+- [Descripcion Endpoints](#-descripcion-endpoints)
+- [Pruebas](#-pruebas)
 - [Arquitectura](#arquitectura)
 
 
@@ -78,7 +78,7 @@ Una vez desplegado el microservicio:
 
 ---
 <br> <!-- Salto de línea -->
-🧪 Pruebas
+## 🧪 Pruebas
 Las pruebas unitarias están en la carpeta src/test/java. Se puede ejecutar con:
 
 ---
