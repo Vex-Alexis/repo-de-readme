@@ -23,3 +23,19 @@ Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociad
 ```bash
 ./mvnw spring-boot:run
 ```
+
+---
+
+## 🚀 Endpoints principales
+
+| Método | Endpoint                | Descripción                             |
+|--------|-------------------------|-----------------------------------------|
+| GET    | `/cuentas`              | Listar todas las cuentas                |
+| GET    | `/cuentas/{id}`         | Obtener cuenta por ID                   |
+| POST   | `/cuentas`              | Crear nueva cuenta                      |
+| PUT    | `/cuentas/{id}`         | Actualizar cuenta                       |
+| DELETE | `/cuentas/{id}`         | Eliminar cuenta                         |
+| POST   | `/movimientos`          | Crear movimiento (retiro o depósito)    |
+| POST   | `/movimientos/{id}/revertir` | Revertir un movimiento             |
+
+---
