@@ -2,7 +2,6 @@
 
 Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociados. Permite la creación, consulta, actualización y eliminación de cuentas, así como registrar movimientos (retiros, depósitos, reversiones).
 
-
 <br> <!-- Salto de línea -->
 
 ## ⚙️ Tecnologías utilizadas
@@ -15,6 +14,7 @@ Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociad
 - **Docker & Docker Compose**
 - **Swagger / OpenAPI**
 
+<br> <!-- Salto de línea -->
 
 ## 🔧 Cómo ejecutar
 
