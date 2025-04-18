@@ -34,25 +34,21 @@ Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociad
 
 <br> <!-- Salto de línea -->
 ### Clonar repositorio
-
-1. Clona este repositorio en tu máquina local:
+1. Abre una terminal
+2. Clona este repositorio en tu máquina local:
 ```bash
 git clone https://github.com/Vex-Alexis/Backend-BankInc.git
 ```
-
 <br> <!-- Salto de línea -->
 ### Levantar el proyecto
-
 2. Navega al directorio del proyecto:
 ```bash
 cd Backend-BankInc
 ```
-
 3. Compila el proyecto y descarga las dependencias utilizando Maven:
 ```bash
 mvn clean install
 ```
-
 4. Ejecuta la aplicación o usa tu IDE favorito
 ```bash
 mvn spring-boot:run
@@ -68,7 +64,7 @@ La API de Bank Inc Portal Web debería estar en funcionamiento en http://localho
 Una vez desplegado el microservicio:
 (http://localhost:8081/swagger-ui.html)
 
----
+
 <br> <!-- Salto de línea -->
 ## 🚀 Endpoints
 <br> <!-- Salto de línea -->
