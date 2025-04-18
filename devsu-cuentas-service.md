@@ -6,7 +6,7 @@ Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociad
 
 ## Contenido
 
-- [Tecnologías Utilizadas](#tecnologías-utilizadas)
+- [Tecnologías Utilizadas](#%EF%B8%8F-tecnologías-utilizadas)
 - Requisitos para levantar el proyecto
 - Clonar y levantar el proyecto
 - Documentacion - swagger
@@ -56,8 +56,6 @@ Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociad
 ---
 
 ## Arquitectura
-
-
 
 
 
