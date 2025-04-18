@@ -1,0 +1,19 @@
+# Proyecto Base Implementando Clean Architecture
+
+
+devsu-java/
+├── cliente-service/            # Microservicio de clientes
+│   ├── Dockerfile
+│   └── ...
+├── cuentas-service/           # Microservicio de cuentas
+│   ├── Dockerfile
+│   └── ...
+├── docker-compose/            # Archivos de despliegue
+│   ├── docker-compose.yml
+│   └── db/
+│       ├── 01_DataBase.sql    # Script de creación de tablas
+│       └── 02_Populate.sql    # Script con datos de prueba
+
+
+
+  
