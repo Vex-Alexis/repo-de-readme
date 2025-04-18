@@ -24,6 +24,8 @@ Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociad
 ./mvnw spring-boot:run
 ```
 
+<br> <!-- Salto de línea -->
+
 ---
 
 ## 🚀 Endpoints principales
