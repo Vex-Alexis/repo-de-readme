@@ -26,8 +26,6 @@ Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociad
 
 <br> <!-- Salto de línea -->
 
----
-
 ## 🚀 Endpoints principales
 
 | Método | Endpoint                | Descripción                             |
