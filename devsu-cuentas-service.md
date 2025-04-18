@@ -32,6 +32,7 @@ Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociad
 
 ## 🔧 Clonar y levantar el proyecto
 
+<br> <!-- Salto de línea -->
 ### Clonar repositorio
 
 1. Clona este repositorio en tu máquina local:
@@ -39,6 +40,7 @@ Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociad
 git clone https://github.com/Vex-Alexis/Backend-BankInc.git
 ```
 
+<br> <!-- Salto de línea -->
 ### Levantar el proyecto
 
 2. Navega al directorio del proyecto:
