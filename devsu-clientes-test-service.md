@@ -53,9 +53,8 @@ Las pruebas unitarias están en la carpeta src/test/java. Se puede ejecutar con:
 Una vez desplegado el microservicio:
 
 
-```bash
 (http://localhost:8081/swagger-ui.html)
-```
+
 
 ---
 
