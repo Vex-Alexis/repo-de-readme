@@ -36,3 +36,41 @@ Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociad
 
 ```bash
 ./mvnw spring-boot:run
+```
+
+---
+
+🧪 Pruebas
+Las pruebas unitarias están en la carpeta src/test/java. Se puede ejecutar con:
+
+```bash
+./mvnw test
+```
+
+---
+
+🌐 Documentación Swagger
+Una vez desplegado el microservicio:
+
+
+```bash
+(http://localhost:8081/swagger-ui.html)
+```
+
+---
+
+
+
+
+
+---
+
+
+
+
+
+
+
+
+
+
