@@ -79,7 +79,11 @@ Una vez desplegado el microservicio:
 ---
 <br> <!-- Salto de línea -->
 ## 🧪 Pruebas
-Las pruebas unitarias están en la carpeta src/test/java. Se puede ejecutar con:
+Las pruebas unitarias están en la carpeta `src/test/java` se pueden ejecutar con:
+
+```bash
+(agregar informaicon relacioanda a la ejecucion de las pruebas)
+```
 
 ---
 <br> <!-- Salto de línea -->
