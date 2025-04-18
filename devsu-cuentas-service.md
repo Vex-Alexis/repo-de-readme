@@ -51,8 +51,6 @@ mvn clean install
 mvn spring-boot:run
 ```
 
-
----
 <br> <!-- Salto de línea -->
 
 ## 🌐 Documentación Swagger 
