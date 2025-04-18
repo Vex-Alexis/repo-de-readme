@@ -32,11 +32,33 @@ Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociad
 
 ## 🔧 Clonar y levantar el proyecto
 
-### Opción 1: Maven
+### Clonar repositorio
 
+1. Clona este repositorio en tu máquina local:
 ```bash
-./mvnw spring-boot:run
+git clone https://github.com/Vex-Alexis/Backend-BankInc.git
 ```
+
+### Levantar el proyecto
+
+2. Navega al directorio del proyecto:
+```bash
+cd Backend-BankInc
+```
+
+3. Compila el proyecto y descarga las dependencias utilizando Maven:
+```bash
+mvn clean install
+```
+
+4. Ejecuta la aplicación o usa tu IDE favorito
+```bash
+mvn spring-boot:run
+```
+La API de Bank Inc Portal Web debería estar en funcionamiento en http://localhost:8080
+
+
+
 ---
 <br> <!-- Salto de línea -->
 
