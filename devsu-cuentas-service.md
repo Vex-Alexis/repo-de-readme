@@ -7,12 +7,11 @@ Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociad
 ## Contenido
 
 - [Tecnologías Utilizadas](#%EF%B8%8F-tecnologías-utilizadas)
-- Requisitos para levantar el proyecto
-- Clonar y levantar el proyecto
-- Documentacion - swagger
-- Endpoints
-- Descripcion de cada endpoint
-- Pruebas
+- [Clonar y levantar el proyecto](#-clonar-y-levantar-el-proyecto)
+- [Documentacion swagger](#-documentacion-swagger)
+- [Endpoints](#-endpoints)
+- [Descripcion de cada endpoint](#-descripcion-de-cada-endpoint)
+- [Pruebas](#pruebas)
 - [Arquitectura](#arquitectura)
 
 
@@ -31,17 +30,30 @@ Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociad
 
 <br> <!-- Salto de línea -->
 
-## 🔧 Cómo ejecutar
+## 🔧 Clonar y levantar el proyecto
 
 ### Opción 1: Maven
 
 ```bash
 ./mvnw spring-boot:run
 ```
-
+---
 <br> <!-- Salto de línea -->
 
-## 🚀 Endpoints principales
+
+
+---
+<br> <!-- Salto de línea -->
+
+
+
+
+---
+<br> <!-- Salto de línea -->
+
+## 🚀 Endpoints
+
+<br> <!-- Salto de línea -->
 
 | Método | Endpoint                | Descripción                             |
 |--------|-------------------------|-----------------------------------------|
