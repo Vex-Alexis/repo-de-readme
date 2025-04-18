@@ -13,7 +13,7 @@ Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociad
 - Endpoints
 - Descripcion de cada endpoint
 - Pruebas
-- Arquitectura
+- [Arquitectura](#arquitectura)
 
 
 
@@ -52,5 +52,13 @@ Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociad
 | DELETE | `/cuentas/{id}`         | Eliminar cuenta                         |
 | POST   | `/movimientos`          | Crear movimiento (retiro o depósito)    |
 | POST   | `/movimientos/{id}/revertir` | Revertir un movimiento             |
+
+---
+
+## Arquitectura
+
+
+
+
 
 ---
