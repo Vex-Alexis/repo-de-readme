@@ -15,11 +15,11 @@ Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociad
 
 
 <br> <!-- Salto de línea -->
-## 🧩 Funcionalidades Principales
+## 🧩 Funcionalidades Principales (Darle prioridad a las funcionalidades que piden)
 
-- Gestión de clientes: creación, consulta, edición y eliminación.
+- Gestión de clientes: creación, consulta, actualización y eliminación.
 - Gestión de cuentas bancarias: creación, consulta y actualización.
-- Registro de movimientos bancarios: depósitos, retiros, reversiones.
+- Registro de movimientos bancarios: creación, consulta y reversiones.
 - Generación de reporte de estado de cuenta por cliente y rango de fechas.
 - Validaciones de negocio robustas (saldo insuficiente, cuentas inactivas, etc).
 - Comunicación con microservicio externo de clientes.
@@ -69,8 +69,19 @@ docker-compose up --build
 
 <br> <!-- Salto de línea -->
 ## 🚀 Endpoints
-<br> <!-- Salto de línea -->
 
+<br> <!-- Salto de línea -->
+### - Clientes (`/clientes`)
+
+| Método | Endpoint                                     | Descripción                             |
+|--------|----------------------------------------------|-----------------------------------------|
+| POST   | `/clientes`                                  | Crear cliente       |
+| GET    | `/clientes`                                  | Listar todos los clientes        |
+| GET    | `/clientes/{id}`                             | Consultar cliente por Id             |
+| GET    | `/clientes//identificacion/{identificacion}` | Consultar cliente por número identificación             |
+| DELETE | `/clientes//{id}`                            | Eliminar cliente por cuentaId        |
+
+<br> <!-- Salto de línea -->
 ### - Cuentas (`/cuentas`)
 
 | Método | Endpoint                                    | Descripción                             |
@@ -96,8 +107,10 @@ docker-compose up --build
 
 ---
 <br> <!-- Salto de línea -->
-## 🚨 Manejo de Excepciones
+## 🚨 Manejo de Excepciones (Darle prioridad a las excepciones que piden)
+
 El API maneja errores de forma controlada con respuestas claras y significativas:
+
 - Se manejan excepciones personalizadas para errores de negocio.
 - Se validan saldos antes de aplicar movimientos.
 - Las reversiones no eliminan movimientos: se agrega un nuevo movimiento con tipoMovimiento = "REVERTIDO".
