@@ -3,10 +3,10 @@
 Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociados. Permite la creación, consulta y actualización de cuentas, así como registrar movimientos (retiros, depósitos, reversiones).
 
 <br> <!-- Salto de línea -->
-
 ## Contenido
 
 - [Tecnologías Utilizadas](#%EF%B8%8F-tecnologías-utilizadas)
+- [Funcionalidades Principales]()
 - [Clonar y levantar el proyecto](#-clonar-y-levantar-el-proyecto)
 - [Endpoints](#-endpoints)
 - [Excepciones](#excepciones)
@@ -14,9 +14,17 @@ Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociad
 - [Arquitectura](#arquitectura)
 
 
+<br> <!-- Salto de línea -->
+## 🧩 Funcionalidades Principales
+
+- Gestión de clientes: creación, consulta, edición y eliminación.
+- Gestión de cuentas bancarias: creación, consulta y actualización.
+- Registro de movimientos bancarios: depósitos, retiros, reversiones.
+- Generación de reporte de estado de cuenta por cliente y rango de fechas.
+- Validaciones de negocio robustas (saldo insuficiente, cuentas inactivas, etc).
+- Comunicación con microservicio externo de clientes.
 
 <br> <!-- Salto de línea -->
-
 ## ⚙️ Tecnologías utilizadas
 
 - **Java 21**
@@ -30,8 +38,7 @@ Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociad
 
 
 <br> <!-- Salto de línea -->
-
-## 🔧 Clonar y levantar el proyecto
+## 🛠️ Clonar y levantar el proyecto
 
 <br> <!-- Salto de línea -->
 1. Clona el repositorio:
@@ -89,7 +96,8 @@ docker-compose up --build
 
 ---
 <br> <!-- Salto de línea -->
-## Excepciones
+## 🚨 Manejo de Excepciones
+El API maneja errores de forma controlada con respuestas claras y significativas:
 - Se manejan excepciones personalizadas para errores de negocio.
 - Se validan saldos antes de aplicar movimientos.
 - Las reversiones no eliminan movimientos: se agrega un nuevo movimiento con tipoMovimiento = "REVERTIDO".
@@ -106,7 +114,7 @@ Las pruebas unitarias están en la carpeta `src/test/java` se pueden ejecutar co
 
 ---
 <br> <!-- Salto de línea -->
-## Arquitectura
+## 🏛️ Arquitectura
 
 | Capa                    | Descripción
 |-------------------------|------------------------------------------
