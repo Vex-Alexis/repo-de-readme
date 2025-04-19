@@ -48,6 +48,7 @@ cd devsu-cuentas-sevice/docker-compose
 docker-compose up --build
 ```
 4. Servicios expuestos:
+
 Servicio | Puerto
 cuentas-service | 8081
 clientes-service | 8080
