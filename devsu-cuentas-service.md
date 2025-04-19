@@ -1,6 +1,6 @@
 # Cuentas Service
 
-Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociados. Permite la creación, consulta, actualización y eliminación de cuentas, así como registrar movimientos (retiros, depósitos, reversiones).
+Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociados. Permite la creación, consulta y actualización de cuentas, así como registrar movimientos (retiros, depósitos, reversiones).
 
 <br> <!-- Salto de línea -->
 
@@ -20,7 +20,7 @@ Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociad
 
 ## ⚙️ Tecnologías utilizadas
 
-- **Java 17**
+- **Java 21**
 - **Spring Boot 3**
 - **JPA**
 - **PostgreSQL**
@@ -28,7 +28,7 @@ Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociad
 - **AWS SQS**
 - **JUnit 5**
 - **Arquitectura Limpia (Clean Architecture)**
-- 
+
 
 <br> <!-- Salto de línea -->
 
