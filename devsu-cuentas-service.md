@@ -56,7 +56,7 @@ docker-compose up --build
 | cuentas-service         | `8081`
 | PostresSQL              | `5432`
 
-> Asegúrate de que los puestos no estén siendo usados por otros procesos.
+> Asegúrate de que no estén siendo usados por otros procesos.
 
 
 
