@@ -67,8 +67,8 @@ docker-compose up --build
 
 ### - Cuentas (`/cuentas`)
 
-| Método | Endpoint                      | Descripción                             |
-|--------|-------------------------|-----------------------------------------|
+| Método | Endpoint                                    | Descripción                             |
+|--------|---------------------------------------------|-----------------------------------------|
 | GET    | `/cuentas`                                  | Listar todas las cuentas                |
 | GET    | `/cuentas/numero-cuenta/{numero-cuenta}`    | Consultar cuenta por número de cuenta            |
 | GET    | `/cuentas/{id}`                             | Consultar cuenta por Id                   |
@@ -119,6 +119,13 @@ Las pruebas unitarias están en la carpeta `src/test/java` se pueden ejecutar co
        Domain          │ ← Entidades, lógica y reglas del negocio   |
      Application       │ ← Casos de uso y orquestación              |
      Infrastructure    │ ← Adaptadores, controladores, gateways     |
+
+
+|          Capa           | Descripción
+|-------------------------|------
+| clientes-service        | `8080`
+| cuentas-service         | `8081`
+| PostresSQL              | `5432`
 
 
 ---
