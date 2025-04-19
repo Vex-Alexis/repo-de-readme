@@ -8,7 +8,6 @@ Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociad
 
 - [Tecnologías Utilizadas](#%EF%B8%8F-tecnologías-utilizadas)
 - [Clonar y levantar el proyecto](#-clonar-y-levantar-el-proyecto)
-- [Documentacion swagger](#-documentación-swagger)
 - [Endpoints](#-endpoints)
 - [Descripcion Endpoints](#-descripcion-endpoints)
 - [Pruebas](#-pruebas)
@@ -22,40 +21,37 @@ Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociad
 
 - **Java 17**
 - **Spring Boot 3**
-- **Arquitectura Limpia**
+- **JPA**
 - **PostgreSQL**
-- **Maven**
 - **Docker & Docker Compose**
-- **Swagger / OpenAPI**
+- **AWS SQS**
+- **JUnit 5**
+- **Arquitectura Limpia (Clean Architecture)**
+- 
 
 <br> <!-- Salto de línea -->
 
 ## 🔧 Clonar y levantar el proyecto
 
 <br> <!-- Salto de línea -->
-1. Clona este repositorio en tu máquina local:
+1. Clona el repositorio:
 ```bash
-git clone https://github.com/Vex-Alexis/Backend-BankInc.git
+git clone https://github.com/Vex-Alexis/devsu-cuentas-sevice
 ```
 <br> <!-- Salto de línea -->
 2. Navega al directorio del proyecto:
 ```bash
-cd Backend-BankInc
+cd devsu-cuentas-sevice/docker-compose
 ```
-3. Compila el proyecto y descarga las dependencias utilizando Maven:
+3. Levanta los servicios:
 ```bash
-mvn clean install
+docker-compose up --build
 ```
-4. Ejecuta la aplicación o usa tu IDE favorito
-```bash
-mvn spring-boot:run
-```
-
-<br> <!-- Salto de línea -->
-
-## 🌐 Documentación Swagger 
-Una vez desplegado el microservicio:
-(http://localhost:8081/swagger-ui.html)
+4. Servicios expuestos:
+Servicio | Puerto
+cuentas-service | 8081
+clientes-service | 8080
+base de datos (PG) | 5432
 
 
 <br> <!-- Salto de línea -->
