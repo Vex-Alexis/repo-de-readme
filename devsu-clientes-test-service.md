@@ -2,7 +2,21 @@
 
 Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociados. Permite la creación, consulta, actualización y eliminación de cuentas, así como registrar movimientos (retiros, depósitos, reversiones).
 
----
+<br> <!-- Salto de línea -->
+
+## Contenido
+
+- [Tecnologías Utilizadas](#%EF%B8%8F-tecnologías-utilizadas)
+- [Clonar y levantar el proyecto](#-clonar-y-levantar-el-proyecto)
+- [Documentacion swagger](#-documentación-swagger)
+- [Endpoints](#-endpoints)
+- [Descripcion Endpoints](#-descripcion-endpoints)
+- [Pruebas](#-pruebas)
+- [Arquitectura](#arquitectura)
+
+
+
+<br> <!-- Salto de línea -->
 
 ## ⚙️ Tecnologías utilizadas
 
@@ -14,9 +28,39 @@ Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociad
 - **Docker & Docker Compose**
 - **Swagger / OpenAPI**
 
----
+<br> <!-- Salto de línea -->
 
-## 🚀 Endpoints principales
+## 🔧 Clonar y levantar el proyecto
+
+<br> <!-- Salto de línea -->
+1. Clona este repositorio en tu máquina local:
+```bash
+git clone https://github.com/Vex-Alexis/Backend-BankInc.git
+```
+<br> <!-- Salto de línea -->
+2. Navega al directorio del proyecto:
+```bash
+cd Backend-BankInc
+```
+3. Compila el proyecto y descarga las dependencias utilizando Maven:
+```bash
+mvn clean install
+```
+4. Ejecuta la aplicación o usa tu IDE favorito
+```bash
+mvn spring-boot:run
+```
+
+<br> <!-- Salto de línea -->
+
+## 🌐 Documentación Swagger 
+Una vez desplegado el microservicio:
+(http://localhost:8081/swagger-ui.html)
+
+
+<br> <!-- Salto de línea -->
+## 🚀 Endpoints
+<br> <!-- Salto de línea -->
 
 | Método | Endpoint                | Descripción                             |
 |--------|-------------------------|-----------------------------------------|
@@ -29,47 +73,22 @@ Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociad
 | POST   | `/movimientos/{id}/revertir` | Revertir un movimiento             |
 
 ---
+<br> <!-- Salto de línea -->
+## 🚀 Descripcion endpoints
 
-## 🔧 Cómo ejecutar
-
-### Opción 1: Maven
+---
+<br> <!-- Salto de línea -->
+## 🧪 Pruebas
+Las pruebas unitarias están en la carpeta `src/test/java` se pueden ejecutar con:
 
 ```bash
-./mvnw spring-boot:run
+(agregar informaicon relacioanda a la ejecucion de las pruebas)
 ```
 
 ---
-
-🧪 Pruebas
-Las pruebas unitarias están en la carpeta src/test/java. Se puede ejecutar con:
-
-```bash
-./mvnw test
-```
-
----
-
-🌐 Documentación Swagger
-Una vez desplegado el microservicio:
-
-
-(http://localhost:8081/swagger-ui.html)
-
-
----
-
-
+<br> <!-- Salto de línea -->
+## Arquitectura
 
 
 
 ---
-
-
-
-
-
-
-
-
-
-
