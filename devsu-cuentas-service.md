@@ -116,16 +116,16 @@ Las pruebas unitarias están en la carpeta `src/test/java` se pueden ejecutar co
 
 |        Capa           |             Descripción                    |
 |-----------------------|--------------------------------------------|
-       Domain          │ ← Entidades, lógica y reglas del negocio   |
-     Application       │ ← Casos de uso y orquestación              |
-     Infrastructure    │ ← Adaptadores, controladores, gateways     |
+|       Domain          │ ← Entidades, lógica y reglas del negocio   |
+|     Application       │ ← Casos de uso y orquestación              |
+|     Infrastructure    │ ← Adaptadores, controladores, gateways     |
 
 
 |          Capa           | Descripción
 |-------------------------|------
-|       Domain            | `8080`
-|      Application        | `8081`
-|     Infrastructure      | `5432`
+|        Domain           | ← Entidades, lógica y reglas del negocio
+|      Application        | ← Casos de uso y orquestación 
+|     Infrastructure      | ← Adaptadores, controladores, gateways
 
 
 ---
