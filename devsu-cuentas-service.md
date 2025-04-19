@@ -76,6 +76,7 @@ docker-compose up --build
 | PUT    | `/cuentas/{numero-cuenta}`                  | Actualizar cuenta                       |
 | GET    | `/cuentas/reportes?`                        | Consulta el reporte de estado de cuenta |
 
+<br> <!-- Salto de línea -->
 ### Endpoint: /movimientos
 
 | Método | Endpoint                      | Descripción                             |
