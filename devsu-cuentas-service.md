@@ -56,7 +56,7 @@ docker-compose up --build
 | 8080   | clientes-service        |
 | 8081   | cuentas-service         |
 | 5432   | PostresSQL              |
-|--------|-------------------------|
+
 
 
 <br> <!-- Salto de línea -->
