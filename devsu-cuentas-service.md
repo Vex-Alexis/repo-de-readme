@@ -50,12 +50,13 @@ docker-compose up --build
 4. Servicios expuestos:
 
 
-
 | Puerto | Servicio                |
 |--------|-------------------------|
 | 8080   | clientes-service        |
 | 8081   | cuentas-service         |
 | 5432   | PostresSQL              |
+
+> Asegúrate de que no estén siendo usados por otros procesos.
 
 
 
