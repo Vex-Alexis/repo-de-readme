@@ -72,9 +72,9 @@ docker-compose up --build
 | GET    | `/cuentas/{id}`                             | Consultar cuenta por Id                   |
 | POST   | `/cuentas`                                  | Crear nueva cuenta                      |
 | PUT    | `/cuentas/{numero-cuenta}`                  | Actualizar cuenta                       |
-
+|-------------------------------------------------------------------------------------------------------
 | GET    | `/cuentas/reportes?`                        | Consulta el reporte de estado de cuenta |
-
+|-------------------------------------------------------------------------------------------------------
 | POST   | `/movimientos`                              | Crear movimiento       |
 | POST   | `/movimientos/{id}/revertir`                | Revertir un movimiento             |
 | GET    | `/movimientos`                              | Consultar todos los movimientos        |
