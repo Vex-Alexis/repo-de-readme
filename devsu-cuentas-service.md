@@ -79,8 +79,8 @@ docker-compose up --build
 <br> <!-- Salto de línea -->
 ### - Movimientos (`/movimientos`)
 
-| Método | Endpoint                      | Descripción                             |
-|--------|-------------------------|-----------------------------------------|
+| Método | Endpoint                                    | Descripción                             |
+|--------|---------------------------------------------|-----------------------------------------|
 | POST   | `/movimientos`                              | Crear movimiento       |
 | POST   | `/movimientos/{id}/revertir`                | Revertir un movimiento             |
 | GET    | `/movimientos`                              | Consultar todos los movimientos        |
@@ -114,10 +114,10 @@ Las pruebas unitarias están en la carpeta `src/test/java` se pueden ejecutar co
 <br> <!-- Salto de línea -->
 ## Arquitectura
 
-|-----------------------|
+|-----------------------|--------------------------------------
 │       Domain          │ ← Entidades, lógica y reglas del negocio
 │     Application       │ ← Casos de uso y orquestación
 │     Infrastructure    │ ← Adaptadores, controladores, gateways
-|-----------------------|
+|-----------------------|---------------------------------
 
 ---
