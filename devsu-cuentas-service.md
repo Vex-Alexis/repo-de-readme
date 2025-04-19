@@ -123,9 +123,9 @@ Las pruebas unitarias están en la carpeta `src/test/java` se pueden ejecutar co
 
 |          Capa           | Descripción
 |-------------------------|------
-| clientes-service        | `8080`
-| cuentas-service         | `8081`
-| PostresSQL              | `5432`
+|       Domain            | `8080`
+|      Application        | `8081`
+|     Infrastructure      | `5432`
 
 
 ---
