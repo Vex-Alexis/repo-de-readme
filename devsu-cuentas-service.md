@@ -10,6 +10,7 @@ Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociad
 - [Clonar y levantar el proyecto](#-clonar-y-levantar-el-proyecto)
 - [Endpoints](#-endpoints)
 - [Descripcion Endpoints](#-descripcion-endpoints)
+- Excepciones
 - [Pruebas](#-pruebas)
 - [Arquitectura](#arquitectura)
 
@@ -64,15 +65,22 @@ docker-compose up --build
 ## 🚀 Endpoints
 <br> <!-- Salto de línea -->
 
-| Método | Endpoint                | Descripción                             |
+| Método | Endpoint                      | Descripción                             |
 |--------|-------------------------|-----------------------------------------|
-| GET    | `/cuentas`              | Listar todas las cuentas                |
-| GET    | `/cuentas/{id}`         | Obtener cuenta por ID                   |
-| POST   | `/cuentas`              | Crear nueva cuenta                      |
-| PUT    | `/cuentas/{id}`         | Actualizar cuenta                       |
-| DELETE | `/cuentas/{id}`         | Eliminar cuenta                         |
-| POST   | `/movimientos`          | Crear movimiento (retiro o depósito)    |
-| POST   | `/movimientos/{id}/revertir` | Revertir un movimiento             |
+| GET    | `/cuentas`                                  | Listar todas las cuentas                |
+| GET    | `/cuentas/numero-cuenta/{numero-cuenta}`    | Consultar cuenta por número de cuenta            |
+| GET    | `/cuentas/{id}`                             | Consultar cuenta por Id                   |
+| POST   | `/cuentas`                                  | Crear nueva cuenta                      |
+| PUT    | `/cuentas/{numero-cuenta}`                  | Actualizar cuenta                       |
+
+| GET    | `/cuentas/reportes?`                        | Consulta el reporte de estado de cuenta |
+
+| POST   | `/movimientos`                              | Crear movimiento       |
+| POST   | `/movimientos/{id}/revertir`                | Revertir un movimiento             |
+| GET    | `/movimientos`                              | Consultar todos los movimientos        |
+| GET    | `/movimientos/{id}`                         | Consultar movimiento por Id             |
+| GET    | `/movimientos/cuenta/{id}`                  | Consultar movimientos por cuentaId        |
+
 
 ---
 <br> <!-- Salto de línea -->
