@@ -10,7 +10,7 @@ Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociad
 - [Clonar y levantar el proyecto](#-clonar-y-levantar-el-proyecto)
 - [Endpoints](#-endpoints)
 - [Descripcion Endpoints](#-descripcion-endpoints)
-- Excepciones
+- [Excepciones](#excepciones)
 - [Pruebas](#-pruebas)
 - [Arquitectura](#arquitectura)
 
@@ -92,6 +92,15 @@ docker-compose up --build
 <br> <!-- Salto de línea -->
 ## 🚀 Descripcion endpoints
 
+
+---
+<br> <!-- Salto de línea -->
+## Excepciones
+- Se manejan excepciones personalizadas para errores de negocio.
+- Se validan saldos antes de aplicar movimientos.
+- Las reversiones no eliminan movimientos: se agrega un nuevo movimiento con tipoMovimiento = "REVERTIDO".
+
+
 ---
 <br> <!-- Salto de línea -->
 ## 🧪 Pruebas
@@ -105,6 +114,12 @@ Las pruebas unitarias están en la carpeta `src/test/java` se pueden ejecutar co
 <br> <!-- Salto de línea -->
 ## Arquitectura
 
-
+┌───────────────────────┐
+│       Domain          │ ← Entidades, lógica y reglas del negocio
+├───────────────────────┤
+│     Application       │ ← Casos de uso y orquestación
+├───────────────────────┤
+│     Infrastructure    │ ← Adaptadores, controladores, gateways
+└───────────────────────┘
 
 ---
