@@ -65,7 +65,7 @@ docker-compose up --build
 ## 🚀 Endpoints
 <br> <!-- Salto de línea -->
 
-### Cuentas (`/cuentas`)
+### - Cuentas (`/cuentas`)
 
 | Método | Endpoint                      | Descripción                             |
 |--------|-------------------------|-----------------------------------------|
@@ -77,7 +77,7 @@ docker-compose up --build
 | GET    | `/cuentas/reportes?`                        | Consulta el reporte de estado de cuenta |
 
 <br> <!-- Salto de línea -->
-### Movimientos (`/movimientos`)
+### - Movimientos (`/movimientos`)
 
 | Método | Endpoint                      | Descripción                             |
 |--------|-------------------------|-----------------------------------------|
