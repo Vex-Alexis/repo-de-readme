@@ -52,11 +52,11 @@ docker-compose up --build
 
 | Servicio                | Puerto
 |-------------------------|------
-| clientes-service        | 8080
-| cuentas-service         | 8081
-| PostresSQL              | 5432
+| clientes-service        | `8080`
+| cuentas-service         | `8081`
+| PostresSQL              | `5432`
 
-> Asegúrate de que no estén siendo usados por otros procesos.
+> Asegúrate de que los puestos no estén siendo usados por otros procesos.
 
 
 
