@@ -65,7 +65,7 @@ docker-compose up --build
 ## 🚀 Endpoints
 <br> <!-- Salto de línea -->
 
-# Ednpoint: /cuentas
+### Endpoint: /cuentas
 
 | Método | Endpoint                      | Descripción                             |
 |--------|-------------------------|-----------------------------------------|
@@ -76,7 +76,7 @@ docker-compose up --build
 | PUT    | `/cuentas/{numero-cuenta}`                  | Actualizar cuenta                       |
 | GET    | `/cuentas/reportes?`                        | Consulta el reporte de estado de cuenta |
 
-# Ednpoint: /movimientos
+### Endpoint: /movimientos
 
 | Método | Endpoint                      | Descripción                             |
 |--------|-------------------------|-----------------------------------------|
