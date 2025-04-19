@@ -65,6 +65,8 @@ docker-compose up --build
 ## 🚀 Endpoints
 <br> <!-- Salto de línea -->
 
+# Ednpoint: /cuentas
+
 | Método | Endpoint                      | Descripción                             |
 |--------|-------------------------|-----------------------------------------|
 | GET    | `/cuentas`                                  | Listar todas las cuentas                |
@@ -72,9 +74,12 @@ docker-compose up --build
 | GET    | `/cuentas/{id}`                             | Consultar cuenta por Id                   |
 | POST   | `/cuentas`                                  | Crear nueva cuenta                      |
 | PUT    | `/cuentas/{numero-cuenta}`                  | Actualizar cuenta                       |
-|        |                                             |
 | GET    | `/cuentas/reportes?`                        | Consulta el reporte de estado de cuenta |
-|        |                                             |
+
+# Ednpoint: /movimientos
+
+| Método | Endpoint                      | Descripción                             |
+|--------|-------------------------|-----------------------------------------|
 | POST   | `/movimientos`                              | Crear movimiento       |
 | POST   | `/movimientos/{id}/revertir`                | Revertir un movimiento             |
 | GET    | `/movimientos`                              | Consultar todos los movimientos        |
