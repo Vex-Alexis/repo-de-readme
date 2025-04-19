@@ -115,10 +115,10 @@ Las pruebas unitarias están en la carpeta `src/test/java` se pueden ejecutar co
 ## Arquitectura
 
 |        Capa           |             Descripcion
-|-----------------------|--------------------------------------
+|-----------------------|--------------------------------------------|
 │       Domain          │ ← Entidades, lógica y reglas del negocio
 │     Application       │ ← Casos de uso y orquestación
 │     Infrastructure    │ ← Adaptadores, controladores, gateways
-|-----------------------|---------------------------------
+
 
 ---
