@@ -9,7 +9,6 @@ Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociad
 - [Tecnologías Utilizadas](#%EF%B8%8F-tecnologías-utilizadas)
 - [Clonar y levantar el proyecto](#-clonar-y-levantar-el-proyecto)
 - [Endpoints](#-endpoints)
-- [Descripcion Endpoints](#-descripcion-endpoints)
 - [Excepciones](#excepciones)
 - [Pruebas](#-pruebas)
 - [Arquitectura](#arquitectura)
@@ -86,11 +85,6 @@ docker-compose up --build
 | GET    | `/movimientos`                              | Consultar todos los movimientos        |
 | GET    | `/movimientos/{id}`                         | Consultar movimiento por Id             |
 | GET    | `/movimientos/cuenta/{id}`                  | Consultar movimientos por cuentaId        |
-
-
----
-<br> <!-- Salto de línea -->
-## 🚀 Descripcion endpoints
 
 
 ---
