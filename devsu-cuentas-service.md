@@ -49,10 +49,16 @@ docker-compose up --build
 ```
 4. Servicios expuestos:
 
-Servicio | Puerto
-cuentas-service | 8081
-clientes-service | 8080
-base de datos (PG) | 5432
+
+
+| Puerto | Servicio                |
+|--------|-------------------------|
+| 8080   | clientes-service        |
+|--------|-------------------------|
+| 8081   | cuentas-service         |
+|--------|-------------------------|
+| 5432   | PostresSQL              |
+|--------|-------------------------|
 
 
 <br> <!-- Salto de línea -->
