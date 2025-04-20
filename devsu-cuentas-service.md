@@ -126,6 +126,12 @@ Ejemplo respueta que captura excepciones
 }
 ```
 
+| Códgio                  | Puerto
+|-------------------------|------
+| 400                       | `8080`
+| cuentas-service         | `8081`
+| PostresSQL              | `5432`
+
 ---
 <br> <!-- Salto de línea -->
 ## 🧪 Pruebas
