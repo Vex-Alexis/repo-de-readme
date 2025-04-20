@@ -115,6 +115,16 @@ El API maneja errores de forma controlada con respuestas claras y significativas
 - Se validan saldos antes de aplicar movimientos.
 - Las reversiones no eliminan movimientos: se agrega un nuevo movimiento con tipoMovimiento = "REVERTIDO".
 
+Ejemplo respueta que captura excepciones
+
+```json
+{
+    "status": 400,
+    "success": false,
+    "message": "Saldo no disponible para realizar el movimiento.",
+    "timestamp": "2025-04-20 19:13:35"
+}
+```
 
 ---
 <br> <!-- Salto de línea -->
