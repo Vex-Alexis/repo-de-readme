@@ -216,8 +216,8 @@ Revierte un movimiento previamente realizado.
 > No requiere un cuerpo en la solicitud (body vacío).
 ---
 
-
-### Endpoint: Generación de Reporte de Cuentas
+<br> <!-- Salto de línea -->
+### 📈 Endpoint: Generación de Reporte de Cuentas
 #### 📍 POST /cuentas/reportes
 Obtiene un reporte consolidado de los movimientos de todas las cuentas asociadas a un cliente, dentro de un rango de fechas.
 Ejemplo de URL:
