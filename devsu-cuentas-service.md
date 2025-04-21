@@ -12,7 +12,7 @@ Para simplificar la ejecución y despliegue, se utilizó Docker junto con docker
 
 - [Funcionalidades Principales](#-funcionalidades-principales)
 - [Tecnologías Utilizadas](#%EF%B8%8F-tecnologías-utilizadas)
-- [Clonar y levantar el proyecto](#-clonar-y-levantar-el-proyecto)
+- [Clonar y levantar el proyecto](#%EF%B8%8F-clonar-y-levantar-el-proyecto)
 - [Endpoints](#-endpoints)
 - [Ejemplos de Request Body](#-ejemplos-de-request-body)
 - [Generación de Reporte de Cuentas](#-endpoint-generación-de-reporte-de-cuentas)
