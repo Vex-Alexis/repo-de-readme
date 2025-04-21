@@ -27,7 +27,7 @@ Para simplificar la ejecución y despliegue, se utilizó Docker junto con docker
 - Registro de movimientos bancarios: creación, consulta y reversiones.
 - Generación de reporte de estado de cuenta por cliente y rango de fechas.
 - Validaciones de negocio robustas (saldo insuficiente, cuentas inactivas, etc).
-- Comunicación con microservicio externo de clientes.
+- Comunicación entre microservicios mediante HTTP.
 
 <br> <!-- Salto de línea -->
 ## ⚙️ Tecnologías utilizadas
