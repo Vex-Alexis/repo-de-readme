@@ -1,6 +1,11 @@
-# Cuentas Service
+# 🏦 Devsu Taller Práctico (Sistema Bancario)
 
-Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociados. Permite la creación, consulta y actualización de cuentas, así como registrar movimientos (retiros, depósitos, reversiones).
+Proyecto desarrollado como parte de un taller práctico, se implementa un sistema bancario utilizando microservicios en Java y Spring Boot, con PostgreSQL como base de datos. 
+Se incluyen servicios para gestionar clientes, cuentas y movimientos, siguiendo principios de arquitectura limpia, microservicios desacoplados y buenas prácticas.
+
+Para simplificar la ejecución y despliegue, se utilizó Docker junto con docker-compose, permitiendo levantar toda la infraestructura (servicios + base de datos) con un solo comando.
+
+
 
 <br> <!-- Salto de línea -->
 ## Contenido
@@ -28,7 +33,7 @@ Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociad
 ## ⚙️ Tecnologías utilizadas
 
 - **Java 21**
-- **Spring Boot 3**
+- **Spring Boot 3.4.4**
 - **JPA**
 - **PostgreSQL**
 - **Docker & Docker Compose**
@@ -43,7 +48,7 @@ Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociad
 <br> <!-- Salto de línea -->
 1. Clona el repositorio:
 ```bash
-git clone https://github.com/Vex-Alexis/devsu-cuentas-sevice
+git clone https://github.com/Vex-Alexis/devsu-sistema-bancario
 ```
 <br> <!-- Salto de línea -->
 2. Navega al directorio del proyecto:
@@ -339,3 +344,25 @@ Las pruebas unitarias están en la carpeta `src/test/java` se pueden ejecutar co
 
 
 ---
+<br> <!-- Salto de línea -->
+📡 Conexión entre microservicios
+Tu sistema se compone actualmente de dos microservicios:
+
+
+Microservicio	        Responsabilidad principal	                      Puerto
+clientes-service	    Gestionar clientes: CRUD de datos personales.	  8080
+cuentas-service	      Gestionar cuentas bancarias y movimientos.	    8081
+
+
+Estos servicios se comunican de manera sincrónica a través de REST, utilizando Spring Web’s RestTemplate para realizar llamadas entre sí.
+Por ejemplo, cuando se intenta registrar una nueva cuenta, cuentas-service puede consultar en clientes-service si el cliente existe.
+
+
+
+
+
+
+
+
+
+
