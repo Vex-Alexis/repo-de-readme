@@ -347,7 +347,7 @@ En este proyecto se implementan pruebas unitarias e integración, en este caso s
 
 <br> <!-- Salto de línea -->
 ### ✅ Pruebas Unitarias
-Se ha implementado una prueba unitaria para validar el comportamiento de la entidad de dominio Cliente en el microservicio clientes-service.
+Se ha implementado una prueba unitaria para validar el comportamiento de la entidad de dominio Cliente en el microservicio `clientes-service`.
 Estas pruebas están escritas en JUnit 5 y se ejecutan como parte del ciclo estándar de testeo con Maven.
 
 ### 🔁 Prueba de integración
