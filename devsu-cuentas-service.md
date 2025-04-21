@@ -107,8 +107,8 @@ Ruta dentro del repositorio:
 | POST   | `/clientes`                                  | Crear un nuevo cliente                               |
 | GET    | `/clientes`                                  | Listar todos los clientes                            |
 | GET    | `/clientes/{id}`                             | Consultar cliente por ID                             |
-| GET    | `/clientes//identificacion/{identificacion}` | Consultar cliente por número identificación 
-|
+| GET    | `/clientes/identificacion/{identificacion}`  | Consultar cliente por número identificación          |
+| PUT    | `/clientes/{id}`                             | Actualizar datos de un cliente                       |
 | DELETE | `/clientes/{id}`                             | Eliminar cliente por cuentaId                        |
 
 <br> <!-- Salto de línea -->
@@ -140,26 +140,37 @@ Ruta dentro del repositorio:
 > En lugar de eliminar movimientos físicamente, se cambia el tipoMovimiento a "REVERTIDO: original_tipo" y se crea un nuevo movimiento con el tipoMovimiento "REVERSION" para mantener trazabilidad y llevar el registro de las transacciones realizadas.
 
 <br> <!-- Salto de línea -->
-## 🧾 Ejemplos de Request Body
+### 🧾 Ejemplos de Request Body
 
-### 📍 POST /clientes
-
+#### 📍 POST /clientes
 Crea un nuevo cliente.
-
 ```json
 {
   "nombre": "Santiago Pérez",
   "genero": "Masculino",
-  "edad": 35,
-  "identificacion": "123456789",
+  "edad": 35,        
+  "identificacion": "1230000123",
   "direccion": "Calle 123 #45-67",
   "telefono": "3101234567",
   "contraseña": "pass123",
   "estado": true
 }
 ```
-
-### 📍 POST /cuentas
+#### 📍 PUT /clientes/{id}
+Actualiazr datos de un cliente.
+```json
+{
+  "nombre": "Santiago Pérez Update",
+  "genero": "Masculino",
+  "edad": 35,
+  "identificacion": "1000123123",
+  "direccion": "Carrera 10 #45-89",
+  "telefono": "3102351212",
+  "contraseña": "claveActualizada",
+  "estado": true
+}
+```
+#### 📍 POST /cuentas
 Crea una nueva cuenta.
 ```json
 {
@@ -167,6 +178,14 @@ Crea una nueva cuenta.
   "tipoCuenta": "Ahorros",
   "estado": true,
   "clienteId": 1
+}
+```
+### 📍 PUT /cuentas/{numeroCuenta}
+Actualiza datos de una cuenta.
+```json
+{
+  "tipoCuenta": "Ahorros Update",
+  "estado": false
 }
 ```
 ### 📍 POST /movimientos
@@ -186,7 +205,6 @@ Crea un nuevo movimiento.
   "cuentaId": 1
 }
 ```
-
 ### 📍 POST /movimientos/{id}/revertir
 Revierte un movimiento
 > No requiere un request body
