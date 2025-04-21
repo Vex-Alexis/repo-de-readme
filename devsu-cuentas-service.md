@@ -141,7 +141,7 @@ Ruta dentro del repositorio:
 
 <br> <!-- Salto de línea -->
 ### 🧾 Ejemplos de Request Body
-
+---
 #### 📍 POST /clientes
 Crea un nuevo cliente.
 ```json
@@ -156,6 +156,7 @@ Crea un nuevo cliente.
   "estado": true
 }
 ```
+---
 #### 📍 PUT /clientes/{id}
 Actualiza los datos de un cliente existente.
 ```json
@@ -170,6 +171,7 @@ Actualiza los datos de un cliente existente.
   "estado": true
 }
 ```
+---
 #### 📍 POST /cuentas
 Crea una nueva cuenta asociada a un cliente.
 ```json
@@ -180,6 +182,7 @@ Crea una nueva cuenta asociada a un cliente.
   "clienteId": 1
 }
 ```
+---
 #### 📍 PUT /cuentas/{numeroCuenta}
 Actualiza los datos de una cuenta existente.
 ```json
@@ -188,6 +191,7 @@ Actualiza los datos de una cuenta existente.
   "estado": false
 }
 ```
+---
 #### 📍 POST /movimientos
 Crea un nuevo movimiento.
 > 💸 El valor positivo representa un depósito, y el valor negativo un retiro.
@@ -207,9 +211,10 @@ Crea un nuevo movimiento.
   "cuentaId": 1
 }
 ```
+---
 #### 📍 POST /movimientos/{id}/revertir
-Revierte un movimiento
-> No requiere un request body
+Revierte un movimiento previamente realizado.
+> No requiere un cuerpo en la solicitud (body vacío).
 
 
 ---
