@@ -294,7 +294,7 @@ Este sistema está compuesto por dos microservicios principales:
 - `clientes-service`: Encargado de la gestión de la información de los clientes.
 - `cuentas-service`: Encargado de la administración de cuentas, movimientos y generación de reportes.
 
-En este diseño, era natural que algunos servicios necesitaran acceder a información mantenida por otros. Por ejemplo, al generar un reporte del estado de cuenta, se requiere no solo la información financiera, sino también los datos del cliente correspondiente. Por eso, el ms `cuentas-service` necesita consultar al ms `clientes-service`.
+En este diseño, era natural que algún microservicio necesitaran acceder a información mantenida por otros. Por ejemplo, al generar un reporte del estado de cuenta, se requiere no solo la información financiera, sino también los datos del cliente correspondiente. Por eso, el ms `cuentas-service` necesita consultar al ms `clientes-service`.
 
 Para lograr esto, se implemento una comunicación síncrona vía HTTP utilizando RestTemplate, ya que la consulta es directa y requiere una respuesta inmediata.
 
