@@ -34,7 +34,7 @@ Para simplificar la ejecución y despliegue, se utilizó Docker junto con docker
 
 - **Java 21**
 - **Spring Boot 3.4.4**
-- **JPA**
+- **Spring Web + JPA**
 - **PostgreSQL**
 - **Docker & Docker Compose**
 - **AWS SQS**
