@@ -388,17 +388,6 @@ infrastructure/
   └─ adapters/               <- Adaptadores de salida (Base de datos, clientes REST, colas, etc)
   └─ entry-points/           <- Adaptadores de entrada (REST controllers, GraphQL, manejo de solicitudes externas) 
 ```
-<br> <!-- Salto de línea -->
-#### ⚙️ Principios y patrones aplicados
-- SOLID: Cada clase tiene una única responsabilidad (S), las dependencias se inyectan mediante interfaces (D e I), y se respeta la apertura a extensión sin modificar código existente (O).
-- Inversión de Dependencias: El dominio define qué necesita y la infraestructura provee la implementación.
-- Patrón de puertos y adaptadores (hexagonal).
-- DTOs + Mappers: Separación clara entre modelos internos y datos expuestos por las APIs.
-- Factory/Builder: Para inicialización de entidades y adaptadores.
-- Controller - Use Case - Gateway: Patrón clásico de entrada limpia donde cada capa cumple un rol específico.
-- Containarización: Todo el ecosistema se levanta mediante docker-compose, facilitando la portabilidad y despliegue.
-
-
 
 
 ---
