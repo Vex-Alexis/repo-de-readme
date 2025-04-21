@@ -148,7 +148,7 @@ Ruta dentro del repositorio:
 > En lugar de eliminar movimientos físicamente, se cambia el tipoMovimiento a "REVERTIDO: original_tipo" y se crea un nuevo movimiento con el tipoMovimiento "REVERSION" para mantener trazabilidad y llevar el registro de las transacciones realizadas.
 
 <br> <!-- Salto de línea -->
-### 🧾 Ejemplos de Request Body
+## 🧾 Ejemplos de Request Body
 #### 📍 POST /clientes
 Crea un nuevo cliente.
 ```json
@@ -225,7 +225,7 @@ Revierte un movimiento previamente realizado.
 ---
 
 <br> <!-- Salto de línea -->
-### 📈 Endpoint: Generación de Reporte de Cuentas
+## 📈 Endpoint: Generación de Reporte de Cuentas
 #### 📍 POST /cuentas/reportes
 Obtiene un reporte consolidado de los movimientos de todas las cuentas asociadas a un cliente, dentro de un rango de fechas.
 Ejemplo de URL:
