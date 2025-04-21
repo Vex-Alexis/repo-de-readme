@@ -217,7 +217,7 @@ Revierte un movimiento previamente realizado.
 ---
 
 <br> <!-- Salto de línea -->
-### Endpoint: Generación de Reporte de Cuentas
+### 📈 Endpoint: Generación de Reporte de Cuentas
 #### 📍 POST /cuentas/reportes
 Obtiene un reporte consolidado de los movimientos de todas las cuentas asociadas a un cliente, dentro de un rango de fechas.
 Ejemplo de URL:
@@ -230,6 +230,53 @@ http://localhost:8081/cuentas/reportes?identificacionCliente=1234567890&desde=20
 | `identificacionCliente`  | `string`  | ✅ Si          | Número de identificación del cliente.
 | `desde`                  | `date`    | ✅ Si          | Fecha inicial del período en formato `YYYY-MM-DD`.
 | `hasta`                  | `date`    | ✅ Si          | Fecha final  del período en formato `YYYY-MM-DD`.
+
+#### Ejemplo de Response Body
+```json
+{
+  "cliente": {
+    "clienteId": 1,
+    "nombre": "Juan Pérez",
+    "identificacion": "1234567890",
+    "direccion": "Cra 12 #34-56"
+  },
+  "cuentas": [
+    {
+      "cuentaId": 5,
+      "tipoCuenta": "Ahorros",
+      "saldoActual": 0.0,
+      "estado": true,
+      "movimientos": [
+        {
+          "movimientoId": 10,
+          "fecha": "2024-08-08",
+          "tipoMovimiento": "Deposito de 5.000",
+          "valor": 5000,
+          "saldo": 5000,
+          "cuentaId": 5
+        },
+        {
+          "movimientoId": 11,
+          "fecha": "2024-08-08",
+          "tipoMovimiento": "Retiro de 5.000",
+          "valor": -5000,
+          "saldo": 0.0,
+          "cuentaId": 5
+        }
+      ]
+    },
+    ...
+  ]
+}
+```
+####📘 Explicación de la Estructura
+- cliente: Información básica del cliente consultado.
+- cuentas: Lista de todas las cuentas activas del cliente dentro del rango de fechas.
+  - movimientos: Movimientos financieros asociados a cada cuenta.
+    - Valores positivos representan depósitos o reversiones.
+    - Valores negativos representan retiros u otros débitos.
+    - saldo: Es el saldo resultante después de aplicar ese movimiento.
+
 
 
 
