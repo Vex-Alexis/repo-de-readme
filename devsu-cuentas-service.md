@@ -275,7 +275,7 @@ http://localhost:8081/cuentas/reportes?identificacionCliente=1234567890&desde=20
 - `cuentas`: Lista de todas las cuentas activas del cliente dentro del rango de fechas.
   - `saldoActual`: Monto actual en la cuenta, considerando todos los movimientos aplicados.
   - `movimientos`: Lista de movimientos realizadas en el rango de fechas.
-    - `tipoMovimiento`: Describe la naturaleza del movimiento (Ej: "Pago de factura", "Transferencia recibida", "Reversión de retiro").
+    - `tipoMovimiento`: Describe la naturaleza del movimiento
     - Valores positivos representan ingresos.
     - Valores negativos representan egresos.
     - `saldo`: Es el saldo resultante después de aplicar ese movimiento.
