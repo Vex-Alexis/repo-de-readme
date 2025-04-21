@@ -122,6 +122,7 @@ Ruta dentro del repositorio:
 | GET    | `/clientes/identificacion/{identificacion}`  | Consultar cliente por número identificación          |
 | PUT    | `/clientes/{id}`                             | Actualizar datos de un cliente                       |
 | DELETE | `/clientes/{id}`                             | Eliminar cliente por cuentaId                        |
+>  No se permite eliminar un cliente si tiene cuentas asociadas
 
 <br> <!-- Salto de línea -->
 ### 🏦 Cuentas (`/cuentas`)
