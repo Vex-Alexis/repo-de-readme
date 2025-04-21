@@ -385,7 +385,7 @@ infrastructure/
   └─ entry-points/
        └─ rest/              <- Controladores, DTOs, handlers
 ```
-
+<br> <!-- Salto de línea -->
 #### ⚙️ Principios y patrones aplicados
 - SOLID: Cada clase tiene una única responsabilidad (S), las dependencias se inyectan mediante interfaces (D e I), y se respeta la apertura a extensión sin modificar código existente (O).
 - Inversión de Dependencias: El dominio define qué necesita y la infraestructura provee la implementación.
@@ -398,9 +398,10 @@ infrastructure/
 
 
 
-Patrones de diseño, principios etc.
+---
 
-Aplica el patrón de puertos y adaptadores (hexagonal).
+### **Gracias**
+> 
 
 
 
