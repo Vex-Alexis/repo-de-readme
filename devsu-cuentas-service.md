@@ -107,7 +107,8 @@ Ruta dentro del repositorio:
 | POST   | `/clientes`                                  | Crear un nuevo cliente                               |
 | GET    | `/clientes`                                  | Listar todos los clientes                            |
 | GET    | `/clientes/{id}`                             | Consultar cliente por ID                             |
-| GET    | `/clientes//identificacion/{identificacion}` | Consultar cliente por número identificación          |
+| GET    | `/clientes//identificacion/{identificacion}` | Consultar cliente por número identificación 
+|
 | DELETE | `/clientes/{id}`                             | Eliminar cliente por cuentaId                        |
 
 <br> <!-- Salto de línea -->
@@ -118,7 +119,16 @@ Ruta dentro del repositorio:
 | GET    | `/cuentas`                                  | Listar todas las cuentas                |
 | GET    | `/cuentas/{id}`                             | Consultar cuenta por ID                 |
 | GET    | `/cuentas/numero-cuenta/{numero-cuenta}`    | Consultar cuenta por número de cuenta   |
-| POST   | `/cuentas`                                  | Crear nueva cuenta                      |
+| POST   | `/cuentas`                                  | Crear nueva cuenta  
+```json
+{
+    "status": 400,
+    "success": false,
+    "message": "Saldo no disponible para realizar el movimiento.",
+    "timestamp": "2025-04-20 19:13:35"
+}
+```
+|
 | PUT    | `/cuentas/{numero-cuenta}`                  | Actualizar datos de una cuenta          |
 | GET    | `/cuentas/reportes?identificacionCliente={identificacion}&desde={fecha1}&hasta={fecha2}`                        | Reporte de estado de cuenta por cliente y rango de fechas |
 >  El reporte de estado de cuenta incluye el saldo actual de cada cuenta asociada y el detalle de movimientos en el rango de fechas solicitado.
