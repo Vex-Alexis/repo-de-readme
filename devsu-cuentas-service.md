@@ -141,7 +141,6 @@ Ruta dentro del repositorio:
 
 <br> <!-- Salto de línea -->
 ### 🧾 Ejemplos de Request Body
----
 #### 📍 POST /clientes
 Crea un nuevo cliente.
 ```json
