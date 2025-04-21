@@ -70,6 +70,12 @@ docker-compose up --build
 <br> <!-- Salto de línea -->
 ## 🚀 Endpoints
 
+Endpoints disponibles
+
+- http://localhost:8080/clientes
+- http://localhost:8081/cuentas
+- http://localhost:8081/movimientos
+
 <br> <!-- Salto de línea -->
 ### - Clientes (`/clientes`)
 
