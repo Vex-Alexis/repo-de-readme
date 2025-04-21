@@ -376,7 +376,7 @@ Los microservicios comparten el mismo diseño estructural, promoviendo reutiliza
 
 ```css
 application/
-  ├── usecase/        → Casos de uso o servicios de aplicación
+  ├── usecase/               <- Casos de uso o servicios de aplicación
 
 domain/
   └─ model/                  <- Entidades del dominio y gateways (interfaces)
@@ -402,7 +402,7 @@ infrastructure/
 ---
 
 ### **Gracias**
-> 
+
 
 
 
