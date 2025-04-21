@@ -72,7 +72,8 @@ docker-compose up --build
 
 Esta sección describe todos los endpoints REST expuestos por los microservicios **clientes-service** y **cuentas-service**, accesibles una vez los servicios estén desplegados con Docker. También incluye una colección de Postman para facilitar el consumo de la API.
 
-📬 Colección de Postman
+<br> <!-- Salto de línea -->
+### 📬 Colección de Postman
 Puedes usar la colección de Postman para probar rápidamente todos los endpoints disponibles.
 
 Ruta dentro del repositorio:
@@ -81,9 +82,8 @@ Ruta dentro del repositorio:
 ```
 > Asegúrate de tener los servicios levantados (clientes-service en 8080, cuentas-service en 8081) antes de hacer peticiones.
 
-
-
-📌 Los puertos por defecto son:
+<br> <!-- Salto de línea -->
+### 📌 Los puertos por defecto son:
 
 - clientes-service: http://localhost:8080
 - cuentas-service: http://localhost:8081
