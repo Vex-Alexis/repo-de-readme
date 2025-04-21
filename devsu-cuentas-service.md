@@ -25,12 +25,17 @@ Para simplificar la ejecución y despliegue, se utilizó Docker junto con docker
 <br> <!-- Salto de línea -->
 ## 🧩 Funcionalidades Principales
 
-- Gestión de clientes: creación, consulta, actualización y eliminación.
-- Gestión de cuentas bancarias: creación, consulta y actualización.
-- Registro de movimientos bancarios: creación, consulta y reversiones.
+- CRUD completo para la entidad **Cliente**.
+- CRUD (excepto eliminación) para **Cuentas** y **Movimientos**.
+- Registro de movimientos con impacto en el saldo de la cuenta: creación, consulta y reversiones.
 - Generación de reporte de estado de cuenta por cliente y rango de fechas.
-- Validaciones de negocio robustas (saldo insuficiente, cuentas inactivas, etc).
-- Comunicación entre microservicios mediante HTTP.
+- Validaciones de negocio (saldo insuficiente, cuentas inactivas, etc).
+- Comunicación sincrónica entre microservicios mediante HTTP.
+- Contenedores Docker para fácil despliegue.
+- Manejo global de excepciones con respuestas JSON.
+- Perfiles configurados para `local` y `docker`.
+- Scripts para poblar y levantar la base de datos PostgreSQL.
+- Pruebas unitarias y de integración (Karate).
 
 <br> <!-- Salto de línea -->
 ## ⚙️ Tecnologías utilizadas
