@@ -269,13 +269,14 @@ http://localhost:8081/cuentas/reportes?identificacionCliente=1234567890&desde=20
   ]
 }
 ```
+
 ####📘 Explicación de la Estructura
-- cliente: Información básica del cliente consultado.
-- cuentas: Lista de todas las cuentas activas del cliente dentro del rango de fechas.
-  - movimientos: Movimientos financieros asociados a cada cuenta.
+- `cliente`: Información básica del cliente consultado.
+- `cuentas`: Lista de todas las cuentas activas del cliente dentro del rango de fechas.
+  - `movimientos`: Movimientos financieros asociados a cada cuenta.
     - Valores positivos representan depósitos o reversiones.
     - Valores negativos representan retiros u otros débitos.
-    - saldo: Es el saldo resultante después de aplicar ese movimiento.
+    - `saldo`: Es el saldo resultante después de aplicar ese movimiento.
 
 
 
