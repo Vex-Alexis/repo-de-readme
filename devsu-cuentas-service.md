@@ -79,7 +79,7 @@ Esta sección describe todos los endpoints REST expuestos por los microservicios
 - cuentas-service: http://localhost:8081
 
 <br> <!-- Salto de línea -->
-### 🌐 URLs de acceso
+### 🌐 Rutas base por servicio
 
 | Servicio    | Base URL                           | Descripción
 |-------------|------------------------------------|-------------------------------------------
@@ -94,7 +94,7 @@ Puedes usar la colección de Postman para probar rápidamente todos los endpoint
 
 Ruta dentro del repositorio:
 ```
-/docs/Devsu-Postman-Collection.json
+[📄 Devsu Postman Collection](./docs/Devsu-Postman-Collection.json)
 ```
 > Asegúrate de tener los servicios levantados (clientes-service en 8080, cuentas-service en 8081) antes de hacer peticiones.
 
