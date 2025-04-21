@@ -355,7 +355,7 @@ Las pruebas unitarias están en la carpeta `src/test/java` se pueden ejecutar co
 ## 🏛️ Arquitectura
 
 
-### 🧱 Arquitectura general
+### Arquitectura general
 
 El sistema está compuesto por dos microservicios independientes: `clientes-service` y `cuentas-service`. Cada uno está diseñado bajo principios de arquitectura limpia, y expone sus funcionalidades a través de una API REST.
 
