@@ -350,46 +350,27 @@ Las pruebas unitarias están en la carpeta `src/test/java` se pueden ejecutar co
 
 ### Arquitectura general
 
-El sistema está compuesto por dos microservicios independientes: clientes-service y cuentas-service. Cada uno está diseñado bajo principios de arquitectura limpia, y expone sus funcionalidades a través de una API REST.
+El sistema está compuesto por dos microservicios independientes: `clientes-service` y `cuentas-service`. Cada uno está diseñado bajo principios de arquitectura limpia, y expone sus funcionalidades a través de una API REST.
+
+Ambos servicios están contenerizados con Docker y orquestados mediante Docker Compose, lo que permite levantar toda la solución de manera sencilla. Son microservicios independientes, pero comparten la misma base de datos PostgreSQL, cada uno accediendo a sus propias tablas.
 
 
-Ambos servicios están contenerizados con Docker y orquestados mediante Docker Compose, lo que permite levantar toda la solución de manera sencilla en un entorno local o de pruebas. A pesar de ser servicios independientes, comparten la misma base de datos PostgreSQL, cada uno accediendo a sus propias tablas.
+### Arquitectura por microservicio
 
-
-Ambos microservicios comparten la misma arquitectura base, donde se distinguen claramente las siguientes capas:
-
-| Capa                    | Descripción
-|-------------------------|------------------------------------------
-|        Domain           | ← Entidades, lógica y reglas del negocio
-|      Application        | ← Casos de uso y orquestación 
-|     Infrastructure      | ← Adaptadores, controladores, gateways
-
-
----
-
-
-📦 Arquitectura por microservicio
-clientes-service
 Sigue una arquitectura limpia dividida en tres grandes capas:
-
-Dominio: contiene los modelos de negocio y las interfaces (gateways) que definen los contratos con la infraestructura.
-
-Aplicación: incluye los casos de uso con la lógica central del servicio.
-
-Infraestructura: se encarga de implementar los gateways (adaptadores a PostgreSQL, colas, REST, etc.).
-
+- Dominio: Modelos del negocio, interfaces (use cases), y las interfaces (gateways) que definen los contratos con la infraestructura.
+- Aplicación: implementa los casos de uso con la lógica central del servicio.
+- Infraestructura:
+  - Adaptadores para tecnologías externas (Base de datos, REST, SQS, etc) 
+  - Puntos de entrada (Controladores REST, GraphQL y manejo de solicitudes externas.)
+  
 Flujo general:
+- Una petición llega al controlador (entry-point REST).
+- El controlador transforma los datos con los DTOs y los pasa al caso de uso correspondiente.
+- El caso de uso ejecuta la lógica y se comunica con los gateways definidos en el dominio.
+- Los adaptadores de infraestructura implementan estos gateways y acceden a las tecnologías externas (por ejemplo, base de datos).
 
-Una petición llega al controlador (entry-point REST).
-
-El controlador transforma los datos con los DTOs y los pasa al caso de uso correspondiente.
-
-El caso de uso ejecuta la lógica y se comunica con los gateways definidos en el dominio.
-
-Los adaptadores de infraestructura implementan estos gateways y acceden a las tecnologías externas (por ejemplo, base de datos).
-
-
-📦 Estructura de carpetas
+Los microservicios comparten el mismo diseño estructural, promoviendo reutilización de patrones y mantenibilidad del código.
 
 ```css
 application/
@@ -403,6 +384,29 @@ infrastructure/
        └─ rest/              <- Controladores, DTOs, handlers
        └─ graphql/           <- Resolveres y configuraciones
 ```
+> Cada tecnología externa (como PostgreSQL, SQS o APIs REST) es abstraída mediante interfaces en el dominio (gateways), que luego son implementadas en la infraestructura, respetando el principio de inversión de dependencias (D de SOLID).
+
+⚙️ Principios y patrones aplicados
+- SOLID: Cada clase tiene una única responsabilidad (S), las dependencias se inyectan mediante interfaces (D e I), y se respeta la apertura a extensión sin modificar código existente (O).
+- Inversión de Dependencias: El dominio define qué necesita y la infraestructura provee la implementación.
+- Patrón de puertos y adaptadores (hexagonal).
+- DTOs + Mappers: Separación clara entre modelos internos y datos expuestos por las APIs.
+- Factory/Builder: Para inicialización de entidades y adaptadores.
+- Controller - Use Case - Gateway: Patrón clásico de entrada limpia donde cada capa cumple un rol específico.
+- Containarización: Todo el ecosistema se levanta mediante docker-compose, facilitando la portabilidad y despliegue.
+
+
+
+
+Patrones de diseño, principios etc.
+
+Aplica el patrón de puertos y adaptadores (hexagonal).
+
+
+
+
+
+
 
 
 
