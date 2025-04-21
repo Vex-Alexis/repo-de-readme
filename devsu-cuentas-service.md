@@ -296,7 +296,7 @@ Este sistema está compuesto por dos microservicios principales:
 
 En este diseño, era natural que algunos servicios necesitaran acceder a información mantenida por otros. Por ejemplo, al generar un reporte del estado de cuenta, se requiere no solo la información financiera, sino también los datos del cliente correspondiente. Por eso, el ms `cuentas-service` necesita consultar al ms `clientes-service`.
 
-Para lograr esto, implementé una comunicación síncrona vía HTTP utilizando RestTemplate, ya que la consulta es directa, puntual y requiere una respuesta inmediata.
+Para lograr esto, se implemento una comunicación síncrona vía HTTP utilizando RestTemplate, ya que la consulta es directa y requiere una respuesta inmediata.
 
 
 
