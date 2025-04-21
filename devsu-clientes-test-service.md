@@ -1,81 +1,322 @@
-# Cuentas Service (TEST)
+# Cuentas Service
 
-Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociados. Permite la creación, consulta, actualización y eliminación de cuentas, así como registrar movimientos (retiros, depósitos, reversiones).
+Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociados. Permite la creación, consulta y actualización de cuentas, así como registrar movimientos (retiros, depósitos, reversiones).
 
 <br> <!-- Salto de línea -->
-
 ## Contenido
 
 - [Tecnologías Utilizadas](#%EF%B8%8F-tecnologías-utilizadas)
+- [Funcionalidades Principales]()
 - [Clonar y levantar el proyecto](#-clonar-y-levantar-el-proyecto)
-- [Documentacion swagger](#-documentación-swagger)
 - [Endpoints](#-endpoints)
-- [Descripcion Endpoints](#-descripcion-endpoints)
-- (Autenticación)
+- [Excepciones](#excepciones)
 - [Pruebas](#-pruebas)
 - [Arquitectura](#arquitectura)
 
 
+<br> <!-- Salto de línea -->
+## 🧩 Funcionalidades Principales (Darle prioridad a las funcionalidades que piden)
+
+- Gestión de clientes: creación, consulta, actualización y eliminación.
+- Gestión de cuentas bancarias: creación, consulta y actualización.
+- Registro de movimientos bancarios: creación, consulta y reversiones.
+- Generación de reporte de estado de cuenta por cliente y rango de fechas.
+- Validaciones de negocio robustas (saldo insuficiente, cuentas inactivas, etc).
+- Comunicación con microservicio externo de clientes.
 
 <br> <!-- Salto de línea -->
-
 ## ⚙️ Tecnologías utilizadas
 
-- **Java 17**
+- **Java 21**
 - **Spring Boot 3**
-- **Arquitectura Limpia**
+- **JPA**
 - **PostgreSQL**
-- **Maven**
 - **Docker & Docker Compose**
-- **Swagger / OpenAPI**
+- **AWS SQS**
+- **JUnit 5**
+- **Arquitectura Limpia (Clean Architecture)**
+
 
 <br> <!-- Salto de línea -->
-
-## 🔧 Clonar y levantar el proyecto
+## 🛠️ Clonar y levantar el proyecto
 
 <br> <!-- Salto de línea -->
-1. Clona este repositorio en tu máquina local:
+1. Clona el repositorio:
 ```bash
-git clone https://github.com/Vex-Alexis/Backend-BankInc.git
+git clone https://github.com/Vex-Alexis/devsu-cuentas-sevice
 ```
 <br> <!-- Salto de línea -->
 2. Navega al directorio del proyecto:
 ```bash
-cd Backend-BankInc
+cd devsu-cuentas-sevice/docker-compose
 ```
-3. Compila el proyecto y descarga las dependencias utilizando Maven:
+3. Levanta los servicios:
 ```bash
-mvn clean install
+docker-compose up --build
 ```
-4. Ejecuta la aplicación o usa tu IDE favorito
-```bash
-mvn spring-boot:run
-```
+4. Servicios expuestos:
 
-<br> <!-- Salto de línea -->
 
-## 🌐 Documentación Swagger 
-Una vez desplegado el microservicio:
-(http://localhost:8081/swagger-ui.html)
+| Servicio                | Puerto
+|-------------------------|------
+| clientes-service        | `8080`
+| cuentas-service         | `8081`
+| PostresSQL              | `5432`
+
+> Asegúrate de que no estén siendo usados por otros procesos.
+
 
 
 <br> <!-- Salto de línea -->
 ## 🚀 Endpoints
-<br> <!-- Salto de línea -->
 
-| Método | Endpoint                | Descripción                             |
-|--------|-------------------------|-----------------------------------------|
-| GET    | `/cuentas`              | Listar todas las cuentas                |
-| GET    | `/cuentas/{id}`         | Obtener cuenta por ID                   |
-| POST   | `/cuentas`              | Crear nueva cuenta                      |
-| PUT    | `/cuentas/{id}`         | Actualizar cuenta                       |
-| DELETE | `/cuentas/{id}`         | Eliminar cuenta                         |
-| POST   | `/movimientos`          | Crear movimiento (retiro o depósito)    |
-| POST   | `/movimientos/{id}/revertir` | Revertir un movimiento             |
+Esta sección describe todos los endpoints REST expuestos por los microservicios **clientes-service** y **cuentas-service**, accesibles una vez los servicios estén desplegados con Docker. También puedes utilizar la colección de Postman incluida.
+
+<br> <!-- Salto de línea -->
+### 📌 Los puertos por defecto son:
+
+- clientes-service: http://localhost:8080
+- cuentas-service: http://localhost:8081
+
+<br> <!-- Salto de línea -->
+### 🌐 Rutas base por servicio
+
+| Servicio    | Base URL                           | Descripción
+|-------------|------------------------------------|-------------------------------------------
+| Clientes    | http://localhost:8080/clientes     | CRUD y consulta de clientes
+| Cuentas     | http://localhost:8081/cuentas      | CRUD y consulta de cuentas
+| Movimientos | http://localhost:8081/movimientos  | Registro y consulta de movimientos
+
+
+<br> <!-- Salto de línea -->
+### 📦 Colección de Postman
+Puedes usar la colección de Postman para probar rápidamente todos los endpoints disponibles.
+
+Ruta dentro del repositorio:
+
+./docs/Devsu-Postman-Collection.json -> [📄 Devsu Postman Collection](./docs/Devsu-Postman-Collection.json)
+
+> Asegúrate de tener los servicios levantados (clientes-service en 8080, cuentas-service en 8081) antes de hacer peticiones.
+
+
+<br> <!-- Salto de línea -->
+### 👤 Clientes (`/clientes`)
+
+| Método | Endpoint                                     | Descripción                             |
+|--------|----------------------------------------------|-----------------------------------------|
+| POST   | `/clientes`                                  | Crear un nuevo cliente                               |
+| GET    | `/clientes`                                  | Listar todos los clientes                            |
+| GET    | `/clientes/{id}`                             | Consultar cliente por ID                             |
+| GET    | `/clientes/identificacion/{identificacion}`  | Consultar cliente por número identificación          |
+| PUT    | `/clientes/{id}`                             | Actualizar datos de un cliente                       |
+| DELETE | `/clientes/{id}`                             | Eliminar cliente por cuentaId                        |
+
+<br> <!-- Salto de línea -->
+### 🏦 Cuentas (`/cuentas`)
+
+| Método | Endpoint                                    | Descripción                             |
+|--------|---------------------------------------------|-----------------------------------------|
+| GET    | `/cuentas`                                  | Listar todas las cuentas                |
+| GET    | `/cuentas/{id}`                             | Consultar cuenta por ID                 |
+| GET    | `/cuentas/numero-cuenta/{numero-cuenta}`    | Consultar cuenta por número de cuenta   |
+| POST   | `/cuentas`                                  | Crear nueva cuenta                      |
+| PUT    | `/cuentas/{numero-cuenta}`                  | Actualizar datos de una cuenta          |
+| GET    | `/cuentas/reportes?identificacionCliente={identificacion}&desde={fecha1}&hasta={fecha2}`                        | Reporte de estado de cuenta por cliente y rango de fechas |
+>  El reporte de estado de cuenta incluye el saldo actual de cada cuenta asociada y el detalle de movimientos en el rango de fechas solicitado.
+
+
+<br> <!-- Salto de línea -->
+### 💸 Movimientos (`/movimientos`)
+
+| Método | Endpoint                                    | Descripción                             |
+|--------|---------------------------------------------|-----------------------------------------|
+| POST   | `/movimientos`                              | Crear movimiento       |
+| POST   | `/movimientos/{id}/revertir`                | Revertir un movimiento             |
+| GET    | `/movimientos`                              | Consultar todos los movimientos        |
+| GET    | `/movimientos/{id}`                         | Consultar movimiento por Id             |
+| GET    | `/movimientos/cuenta/{id}`                  | Consultar movimientos por cuentaId        |
+> Al registrar un movimiento, si el saldo es insuficiente, se lanza una excepción con una respuesta controlada.
+
+> En lugar de eliminar movimientos físicamente, se cambia el tipoMovimiento a "REVERTIDO: original_tipo" y se crea un nuevo movimiento con el tipoMovimiento "REVERSION" para mantener trazabilidad y llevar el registro de las transacciones realizadas.
+
+<br> <!-- Salto de línea -->
+### 🧾 Ejemplos de Request Body
+#### 📍 POST /clientes
+Crea un nuevo cliente.
+```json
+{
+  "nombre": "Santiago Pérez",
+  "genero": "Masculino",
+  "edad": 35,        
+  "identificacion": "1230000123",
+  "direccion": "Calle 123 #45-67",
+  "telefono": "3101234567",
+  "contraseña": "pass123",
+  "estado": true
+}
+```
+---
+#### 📍 PUT /clientes/{id}
+Actualiza los datos de un cliente existente.
+```json
+{
+  "nombre": "Santiago Pérez Update",
+  "genero": "Masculino",
+  "edad": 35,
+  "identificacion": "1000123123",
+  "direccion": "Carrera 10 #45-89",
+  "telefono": "3102351212",
+  "contraseña": "claveActualizada",
+  "estado": true
+}
+```
+---
+#### 📍 POST /cuentas
+Crea una nueva cuenta asociada a un cliente.
+```json
+{
+  "numeroCuenta": "600700800",
+  "tipoCuenta": "Ahorros",
+  "estado": true,
+  "clienteId": 1
+}
+```
+---
+#### 📍 PUT /cuentas/{numeroCuenta}
+Actualiza los datos de una cuenta existente.
+```json
+{
+  "tipoCuenta": "Ahorros Update",
+  "estado": false
+}
+```
+---
+#### 📍 POST /movimientos
+Crea un nuevo movimiento.
+> El valor positivo representa un ingreso, y el valor negativo un egreso.
+##### Ejemplo de Depósito:
+```json
+{
+  "tipoMovimiento": "Deposito 200.0000",
+  "valor": 2000000,
+  "cuentaId": 1
+}
+```
+##### Ejemplo de Retiro:
+```json
+{
+  "tipoMovimiento": "Retiro 200.0000",
+  "valor": -2000000,
+  "cuentaId": 1
+}
+```
+---
+#### 📍 POST /movimientos/{id}/revertir
+Revierte un movimiento previamente realizado.
+> No requiere un cuerpo en la solicitud (body vacío).
+---
+
+<br> <!-- Salto de línea -->
+### 📈 Endpoint: Generación de Reporte de Cuentas
+#### 📍 POST /cuentas/reportes
+Obtiene un reporte consolidado de los movimientos de todas las cuentas asociadas a un cliente, dentro de un rango de fechas.
+Ejemplo de URL:
+```
+http://localhost:8081/cuentas/reportes?identificacionCliente=1234567890&desde=2024-01-01&hasta=2025-04-30
+```
+#### 📌 Parámetros (Query Params):
+| Nombre                   | Tipo      | Obligatorio     | Descripción
+|--------------------------|-----------|-----------------|--------------------------------------------------|
+| `identificacionCliente`  | `string`  | ✅ Si          | Número de identificación del cliente.
+| `desde`                  | `date`    | ✅ Si          | Fecha inicial del período en formato `YYYY-MM-DD`.
+| `hasta`                  | `date`    | ✅ Si          | Fecha final  del período en formato `YYYY-MM-DD`.
+
+#### Ejemplo de Response Body
+```json
+{
+  "cliente": {
+    "clienteId": 1,
+    "nombre": "Juan Pérez",
+    "identificacion": "1234567890",
+    "direccion": "Cra 12 #34-56"
+  },
+  "cuentas": [
+    {
+      "cuentaId": 5,
+      "numeroCuenta": "5006007005",
+      "tipoCuenta": "Ahorros",
+      "saldoActual": 0.0,
+      "estado": true,
+      "movimientos": [
+        {
+          "movimientoId": 10,
+          "fecha": "2024-08-08",
+          "tipoMovimiento": "Deposito de 5.000",
+          "valor": 5000,
+          "saldo": 5000,
+          "cuentaId": 5
+        },
+        {
+          "movimientoId": 11,
+          "fecha": "2024-08-08",
+          "tipoMovimiento": "Retiro de 5.000",
+          "valor": -5000,
+          "saldo": 0.0,
+          "cuentaId": 5
+        }
+      ]
+    },
+    ..
+  ]
+}
+```
+
+#### 📘 Explicación de la Estructura
+- `cliente`: Información básica del cliente consultado.
+- `cuentas`: Lista de todas las cuentas activas del cliente dentro del rango de fechas.
+  - `saldoActual`: Monto actual en la cuenta, considerando todos los movimientos aplicados.
+  - `movimientos`: Lista de movimientos realizadas en el rango de fechas.
+    - `tipoMovimiento`: Describe la naturaleza del movimiento
+    - Valores positivos representan ingresos.
+    - Valores negativos representan egresos.
+    - `saldo`: Es el saldo resultante después de aplicar ese movimiento.
+
+
+
 
 ---
 <br> <!-- Salto de línea -->
-## 🚀 Descripcion endpoints
+## 🚨 Manejo de Excepciones
+
+La aplicación implementa un sistema centralizado y controlado para el manejo de errores.
+
+### Enfoque Adoptado
+Cada microservicio define sus propias excepciones personalizadas dentro de la capa de dominio. Estas excepciones son lanzadas desde los casos de uso (use cases) ubicados en la capa de aplicación. 
+Posteriormente, un manejador global de excepciones captura y procesa estas excepciones, devolviendo respuestas HTTP claras, estructuradas y con información relevante para el cliente.
+
+<br> <!-- Salto de línea -->
+### Ejemplo de Respuesta de Error
+Cuando ocurre una excepción, el cliente recibe una respuesta estructurada como esta:
+
+```json
+{
+    "status": 400,
+    "success": false,
+    "message": "Saldo no disponible para realizar el movimiento.",
+    "timestamp": "2025-04-20 19:13:35"
+}
+```
+<br> <!-- Salto de línea -->
+### Excepciones Personalizadas y sus Códigos
+
+
+| Excepción                     | Códgio | Descripción
+|-------------------------------|--------|----------------------------------------------------
+| DuplicatedClientException     | 409	 | Ya existe un cliente con la misma identificación.
+| DuplicateAccountException     | 409	 | Ya existe una cuenta con ese número.
+| InactiveAccountException      | 400    | Se intentó operar sobre una cuenta inactiva.
+| InsufficientBalanceException  | 400    | Saldo insuficiente para realizar el movimiento
+| NotFoundException             | 404    | El recurso solicitado no fue encontrado.
 
 ---
 <br> <!-- Salto de línea -->
@@ -88,8 +329,13 @@ Las pruebas unitarias están en la carpeta `src/test/java` se pueden ejecutar co
 
 ---
 <br> <!-- Salto de línea -->
-## Arquitectura
+## 🏛️ Arquitectura
 
+| Capa                    | Descripción
+|-------------------------|------------------------------------------
+|        Domain           | ← Entidades, lógica y reglas del negocio
+|      Application        | ← Casos de uso y orquestación 
+|     Infrastructure      | ← Adaptadores, controladores, gateways
 
 
 ---
