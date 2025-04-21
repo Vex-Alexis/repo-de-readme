@@ -14,7 +14,7 @@ Para simplificar la ejecución y despliegue, se utilizó Docker junto con docker
 - [Funcionalidades Principales]()
 - [Clonar y levantar el proyecto](#-clonar-y-levantar-el-proyecto)
 - [Endpoints](#-endpoints)
-- [Comunicación entre microservicios](#-endpoints)
+- [Comunicación entre microservicios](%EF%B8%8F-comunicación-entre-microservicios)
 - [Excepciones](#excepciones)
 - [Pruebas](#-pruebas)
 - [Arquitectura](#arquitectura)
@@ -345,6 +345,17 @@ Las pruebas unitarias están en la carpeta `src/test/java` se pueden ejecutar co
 <br> <!-- Salto de línea -->
 ## 🏛️ Arquitectura
 
+
+### Arquitectura general
+
+El sistema está compuesto por dos microservicios independientes: clientes-service y cuentas-service. Cada uno está diseñado bajo principios de arquitectura limpia, y expone sus funcionalidades a través de una API REST.
+
+
+Ambos servicios están contenerizados con Docker y orquestados mediante Docker Compose, lo que permite levantar toda la solución de manera sencilla en un entorno local o de pruebas. A pesar de ser servicios independientes, comparten la misma base de datos PostgreSQL, cada uno accediendo a sus propias tablas.
+
+
+Ambos microservicios comparten la misma arquitectura base, donde se distinguen claramente las siguientes capas:
+
 | Capa                    | Descripción
 |-------------------------|------------------------------------------
 |        Domain           | ← Entidades, lógica y reglas del negocio
@@ -353,21 +364,43 @@ Las pruebas unitarias están en la carpeta `src/test/java` se pueden ejecutar co
 
 
 ---
-<br> <!-- Salto de línea -->
-📡 Conexión entre microservicios
-Tu sistema se compone actualmente de dos microservicios:
 
 
-Microservicio	        Responsabilidad principal	                      Puerto
-clientes-service	    Gestionar clientes: CRUD de datos personales.	  8080
-cuentas-service	      Gestionar cuentas bancarias y movimientos.	    8081
+📦 Arquitectura por microservicio
+clientes-service
+Sigue una arquitectura limpia dividida en tres grandes capas:
+
+Dominio: contiene los modelos de negocio y las interfaces (gateways) que definen los contratos con la infraestructura.
+
+Aplicación: incluye los casos de uso con la lógica central del servicio.
+
+Infraestructura: se encarga de implementar los gateways (adaptadores a PostgreSQL, colas, REST, etc.).
+
+Flujo general:
+
+Una petición llega al controlador (entry-point REST).
+
+El controlador transforma los datos con los DTOs y los pasa al caso de uso correspondiente.
+
+El caso de uso ejecuta la lógica y se comunica con los gateways definidos en el dominio.
+
+Los adaptadores de infraestructura implementan estos gateways y acceden a las tecnologías externas (por ejemplo, base de datos).
 
 
-Estos servicios se comunican de manera sincrónica a través de REST, utilizando Spring Web’s RestTemplate para realizar llamadas entre sí.
-Por ejemplo, cuando se intenta registrar una nueva cuenta, cuentas-service puede consultar en clientes-service si el cliente existe.
+📦 Estructura de carpetas
 
-
-
+```css
+application/
+  └─ useCase/                <- Casos de uso implementados
+domain/
+  └─ model/                  <- Entidades del dominio y gateways (interfaces)
+  └─ useCase/                <- Interfaces de los casos de uso
+infrastructure/
+  └─ adapters/               <- Adaptadores externos: DB, REST, SQS, etc.
+  └─ entry-points/
+       └─ rest/              <- Controladores, DTOs, handlers
+       └─ graphql/           <- Resolveres y configuraciones
+```
 
 
 
