@@ -291,11 +291,12 @@ http://localhost:8081/cuentas/reportes?identificacionCliente=1234567890&desde=20
 <br> <!-- Salto de línea -->
 ## 🛰️ Comunicación entre microservicios
 Este sistema está compuesto por dos microservicios principales:
-- `clientes-service`: Gestión de clientes
-- `cuentas-service`: Gestión de cuentas, movimientos y generación de reportes
-La comunicación entre los microservicios `clientes-service` y `cuentas-service` se realiza de forma síncrona mediante llamadas HTTP utilizando el cliente RestTemplate.
+- `clientes-service`: Encargado de la gestión de la información de los clientes.
+- `cuentas-service`: Encargado de la administración de cuentas, movimientos y generación de reportes.
+En este diseño, era natural que algunos servicios necesitaran acceder a información mantenida por otros. Por ejemplo, al generar un reporte del estado de cuenta, se requiere no solo la información financiera, sino también los datos del cliente correspondiente. Por eso, el ms `cuentas-service` necesita consultar al ms `clientes-service`.
 
-Esta integración se da en el flujo de generación del reporte de estado de cuenta dentro del `cuentas-service`, donde se consultan los datos del cliente desde el `clientes-service`. Para esto, `cuentas-service` consume un endpoint REST expuesto por `clientes-service`.
+Para lograr esto, implementé una comunicación síncrona vía HTTP utilizando RestTemplate, ya que la consulta es directa, puntual y requiere una respuesta inmediata.
+
 
 
 ---
