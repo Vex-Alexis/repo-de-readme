@@ -348,20 +348,22 @@ Las pruebas unitarias están en la carpeta `src/test/java` se pueden ejecutar co
 ## 🏛️ Arquitectura
 
 
-### Arquitectura general
+### 🧱 Arquitectura general
 
 El sistema está compuesto por dos microservicios independientes: `clientes-service` y `cuentas-service`. Cada uno está diseñado bajo principios de arquitectura limpia, y expone sus funcionalidades a través de una API REST.
 
 Ambos servicios están contenerizados con Docker y orquestados mediante Docker Compose, lo que permite levantar toda la solución de manera sencilla. Son microservicios independientes, pero comparten la misma base de datos PostgreSQL, cada uno accediendo a sus propias tablas.
 
 
-### Arquitectura por microservicio
+
+<br> <!-- Salto de línea -->
+### 🧩 Arquitectura por microservicio
 
 Sigue una arquitectura limpia dividida en tres grandes capas:
 - Dominio: Modelos del negocio, interfaces (use cases), y las interfaces (gateways) que definen los contratos con la infraestructura.
 - Aplicación: implementa los casos de uso con la lógica central del servicio.
 - Infraestructura:
-  - Adaptadores para tecnologías externas (Base de datos, REST, SQS, etc) 
+  - Adaptadores implementan gateways, conexión o acceso tecnologías externas (Base de datos, REST, SQS, etc) 
   - Puntos de entrada (Controladores REST, GraphQL y manejo de solicitudes externas.)
   
 Flujo general:
@@ -382,11 +384,9 @@ infrastructure/
   └─ adapters/               <- Adaptadores externos: DB, REST, SQS, etc.
   └─ entry-points/
        └─ rest/              <- Controladores, DTOs, handlers
-       └─ graphql/           <- Resolveres y configuraciones
 ```
-> Cada tecnología externa (como PostgreSQL, SQS o APIs REST) es abstraída mediante interfaces en el dominio (gateways), que luego son implementadas en la infraestructura, respetando el principio de inversión de dependencias (D de SOLID).
 
-⚙️ Principios y patrones aplicados
+#### ⚙️ Principios y patrones aplicados
 - SOLID: Cada clase tiene una única responsabilidad (S), las dependencias se inyectan mediante interfaces (D e I), y se respeta la apertura a extensión sin modificar código existente (O).
 - Inversión de Dependencias: El dominio define qué necesita y la infraestructura provee la implementación.
 - Patrón de puertos y adaptadores (hexagonal).
