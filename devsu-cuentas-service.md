@@ -70,7 +70,7 @@ docker-compose up --build
 <br> <!-- Salto de línea -->
 ## 🚀 Endpoints
 
-Esta sección describe todos los endpoints REST expuestos por los microservicios **clientes-service** y **cuentas-service**, accesibles una vez los servicios estén desplegados con Docker. También incluye una colección de Postman para facilitar el consumo de las API.
+Esta sección describe todos los endpoints REST expuestos por los microservicios **clientes-service** y **cuentas-service**, accesibles una vez los servicios estén desplegados con Docker. También puedes utilizar la colección de Postman incluida.
 
 <br> <!-- Salto de línea -->
 ### 📌 Los puertos por defecto son:
@@ -89,12 +89,12 @@ Esta sección describe todos los endpoints REST expuestos por los microservicios
 
 
 <br> <!-- Salto de línea -->
-### 📬 Colección de Postman
+### 📦 Colección de Postman
 Puedes usar la colección de Postman para probar rápidamente todos los endpoints disponibles.
 
 Ruta dentro del repositorio:
 
-[📄 Devsu Postman Collection](./docs/Devsu-Postman-Collection.json)
+./docs/Devsu-Postman-Collection.json -> [📄 Devsu Postman Collection](./docs/Devsu-Postman-Collection.json)
 
 > Asegúrate de tener los servicios levantados (clientes-service en 8080, cuentas-service en 8081) antes de hacer peticiones.
 
