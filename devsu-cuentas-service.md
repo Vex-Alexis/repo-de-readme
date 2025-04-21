@@ -89,7 +89,7 @@ Ruta dentro del repositorio:
 > Asegúrate de tener los servicios levantados (clientes-service en 8080, cuentas-service en 8081) antes de hacer peticiones.
 
 <br> <!-- Salto de línea -->
-### Acceso General
+### 🌐 URLs de acceso
 
 | Servicio    | Base URL                           | Descripción
 |-------------|------------------------------------|-------------------------------------------
