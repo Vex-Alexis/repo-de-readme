@@ -25,12 +25,17 @@ Para simplificar la ejecución y despliegue, se utilizó Docker junto con docker
 <br> <!-- Salto de línea -->
 ## 🧩 Funcionalidades Principales
 
-- Gestión de clientes: creación, consulta, actualización y eliminación.
-- Gestión de cuentas bancarias: creación, consulta y actualización.
-- Registro de movimientos bancarios: creación, consulta y reversiones.
+- CRUD completo para la entidad **Cliente**.
+- CRUD (excepto eliminación) para **Cuentas** y **Movimientos**.
+- Registro de movimientos con impacto en el saldo de la cuenta: creación, consulta y reversiones.
 - Generación de reporte de estado de cuenta por cliente y rango de fechas.
-- Validaciones de negocio robustas (saldo insuficiente, cuentas inactivas, etc).
-- Comunicación entre microservicios mediante HTTP.
+- Validaciones de negocio (saldo insuficiente, cuentas inactivas, etc).
+- Comunicación sincrónica entre microservicios mediante HTTP.
+- Contenedores Docker para fácil despliegue.
+- Manejo global de excepciones con respuestas JSON.
+- Perfiles configurados para `local` y `docker`.
+- Scripts para poblar y levantar la base de datos PostgreSQL.
+- Pruebas unitarias y de integración (Karate).
 
 <br> <!-- Salto de línea -->
 ## ⚙️ Tecnologías utilizadas
@@ -40,7 +45,6 @@ Para simplificar la ejecución y despliegue, se utilizó Docker junto con docker
 - **Spring Web + JPA**
 - **PostgreSQL**
 - **Docker & Docker Compose**
-- **AWS SQS**
 - **JUnit 5**
 - **Arquitectura Limpia (Clean Architecture)**
 
@@ -339,40 +343,49 @@ Cuando ocurre una excepción, el cliente recibe una respuesta estructurada como 
 ---
 <br> <!-- Salto de línea -->
 ## 🧪 Pruebas
-Las pruebas unitarias están en la carpeta `src/test/java` se pueden ejecutar con:
+En este proyecto se implementan pruebas unitarias e integración, en este caso se implementarón en el microservicio `clientes-service`. Las pruebas están en la carpeta `src/test/java`.
 
+<br> <!-- Salto de línea -->
+### ✅ Pruebas Unitarias
+Se ha implementado una prueba unitaria para validar el comportamiento de la entidad de dominio Cliente en el microservicio clientes-service.
+Estas pruebas están escritas en JUnit 5 y se ejecutan como parte del ciclo estándar de testeo con Maven.
+
+### 🔁 Prueba de integración
+Se implementó una prueba de integración utilizando Karate para validar el comportamiento del endpoint de creación de clientes en el microservicio `clientes-service`.
+
+<br> <!-- Salto de línea -->
+#### Ejecutar las pruebas
+> Antes de ejecutar las pruebas, asegúrate de tener el entorno levantado con Docker
+1. Abre otra ventana de terminal nueva.
+2. Navega al directorio raíz del microservicio en el que se ejecutarán pruebas:
 ```bash
-(agregar informaicon relacioanda a la ejecucion de las pruebas)
+cd clientes-service
 ```
+3. Desde el directorio del microservicio, corre el siguiente comando:
+```bash
+mvn clean verify
+```
+> Este comando ejecutará todas las pruebas unitarias, de integración y las de Karate, y generará un informe con los resultados.
 
 ---
 <br> <!-- Salto de línea -->
 ## 🏛️ Arquitectura
 
 
-### 🧱 Arquitectura general
+### Arquitectura general
 
 El sistema está compuesto por dos microservicios independientes: `clientes-service` y `cuentas-service`. Cada uno está diseñado bajo principios de arquitectura limpia, y expone sus funcionalidades a través de una API REST.
 
-Ambos servicios están contenerizados con Docker y orquestados mediante Docker Compose, lo que permite levantar toda la solución de manera sencilla. Son microservicios independientes, pero comparten la misma base de datos PostgreSQL, cada uno accediendo a sus propias tablas.
+Ambos servicios están contenerizados con Docker y orquestados mediante Docker Compose, lo que permite levantar toda la solución de manera sencilla. Son microservicios independientes, comparten la misma base de datos PostgreSQL, cada uno accediendo a sus propias tablas.
 
+
+<p align="center">
+  <img src="diagrama-arquitectura-general.png" alt="Arquitectura general" width="600"/>
+</p>
 
 
 <br> <!-- Salto de línea -->
 ### 🧩 Arquitectura por microservicio
-
-Sigue una arquitectura limpia dividida en tres grandes capas:
-- Dominio: Modelos del negocio, interfaces (use cases), y las interfaces (gateways) que definen los contratos con la infraestructura.
-- Aplicación: implementa los casos de uso con la lógica central del servicio.
-- Infraestructura:
-  - Adaptadores implementan gateways, conexión o acceso tecnologías externas (Base de datos, REST, SQS, etc) 
-  - Puntos de entrada (Controladores REST, GraphQL y manejo de solicitudes externas.)
-  
-Flujo general:
-- Una petición llega al controlador (entry-point REST).
-- El controlador transforma los datos con los DTOs y los pasa al caso de uso correspondiente.
-- El caso de uso ejecuta la lógica y se comunica con los gateways definidos en el dominio.
-- Los adaptadores de infraestructura implementan estos gateways y acceden a las tecnologías externas (por ejemplo, base de datos).
 
 Los microservicios comparten el mismo diseño estructural, promoviendo reutilización de patrones y mantenibilidad del código.
 
@@ -386,17 +399,21 @@ domain/
 
 infrastructure/
   └─ adapters/               <- Adaptadores de salida (Base de datos, clientes REST, colas, etc)
-  └─ entry-points/           <- Adaptadores de entrada (REST controllers, GraphQL, manejo de solicitudes externas) 
+  └─ entry-points/           <- Adaptadores de entrada (REST controllers, GraphQL, solicitudes externas) 
 ```
-<br> <!-- Salto de línea -->
-#### ⚙️ Principios y patrones aplicados
-- SOLID: Cada clase tiene una única responsabilidad (S), las dependencias se inyectan mediante interfaces (D e I), y se respeta la apertura a extensión sin modificar código existente (O).
-- Inversión de Dependencias: El dominio define qué necesita y la infraestructura provee la implementación.
-- Patrón de puertos y adaptadores (hexagonal).
-- DTOs + Mappers: Separación clara entre modelos internos y datos expuestos por las APIs.
-- Factory/Builder: Para inicialización de entidades y adaptadores.
-- Controller - Use Case - Gateway: Patrón clásico de entrada limpia donde cada capa cumple un rol específico.
-- Containarización: Todo el ecosistema se levanta mediante docker-compose, facilitando la portabilidad y despliegue.
+
+Sigue una arquitectura limpia dividida en tres grandes capas:
+- **Dominio**: Modelos del negocio, interfaces (use cases), y las interfaces (gateways) que definen los contratos con la infraestructura.
+- **Aplicación**: implementa los casos de uso con la lógica central del servicio.
+- **Infraestructura**:
+  - Adaptadores implementan gateways, conexión o acceso tecnologías externas (Base de datos, REST, SQS, etc) 
+  - Puntos de entrada (Controladores REST, GraphQL y manejo de solicitudes externas.)
+  
+Flujo general:
+- Una petición llega al controlador (entry-point REST).
+- El controlador transforma los datos con los DTOs y los pasa al caso de uso correspondiente.
+- El caso de uso ejecuta la lógica y se comunica con los gateways definidos en el dominio.
+- Los adaptadores de infraestructura implementan estos gateways y acceden a las tecnologías externas (por ejemplo, base de datos).
 
 
 
