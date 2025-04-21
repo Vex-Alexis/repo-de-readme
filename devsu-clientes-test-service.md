@@ -1,35 +1,43 @@
-# Cuentas Service
+# 🏦 Devsu Taller Práctico
 
-Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociados. Permite la creación, consulta y actualización de cuentas, así como registrar movimientos (retiros, depósitos, reversiones).
+Proyecto desarrollado como parte del taller práctico, se implementa un sistema utilizando microservicios en Java y Spring Boot, con PostgreSQL como base de datos. 
+Se incluyen servicios para gestionar clientes, cuentas y movimientos, siguiendo principios de arquitectura limpia, microservicios desacoplados y buenas prácticas.
+
+Para simplificar la ejecución y despliegue, se utilizó Docker junto con docker-compose, permitiendo levantar toda la infraestructura (servicios + base de datos) con un solo comando.
+
+
 
 <br> <!-- Salto de línea -->
 ## Contenido
 
+- [Funcionalidades Principales](#-funcionalidades-principales)
 - [Tecnologías Utilizadas](#%EF%B8%8F-tecnologías-utilizadas)
-- [Funcionalidades Principales]()
-- [Clonar y levantar el proyecto](#-clonar-y-levantar-el-proyecto)
+- [Clonar y levantar el proyecto](#%EF%B8%8F-clonar-y-levantar-el-proyecto)
 - [Endpoints](#-endpoints)
-- [Excepciones](#excepciones)
+- [Ejemplos de Request Body](#-ejemplos-de-request-body)
+- [Generación de Reporte de Cuentas](#-endpoint-generación-de-reporte-de-cuentas)
+- [Comunicación entre microservicios](#%EF%B8%8F-comunicación-entre-microservicios)
+- [Manejo de Excepciones](#-manejo-de-excepciones)
 - [Pruebas](#-pruebas)
-- [Arquitectura](#arquitectura)
+- [Arquitectura](#%EF%B8%8F-arquitectura)
 
 
 <br> <!-- Salto de línea -->
-## 🧩 Funcionalidades Principales (Darle prioridad a las funcionalidades que piden)
+## 🧩 Funcionalidades Principales
 
 - Gestión de clientes: creación, consulta, actualización y eliminación.
 - Gestión de cuentas bancarias: creación, consulta y actualización.
 - Registro de movimientos bancarios: creación, consulta y reversiones.
 - Generación de reporte de estado de cuenta por cliente y rango de fechas.
 - Validaciones de negocio robustas (saldo insuficiente, cuentas inactivas, etc).
-- Comunicación con microservicio externo de clientes.
+- Comunicación entre microservicios mediante HTTP.
 
 <br> <!-- Salto de línea -->
 ## ⚙️ Tecnologías utilizadas
 
 - **Java 21**
-- **Spring Boot 3**
-- **JPA**
+- **Spring Boot 3.4.4**
+- **Spring Web + JPA**
 - **PostgreSQL**
 - **Docker & Docker Compose**
 - **AWS SQS**
@@ -43,7 +51,7 @@ Microservicio encargado de gestionar cuentas bancarias y sus movimientos asociad
 <br> <!-- Salto de línea -->
 1. Clona el repositorio:
 ```bash
-git clone https://github.com/Vex-Alexis/devsu-cuentas-sevice
+git clone https://github.com/Vex-Alexis/devsu-sistema-bancario
 ```
 <br> <!-- Salto de línea -->
 2. Navega al directorio del proyecto:
@@ -140,7 +148,7 @@ Ruta dentro del repositorio:
 > En lugar de eliminar movimientos físicamente, se cambia el tipoMovimiento a "REVERTIDO: original_tipo" y se crea un nuevo movimiento con el tipoMovimiento "REVERSION" para mantener trazabilidad y llevar el registro de las transacciones realizadas.
 
 <br> <!-- Salto de línea -->
-### 🧾 Ejemplos de Request Body
+## 🧾 Ejemplos de Request Body
 #### 📍 POST /clientes
 Crea un nuevo cliente.
 ```json
@@ -217,7 +225,7 @@ Revierte un movimiento previamente realizado.
 ---
 
 <br> <!-- Salto de línea -->
-### 📈 Endpoint: Generación de Reporte de Cuentas
+## 📈 Endpoint: Generación de Reporte de Cuentas
 #### 📍 POST /cuentas/reportes
 Obtiene un reporte consolidado de los movimientos de todas las cuentas asociadas a un cliente, dentro de un rango de fechas.
 Ejemplo de URL:
@@ -281,6 +289,16 @@ http://localhost:8081/cuentas/reportes?identificacionCliente=1234567890&desde=20
     - Valores negativos representan egresos.
     - `saldo`: Es el saldo resultante después de aplicar ese movimiento.
 
+---
+<br> <!-- Salto de línea -->
+## 🛰️ Comunicación entre microservicios
+Este sistema está compuesto por dos microservicios principales:
+- `clientes-service`: Encargado de la gestión de la información de los clientes.
+- `cuentas-service`: Encargado de la administración de cuentas, movimientos y generación de reportes.
+
+En este diseño, era natural que algún microservicio necesitaran acceder a información mantenida por otros. Por ejemplo, al generar un reporte del estado de cuenta, se requiere no solo la información financiera, sino también los datos del cliente correspondiente. Por eso, el ms `cuentas-service` necesita consultar al ms `clientes-service`.
+
+Para lograr esto, se implemento una comunicación síncrona vía HTTP utilizando RestTemplate, ya que la consulta es directa y requiere una respuesta inmediata.
 
 
 
@@ -331,11 +349,72 @@ Las pruebas unitarias están en la carpeta `src/test/java` se pueden ejecutar co
 <br> <!-- Salto de línea -->
 ## 🏛️ Arquitectura
 
-| Capa                    | Descripción
-|-------------------------|------------------------------------------
-|        Domain           | ← Entidades, lógica y reglas del negocio
-|      Application        | ← Casos de uso y orquestación 
-|     Infrastructure      | ← Adaptadores, controladores, gateways
+
+### 🧱 Arquitectura general
+
+El sistema está compuesto por dos microservicios independientes: `clientes-service` y `cuentas-service`. Cada uno está diseñado bajo principios de arquitectura limpia, y expone sus funcionalidades a través de una API REST.
+
+Ambos servicios están contenerizados con Docker y orquestados mediante Docker Compose, lo que permite levantar toda la solución de manera sencilla. Son microservicios independientes, pero comparten la misma base de datos PostgreSQL, cada uno accediendo a sus propias tablas.
+
+
+
+<br> <!-- Salto de línea -->
+### 🧩 Arquitectura por microservicio
+
+Sigue una arquitectura limpia dividida en tres grandes capas:
+- Dominio: Modelos del negocio, interfaces (use cases), y las interfaces (gateways) que definen los contratos con la infraestructura.
+- Aplicación: implementa los casos de uso con la lógica central del servicio.
+- Infraestructura:
+  - Adaptadores implementan gateways, conexión o acceso tecnologías externas (Base de datos, REST, SQS, etc) 
+  - Puntos de entrada (Controladores REST, GraphQL y manejo de solicitudes externas.)
+  
+Flujo general:
+- Una petición llega al controlador (entry-point REST).
+- El controlador transforma los datos con los DTOs y los pasa al caso de uso correspondiente.
+- El caso de uso ejecuta la lógica y se comunica con los gateways definidos en el dominio.
+- Los adaptadores de infraestructura implementan estos gateways y acceden a las tecnologías externas (por ejemplo, base de datos).
+
+Los microservicios comparten el mismo diseño estructural, promoviendo reutilización de patrones y mantenibilidad del código.
+
+```css
+application/
+  ├── usecase/               <- Casos de uso o servicios de aplicación
+
+domain/
+  └─ model/                  <- Entidades del dominio y gateways (interfaces)
+  └─ useCase/                <- Interfaces de los casos de uso
+
+infrastructure/
+  └─ adapters/               <- Adaptadores de salida (Base de datos, clientes REST, colas, etc)
+  └─ entry-points/           <- Adaptadores de entrada (REST controllers, GraphQL, manejo de solicitudes externas) 
+```
+<br> <!-- Salto de línea -->
+#### ⚙️ Principios y patrones aplicados
+- SOLID: Cada clase tiene una única responsabilidad (S), las dependencias se inyectan mediante interfaces (D e I), y se respeta la apertura a extensión sin modificar código existente (O).
+- Inversión de Dependencias: El dominio define qué necesita y la infraestructura provee la implementación.
+- Patrón de puertos y adaptadores (hexagonal).
+- DTOs + Mappers: Separación clara entre modelos internos y datos expuestos por las APIs.
+- Factory/Builder: Para inicialización de entidades y adaptadores.
+- Controller - Use Case - Gateway: Patrón clásico de entrada limpia donde cada capa cumple un rol específico.
+- Containarización: Todo el ecosistema se levanta mediante docker-compose, facilitando la portabilidad y despliegue.
+
+
 
 
 ---
+
+### **Gracias**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
