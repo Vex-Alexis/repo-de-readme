@@ -109,7 +109,7 @@ Ruta dentro del repositorio:
 | GET    | `/clientes`                                  | Listar todos los clientes                            |
 | GET    | `/clientes/{id}`                             | Consultar cliente por ID                             |
 | GET    | `/clientes//identificacion/{identificacion}` | Consultar cliente por número identificación          |
-| DELETE | `/clientes//{id}`                            | Eliminar cliente por cuentaId                        |
+| DELETE | `/clientes/{id}`                             | Eliminar cliente por cuentaId                        |
 
 <br> <!-- Salto de línea -->
 ### - 🏦 Cuentas (`/cuentas`)
@@ -136,6 +136,7 @@ Ruta dentro del repositorio:
 | GET    | `/movimientos/{id}`                         | Consultar movimiento por Id             |
 | GET    | `/movimientos/cuenta/{id}`                  | Consultar movimientos por cuentaId        |
 > Al registrar un movimiento, si el saldo es insuficiente, se lanza una excepción con una respuesta controlada.
+> En lugar de eliminar movimientos físicamente, se cambia el tipoMovimiento a "REVERTIDO: original_tipo" y se crea un nuevo movimiento con el tipoMovimiento "REVERSION" para mantener trazabilidad y llevar el registro de las transacciones realizadas.
 
 ---
 <br> <!-- Salto de línea -->
