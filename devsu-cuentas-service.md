@@ -1,6 +1,6 @@
-# 🏦 Devsu Taller Práctico (Sistema Bancario)
+# 🏦 Devsu Taller Práctico
 
-Proyecto desarrollado como parte de un taller práctico, se implementa un sistema bancario utilizando microservicios en Java y Spring Boot, con PostgreSQL como base de datos. 
+Proyecto desarrollado como parte del taller práctico, se implementa un sistema utilizando microservicios en Java y Spring Boot, con PostgreSQL como base de datos. 
 Se incluyen servicios para gestionar clientes, cuentas y movimientos, siguiendo principios de arquitectura limpia, microservicios desacoplados y buenas prácticas.
 
 Para simplificar la ejecución y despliegue, se utilizó Docker junto con docker-compose, permitiendo levantar toda la infraestructura (servicios + base de datos) con un solo comando.
