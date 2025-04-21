@@ -243,6 +243,7 @@ http://localhost:8081/cuentas/reportes?identificacionCliente=1234567890&desde=20
   "cuentas": [
     {
       "cuentaId": 5,
+      "numeroCuenta": "5006007005",
       "tipoCuenta": "Ahorros",
       "saldoActual": 0.0,
       "estado": true,
