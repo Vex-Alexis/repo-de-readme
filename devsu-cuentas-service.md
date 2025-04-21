@@ -157,7 +157,7 @@ Crea un nuevo cliente.
 }
 ```
 #### 📍 PUT /clientes/{id}
-Actualiazr datos de un cliente.
+Actualiza los datos de un cliente existente.
 ```json
 {
   "nombre": "Santiago Pérez Update",
@@ -171,7 +171,7 @@ Actualiazr datos de un cliente.
 }
 ```
 #### 📍 POST /cuentas
-Crea una nueva cuenta.
+Crea una nueva cuenta asociada a un cliente.
 ```json
 {
   "numeroCuenta": "600700800",
@@ -180,24 +180,27 @@ Crea una nueva cuenta.
   "clienteId": 1
 }
 ```
-### 📍 PUT /cuentas/{numeroCuenta}
-Actualiza datos de una cuenta.
+#### 📍 PUT /cuentas/{numeroCuenta}
+Actualiza los datos de una cuenta existente.
 ```json
 {
   "tipoCuenta": "Ahorros Update",
   "estado": false
 }
 ```
-### 📍 POST /movimientos
+#### 📍 POST /movimientos
 Crea un nuevo movimiento.
+> 💸 El valor positivo representa un depósito, y el valor negativo un retiro.
+##### Ejemplo de Depósito:
 ```json
-// Ejemplo de Deposito (El valor debe ser positivo)
 {
   "tipoMovimiento": "Deposito 200.0000",
   "valor": 2000000,
   "cuentaId": 1
 }
-
+```
+##### Ejemplo de Retiro:
+```json
 // Ejemplo de Retiro (El valor debe ser negativo)
 {
   "tipoMovimiento": "Retiro 200.0000",
@@ -205,7 +208,7 @@ Crea un nuevo movimiento.
   "cuentaId": 1
 }
 ```
-### 📍 POST /movimientos/{id}/revertir
+#### 📍 POST /movimientos/{id}/revertir
 Revierte un movimiento
 > No requiere un request body
 
