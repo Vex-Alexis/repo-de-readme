@@ -10,18 +10,20 @@ Para simplificar la ejecución y despliegue, se utilizó Docker junto con docker
 <br> <!-- Salto de línea -->
 ## Contenido
 
+- [Funcionalidades Principales](#-funcionalidades-principales)
 - [Tecnologías Utilizadas](#%EF%B8%8F-tecnologías-utilizadas)
-- [Funcionalidades Principales]()
 - [Clonar y levantar el proyecto](#-clonar-y-levantar-el-proyecto)
 - [Endpoints](#-endpoints)
+- [Ejemplos de Request Body](#-ejemplos-de-request-body)
+- [Generación de Reporte de Cuentas](#-endpoint-generación-de-reporte-de-cuentas)
 - [Comunicación entre microservicios](#%EF%B8%8F-comunicación-entre-microservicios)
 - [Excepciones](#excepciones)
 - [Pruebas](#-pruebas)
-- [Arquitectura](#arquitectura)
+- [Arquitectura](#%EF%B8%8F-arquitectura)
 
 
 <br> <!-- Salto de línea -->
-## 🧩 Funcionalidades Principales (Darle prioridad a las funcionalidades que piden)
+## 🧩 Funcionalidades Principales
 
 - Gestión de clientes: creación, consulta, actualización y eliminación.
 - Gestión de cuentas bancarias: creación, consulta y actualización.
