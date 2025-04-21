@@ -344,11 +344,20 @@ Cuando ocurre una excepción, el cliente recibe una respuesta estructurada como 
 ---
 <br> <!-- Salto de línea -->
 ## 🧪 Pruebas
+En este proyecto se implementan pruebas unitarias e integración para asegurar la calidad y correcto funcionamiento de los microservicios.
+
+###Pruebas Unitarias
+Se ha implementado una prueba unitaria en el microservicio `clientes-service`, relacionada con la entidad de dominio Cliente.
+
 Las pruebas unitarias están en la carpeta `src/test/java` se pueden ejecutar con:
 
+##### Ejecutar las pruebas:
+Una vez los contenedores estén levantados y los servicios en funcionamiento, puedes ejecutar las pruebas de la siguiente manera:
 ```bash
-(agregar informaicon relacioanda a la ejecucion de las pruebas)
+mvn clean verify
 ```
+
+Este comando ejecutará todas las pruebas unitarias, de integración y las de Karate (si están definidas) y generará un informe con los resultados.
 
 ---
 <br> <!-- Salto de línea -->
@@ -361,7 +370,7 @@ El sistema está compuesto por dos microservicios independientes: `clientes-serv
 
 Ambos servicios están contenerizados con Docker y orquestados mediante Docker Compose, lo que permite levantar toda la solución de manera sencilla. Son microservicios independientes, pero comparten la misma base de datos PostgreSQL, cada uno accediendo a sus propias tablas.
 
-![Diagrama de Arquitectura General](diagrama-arquitectura.png)
+![Diagrama de Arquitectura General](diagrama-arquitectura-general.png)
 
 
 <br> <!-- Salto de línea -->
