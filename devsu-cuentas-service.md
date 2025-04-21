@@ -100,7 +100,7 @@ Ruta dentro del repositorio:
 
 
 <br> <!-- Salto de línea -->
-### - 👤 Clientes (`/clientes`)
+### 👤 Clientes (`/clientes`)
 
 | Método | Endpoint                                     | Descripción                             |
 |--------|----------------------------------------------|-----------------------------------------|
@@ -112,7 +112,7 @@ Ruta dentro del repositorio:
 | DELETE | `/clientes/{id}`                             | Eliminar cliente por cuentaId                        |
 
 <br> <!-- Salto de línea -->
-### - 🏦 Cuentas (`/cuentas`)
+### 🏦 Cuentas (`/cuentas`)
 
 | Método | Endpoint                                    | Descripción                             |
 |--------|---------------------------------------------|-----------------------------------------|
@@ -126,7 +126,7 @@ Ruta dentro del repositorio:
 
 
 <br> <!-- Salto de línea -->
-### - 💸 Movimientos (`/movimientos`)
+### 💸 Movimientos (`/movimientos`)
 
 | Método | Endpoint                                    | Descripción                             |
 |--------|---------------------------------------------|-----------------------------------------|
