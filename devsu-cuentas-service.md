@@ -70,7 +70,7 @@ docker-compose up --build
 <br> <!-- Salto de línea -->
 ## 🚀 Endpoints
 
-Esta sección describe todos los endpoints REST expuestos por los microservicios **clientes-service** y **cuentas-service**, accesibles una vez los servicios estén desplegados con Docker. También incluye una colección de Postman para facilitar el consumo de la API.
+Esta sección describe todos los endpoints REST expuestos por los microservicios **clientes-service** y **cuentas-service**, accesibles una vez los servicios estén desplegados con Docker. También incluye una colección de Postman para facilitar el consumo de las API.
 
 <br> <!-- Salto de línea -->
 ### 📌 Los puertos por defecto son:
@@ -136,6 +136,7 @@ Ruta dentro del repositorio:
 | GET    | `/movimientos/{id}`                         | Consultar movimiento por Id             |
 | GET    | `/movimientos/cuenta/{id}`                  | Consultar movimientos por cuentaId        |
 > Al registrar un movimiento, si el saldo es insuficiente, se lanza una excepción con una respuesta controlada.
+
 > En lugar de eliminar movimientos físicamente, se cambia el tipoMovimiento a "REVERTIDO: original_tipo" y se crea un nuevo movimiento con el tipoMovimiento "REVERSION" para mantener trazabilidad y llevar el registro de las transacciones realizadas.
 
 ---
