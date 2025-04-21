@@ -265,7 +265,7 @@ http://localhost:8081/cuentas/reportes?identificacionCliente=1234567890&desde=20
         }
       ]
     },
-    ...
+    ..
   ]
 }
 ```
