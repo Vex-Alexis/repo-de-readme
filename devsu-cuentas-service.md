@@ -109,13 +109,15 @@ docker-compose up --build
 <br> <!-- Salto de línea -->
 ## 🚨 Manejo de Excepciones (Darle prioridad a las excepciones que piden)
 
-El API maneja errores de forma controlada con respuestas claras y significativas:
+La aplicación implementa un sistema centralizado y controlado para el manejo de errores.
 
-- Se manejan excepciones personalizadas para errores de negocio.
-- Se validan saldos antes de aplicar movimientos.
-- Las reversiones no eliminan movimientos: se agrega un nuevo movimiento con tipoMovimiento = "REVERTIDO".
+### 🎯 Enfoque Adoptado
+Cada microservicio define sus propias excepciones personalizadas dentro de la capa de dominio. Estas excepciones son lanzadas desde los casos de uso (use cases) ubicados en la capa de aplicación. 
+Posteriormente, un manejador global de excepciones captura y procesa estas excepciones, devolviendo respuestas HTTP claras, estructuradas y con información relevante para el cliente.
 
-Ejemplo respueta que captura excepciones
+
+### Ejemplo de Respuesta de Error
+Cuando ocurre una excepción, el cliente recibe una respuesta estructurada como esta:
 
 ```json
 {
@@ -126,11 +128,16 @@ Ejemplo respueta que captura excepciones
 }
 ```
 
-| Códgio                  | Puerto
-|-------------------------|------
-| 400                       | `8080`
-| cuentas-service         | `8081`
-| PostresSQL              | `5432`
+
+
+
+| Excepción                     | Códgio | Descripción
+|-------------------------------|--------|----------------------------------------------------
+| DuplicatedClientException     | 409	 | Ya existe un cliente con la misma identificación.
+| DuplicateAccountException     | 409	 | Ya existe una cuenta con ese número.
+| InactiveAccountException      | 400    | Se intentó operar sobre una cuenta inactiva.
+| InsufficientBalanceException  | 400    | Saldo insuficiente para realizar el movimiento
+| NotFoundException             | 404    | El recurso solicitado no fue encontrado.
 
 ---
 <br> <!-- Salto de línea -->
