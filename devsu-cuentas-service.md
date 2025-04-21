@@ -93,9 +93,9 @@ Esta sección describe todos los endpoints REST expuestos por los microservicios
 Puedes usar la colección de Postman para probar rápidamente todos los endpoints disponibles.
 
 Ruta dentro del repositorio:
-```
+
 [📄 Devsu Postman Collection](./docs/Devsu-Postman-Collection.json)
-```
+
 > Asegúrate de tener los servicios levantados (clientes-service en 8080, cuentas-service en 8081) antes de hacer peticiones.
 
 
