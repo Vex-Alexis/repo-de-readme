@@ -378,19 +378,6 @@ Ambos servicios están contenerizados con Docker y orquestados mediante Docker C
 <br> <!-- Salto de línea -->
 ### 🧩 Arquitectura por microservicio
 
-Sigue una arquitectura limpia dividida en tres grandes capas:
-- Dominio: Modelos del negocio, interfaces (use cases), y las interfaces (gateways) que definen los contratos con la infraestructura.
-- Aplicación: implementa los casos de uso con la lógica central del servicio.
-- Infraestructura:
-  - Adaptadores implementan gateways, conexión o acceso tecnologías externas (Base de datos, REST, SQS, etc) 
-  - Puntos de entrada (Controladores REST, GraphQL y manejo de solicitudes externas.)
-  
-Flujo general:
-- Una petición llega al controlador (entry-point REST).
-- El controlador transforma los datos con los DTOs y los pasa al caso de uso correspondiente.
-- El caso de uso ejecuta la lógica y se comunica con los gateways definidos en el dominio.
-- Los adaptadores de infraestructura implementan estos gateways y acceden a las tecnologías externas (por ejemplo, base de datos).
-
 Los microservicios comparten el mismo diseño estructural, promoviendo reutilización de patrones y mantenibilidad del código.
 
 ```css
@@ -403,8 +390,23 @@ domain/
 
 infrastructure/
   └─ adapters/               <- Adaptadores de salida (Base de datos, clientes REST, colas, etc)
-  └─ entry-points/           <- Adaptadores de entrada (REST controllers, GraphQL, manejo de solicitudes externas) 
+  └─ entry-points/           <- Adaptadores de entrada (REST controllers, GraphQL, solicitudes externas) 
 ```
+
+Sigue una arquitectura limpia dividida en tres grandes capas:
+- **Dominio**: Modelos del negocio, interfaces (use cases), y las interfaces (gateways) que definen los contratos con la infraestructura.
+- **Aplicación**: implementa los casos de uso con la lógica central del servicio.
+- **Infraestructura**:
+  - Adaptadores implementan gateways, conexión o acceso tecnologías externas (Base de datos, REST, SQS, etc) 
+  - Puntos de entrada (Controladores REST, GraphQL y manejo de solicitudes externas.)
+  
+Flujo general:
+- Una petición llega al controlador (entry-point REST).
+- El controlador transforma los datos con los DTOs y los pasa al caso de uso correspondiente.
+- El caso de uso ejecuta la lógica y se comunica con los gateways definidos en el dominio.
+- Los adaptadores de infraestructura implementan estos gateways y acceden a las tecnologías externas (por ejemplo, base de datos).
+
+
 
 
 ---
