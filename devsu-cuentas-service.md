@@ -79,16 +79,6 @@ Esta sección describe todos los endpoints REST expuestos por los microservicios
 - cuentas-service: http://localhost:8081
 
 <br> <!-- Salto de línea -->
-### 📬 Colección de Postman
-Puedes usar la colección de Postman para probar rápidamente todos los endpoints disponibles.
-
-Ruta dentro del repositorio:
-```
-/docs/Devsu-Postman-Collection.json
-```
-> Asegúrate de tener los servicios levantados (clientes-service en 8080, cuentas-service en 8081) antes de hacer peticiones.
-
-<br> <!-- Salto de línea -->
 ### 🌐 URLs de acceso
 
 | Servicio    | Base URL                           | Descripción
@@ -99,7 +89,19 @@ Ruta dentro del repositorio:
 
 
 <br> <!-- Salto de línea -->
-### - Clientes (`/clientes`)
+### 📬 Colección de Postman
+Puedes usar la colección de Postman para probar rápidamente todos los endpoints disponibles.
+
+Ruta dentro del repositorio:
+```
+/docs/Devsu-Postman-Collection.json
+```
+> Asegúrate de tener los servicios levantados (clientes-service en 8080, cuentas-service en 8081) antes de hacer peticiones.
+
+
+
+<br> <!-- Salto de línea -->
+### - 👤 Clientes (`/clientes`)
 
 | Método | Endpoint                                     | Descripción                             |
 |--------|----------------------------------------------|-----------------------------------------|
@@ -110,7 +112,7 @@ Ruta dentro del repositorio:
 | DELETE | `/clientes//{id}`                            | Eliminar cliente por cuentaId                        |
 
 <br> <!-- Salto de línea -->
-### - Cuentas (`/cuentas`)
+### - 🏦 Cuentas (`/cuentas`)
 
 | Método | Endpoint                                    | Descripción                             |
 |--------|---------------------------------------------|-----------------------------------------|
@@ -124,7 +126,7 @@ Ruta dentro del repositorio:
 
 
 <br> <!-- Salto de línea -->
-### - Movimientos (`/movimientos`)
+### - 💸 Movimientos (`/movimientos`)
 
 | Método | Endpoint                                    | Descripción                             |
 |--------|---------------------------------------------|-----------------------------------------|
