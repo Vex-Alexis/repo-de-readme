@@ -344,16 +344,15 @@ Cuando ocurre una excepción, el cliente recibe una respuesta estructurada como 
 <br> <!-- Salto de línea -->
 ## 🧪 Pruebas
 En este proyecto se implementan pruebas unitarias e integración, en este caso se implementarón en el microservicio `clientes-service`. Las pruebas están en la carpeta `src/test/java`.
-
+<br> <!-- Salto de línea -->
 ### ✅ Pruebas Unitarias
 Se ha implementado una prueba unitaria para validar el comportamiento de la entidad de dominio Cliente en el microservicio clientes-service.
 Estas pruebas están escritas en JUnit 5 y se ejecutan como parte del ciclo estándar de testeo con Maven.
 
-### 🔁 Pruebas Unitarias
+### 🔁 Prueba de integración
 Se implementó una prueba de integración utilizando Karate para validar el comportamiento del endpoint de creación de clientes en el microservicio `clientes-service`.
-
-
-##### Ejecutar las pruebas:
+<br> <!-- Salto de línea -->
+##### Ejecutar las pruebas
 1. Una vez tengas los contenedores corriendo, abre otra ventana de terminal nueva.
 2. Navega al directorio raíz del microservicio en el que se ejecutarán pruebas:
 ```bash
