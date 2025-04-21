@@ -17,7 +17,7 @@ Para simplificar la ejecución y despliegue, se utilizó Docker junto con docker
 - [Ejemplos de Request Body](#-ejemplos-de-request-body)
 - [Generación de Reporte de Cuentas](#-endpoint-generación-de-reporte-de-cuentas)
 - [Comunicación entre microservicios](#%EF%B8%8F-comunicación-entre-microservicios)
-- [Excepciones](#excepciones)
+- [Manejo de Excepciones](#-manejo-de-excepciones)
 - [Pruebas](#-pruebas)
 - [Arquitectura](#%EF%B8%8F-arquitectura)
 
