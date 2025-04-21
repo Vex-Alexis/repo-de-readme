@@ -201,7 +201,6 @@ Crea un nuevo movimiento.
 ```
 ##### Ejemplo de Retiro:
 ```json
-// Ejemplo de Retiro (El valor debe ser negativo)
 {
   "tipoMovimiento": "Retiro 200.0000",
   "valor": -2000000,
