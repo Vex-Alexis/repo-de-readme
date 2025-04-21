@@ -194,7 +194,7 @@ Actualiza los datos de una cuenta existente.
 ---
 #### 📍 POST /movimientos
 Crea un nuevo movimiento.
-> 💸 El valor positivo representa un depósito, y el valor negativo un retiro.
+> El valor positivo representa un depósito, y el valor negativo un retiro.
 ##### Ejemplo de Depósito:
 ```json
 {
