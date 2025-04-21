@@ -216,7 +216,7 @@ Revierte un movimiento previamente realizado.
 > No requiere un cuerpo en la solicitud (body vacío).
 ---
 
-
+<br> <!-- Salto de línea -->
 ### Endpoint: Generación de Reporte de Cuentas
 #### 📍 POST /cuentas/reportes
 Obtiene un reporte consolidado de los movimientos de todas las cuentas asociadas a un cliente, dentro de un rango de fechas.
@@ -226,8 +226,10 @@ http://localhost:8081/cuentas/reportes?identificacionCliente=1234567890&desde=20
 ```
 #### 📌 Parámetros (Query Params):
 | Nombre                   | Tipo      | Obligatorio     | Descripción
-|--------------------------|-----------|-----------------|-----------------------|
-| identificacionCliente    | string    | ✅ Si          | Número de identificación del cliente.
+|--------------------------|-----------|-----------------|--------------------------------------------------|
+| `identificacionCliente`  | `string`  | ✅ Si          | Número de identificación del cliente.
+| `desde`                  | `date`    | ✅ Si          | Fecha inicial del período en formato `YYYY-MM-DD`.
+| `hasta`                  | `date`    | ✅ Si          | Fecha final  del período en formato `YYYY-MM-DD`.
 
 
 
