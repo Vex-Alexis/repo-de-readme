@@ -70,11 +70,20 @@ docker-compose up --build
 <br> <!-- Salto de línea -->
 ## 🚀 Endpoints
 
-Endpoints disponibles
+Esta sección describe los principales endpoints expuestos por los microservicios clientes-service y cuentas-service, accesibles una vez los servicios estén desplegados con Docker.
 
-- http://localhost:8080/clientes
-- http://localhost:8081/cuentas
-- http://localhost:8081/movimientos
+📌 Los puertos por defecto son:
+
+- clientes-service: http://localhost:8080
+- cuentas-service: http://localhost:8081
+
+
+| Servicio    | Base URL                           | Descripción
+|-------------|------------------------------------|-------------------------------------------
+| Clientes    | http://localhost:8080/clientes     | CRUD y consulta de clientes
+| Cuentas     | http://localhost:8081/cuentas      | CRUD y consulta de cuentas
+| Movimientos | http://localhost:8081/movimientos  | Registro y consulta de movimientos
+
 
 <br> <!-- Salto de línea -->
 ### - Clientes (`/clientes`)
