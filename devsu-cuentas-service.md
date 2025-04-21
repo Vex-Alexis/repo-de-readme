@@ -119,16 +119,7 @@ Ruta dentro del repositorio:
 | GET    | `/cuentas`                                  | Listar todas las cuentas                |
 | GET    | `/cuentas/{id}`                             | Consultar cuenta por ID                 |
 | GET    | `/cuentas/numero-cuenta/{numero-cuenta}`    | Consultar cuenta por número de cuenta   |
-| POST   | `/cuentas`                                  | Crear nueva cuenta  
-```json
-{
-    "status": 400,
-    "success": false,
-    "message": "Saldo no disponible para realizar el movimiento.",
-    "timestamp": "2025-04-20 19:13:35"
-}
-```
-|
+| POST   | `/cuentas`                                  | Crear nueva cuenta                      |
 | PUT    | `/cuentas/{numero-cuenta}`                  | Actualizar datos de una cuenta          |
 | GET    | `/cuentas/reportes?identificacionCliente={identificacion}&desde={fecha1}&hasta={fecha2}`                        | Reporte de estado de cuenta por cliente y rango de fechas |
 >  El reporte de estado de cuenta incluye el saldo actual de cada cuenta asociada y el detalle de movimientos en el rango de fechas solicitado.
@@ -147,6 +138,59 @@ Ruta dentro del repositorio:
 > Al registrar un movimiento, si el saldo es insuficiente, se lanza una excepción con una respuesta controlada.
 
 > En lugar de eliminar movimientos físicamente, se cambia el tipoMovimiento a "REVERTIDO: original_tipo" y se crea un nuevo movimiento con el tipoMovimiento "REVERSION" para mantener trazabilidad y llevar el registro de las transacciones realizadas.
+
+<br> <!-- Salto de línea -->
+## 🧾 Ejemplos de Request Body
+
+### 📍 POST /clientes
+
+Crea un nuevo cliente.
+
+```json
+{
+  "nombre": "Santiago Pérez",
+  "genero": "Masculino",
+  "edad": 35,
+  "identificacion": "123456789",
+  "direccion": "Calle 123 #45-67",
+  "telefono": "3101234567",
+  "contraseña": "pass123",
+  "estado": true
+}
+```
+
+### 📍 POST /cuentas
+Crea una nueva cuenta.
+```json
+{
+  "numeroCuenta": "600700800",
+  "tipoCuenta": "Ahorros",
+  "estado": true,
+  "clienteId": 1
+}
+```
+### 📍 POST /movimientos
+Crea un nuevo movimiento.
+```json
+// Ejemplo de Deposito (El valor debe ser positivo)
+{
+  "tipoMovimiento": "Deposito 200.0000",
+  "valor": 2000000,
+  "cuentaId": 1
+}
+
+// Ejemplo de Retiro (El valor debe ser negativo)
+{
+  "tipoMovimiento": "Retiro 200.0000",
+  "valor": -2000000,
+  "cuentaId": 1
+}
+```
+
+### 📍 POST /movimientos/{id}/revertir
+Revierte un movimiento
+> No requiere un request body
+
 
 ---
 <br> <!-- Salto de línea -->
