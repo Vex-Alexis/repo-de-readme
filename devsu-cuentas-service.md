@@ -14,7 +14,7 @@ Para simplificar la ejecución y despliegue, se utilizó Docker junto con docker
 - [Funcionalidades Principales]()
 - [Clonar y levantar el proyecto](#-clonar-y-levantar-el-proyecto)
 - [Endpoints](#-endpoints)
-- [Comunicación entre microservicios](%EF%B8%8F-comunicación-entre-microservicios)
+- [Comunicación entre microservicios](#%EF%B8%8F-comunicación-entre-microservicios)
 - [Excepciones](#excepciones)
 - [Pruebas](#-pruebas)
 - [Arquitectura](#arquitectura)
