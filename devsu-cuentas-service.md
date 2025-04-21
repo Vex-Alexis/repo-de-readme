@@ -270,7 +270,7 @@ http://localhost:8081/cuentas/reportes?identificacionCliente=1234567890&desde=20
 }
 ```
 
-####📘 Explicación de la Estructura
+#### 📘 Explicación de la Estructura
 - `cliente`: Información básica del cliente consultado.
 - `cuentas`: Lista de todas las cuentas activas del cliente dentro del rango de fechas.
   - `saldoActual`: Monto actual en la cuenta, considerando todos los movimientos aplicados.
