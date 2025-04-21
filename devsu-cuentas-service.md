@@ -376,14 +376,15 @@ Los microservicios comparten el mismo diseño estructural, promoviendo reutiliza
 
 ```css
 application/
-  └─ useCase/                <- Casos de uso implementados
+  ├── usecase/        → Casos de uso o servicios de aplicación
+
 domain/
   └─ model/                  <- Entidades del dominio y gateways (interfaces)
   └─ useCase/                <- Interfaces de los casos de uso
+
 infrastructure/
-  └─ adapters/               <- Adaptadores externos: DB, REST, SQS, etc.
-  └─ entry-points/
-       └─ rest/              <- Controladores, DTOs, handlers
+  └─ adapters/               <- Adaptadores de salida (Base de datos, clientes REST, colas, etc)
+  └─ entry-points/           <- Adaptadores de entrada (REST controllers, GraphQL, manejo de solicitudes externas) 
 ```
 <br> <!-- Salto de línea -->
 #### ⚙️ Principios y patrones aplicados
