@@ -295,9 +295,8 @@ Este sistema está compuesto por dos microservicios principales:
 - `cuentas-service`: Gestión de cuentas, movimientos y generación de reportes
 La comunicación entre los microservicios `clientes-service` y `cuentas-service` se realiza de forma síncrona mediante llamadas HTTP utilizando el cliente RestTemplate.
 
-Este tipo de integración se da principalmente en el flujo de generación del reporte de estado de cuenta dentro del `cuentas-service`, donde es necesario consultar los datos del cliente desde el `clientes-service`. Para esto, `cuentas-service` consume un endpoint REST expuesto por `clientes-service`.
-Para esto, `cuentas-service` consume un endpoint REST expuesto por `clientes-service`.
-> La relación entre los servicios es directa, se requiere una respuesta inmediata para completar el proceso. El microservicio `cuentas-service` solicita los datos del cliente y espera la respuesta para continuar con la generación del reporte.
+Esta integración se da en el flujo de generación del reporte de estado de cuenta dentro del `cuentas-service`, donde se consultan los datos del cliente desde el `clientes-service`. Para esto, `cuentas-service` consume un endpoint REST expuesto por `clientes-service`.
+
 
 ---
 <br> <!-- Salto de línea -->
