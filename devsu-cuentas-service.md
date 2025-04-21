@@ -45,7 +45,6 @@ Para simplificar la ejecución y despliegue, se utilizó Docker junto con docker
 - **Spring Web + JPA**
 - **PostgreSQL**
 - **Docker & Docker Compose**
-- **AWS SQS**
 - **JUnit 5**
 - **Arquitectura Limpia (Clean Architecture)**
 
@@ -346,7 +345,7 @@ Cuando ocurre una excepción, el cliente recibe una respuesta estructurada como 
 ## 🧪 Pruebas
 En este proyecto se implementan pruebas unitarias e integración para asegurar la calidad y correcto funcionamiento de los microservicios.
 
-###Pruebas Unitarias
+### Pruebas Unitarias
 Se ha implementado una prueba unitaria en el microservicio `clientes-service`, relacionada con la entidad de dominio Cliente.
 
 Las pruebas unitarias están en la carpeta `src/test/java` se pueden ejecutar con:
@@ -371,6 +370,10 @@ El sistema está compuesto por dos microservicios independientes: `clientes-serv
 Ambos servicios están contenerizados con Docker y orquestados mediante Docker Compose, lo que permite levantar toda la solución de manera sencilla. Son microservicios independientes, pero comparten la misma base de datos PostgreSQL, cada uno accediendo a sus propias tablas.
 
 ![Diagrama de Arquitectura General](diagrama-arquitectura-general.png)
+
+<p align="center">
+  <img src="diagrama-arquitectura-general.png" alt="Arquitectura general" width="600"/>
+</p>
 
 
 <br> <!-- Salto de línea -->
