@@ -70,7 +70,18 @@ docker-compose up --build
 <br> <!-- Salto de línea -->
 ## 🚀 Endpoints
 
-Esta sección describe los principales endpoints expuestos por los microservicios clientes-service y cuentas-service, accesibles una vez los servicios estén desplegados con Docker.
+Esta sección describe todos los endpoints REST expuestos por los microservicios **clientes-service** y **cuentas-service**, accesibles una vez los servicios estén desplegados con Docker. También incluye una colección de Postman para facilitar el consumo de la API.
+
+📬 Colección de Postman
+Puedes usar la colección de Postman para probar rápidamente todos los endpoints disponibles.
+
+Ruta dentro del repositorio:
+```
+/docs/Devsu-Postman-Collection.json
+```
+> Asegúrate de tener los servicios levantados (clientes-service en 8080, cuentas-service en 8081) antes de hacer peticiones.
+
+
 
 📌 Los puertos por defecto son:
 
@@ -90,11 +101,11 @@ Esta sección describe los principales endpoints expuestos por los microservicio
 
 | Método | Endpoint                                     | Descripción                             |
 |--------|----------------------------------------------|-----------------------------------------|
-| POST   | `/clientes`                                  | Crear cliente       |
-| GET    | `/clientes`                                  | Listar todos los clientes        |
-| GET    | `/clientes/{id}`                             | Consultar cliente por Id             |
-| GET    | `/clientes//identificacion/{identificacion}` | Consultar cliente por número identificación             |
-| DELETE | `/clientes//{id}`                            | Eliminar cliente por cuentaId        |
+| POST   | `/clientes`                                  | Crear un nuevo cliente                               |
+| GET    | `/clientes`                                  | Listar todos los clientes                            |
+| GET    | `/clientes/{id}`                             | Consultar cliente por ID                             |
+| GET    | `/clientes//identificacion/{identificacion}` | Consultar cliente por número identificación          |
+| DELETE | `/clientes//{id}`                            | Eliminar cliente por cuentaId                        |
 
 <br> <!-- Salto de línea -->
 ### - Cuentas (`/cuentas`)
@@ -102,11 +113,13 @@ Esta sección describe los principales endpoints expuestos por los microservicio
 | Método | Endpoint                                    | Descripción                             |
 |--------|---------------------------------------------|-----------------------------------------|
 | GET    | `/cuentas`                                  | Listar todas las cuentas                |
-| GET    | `/cuentas/numero-cuenta/{numero-cuenta}`    | Consultar cuenta por número de cuenta            |
-| GET    | `/cuentas/{id}`                             | Consultar cuenta por Id                   |
+| GET    | `/cuentas/{id}`                             | Consultar cuenta por ID                 |
+| GET    | `/cuentas/numero-cuenta/{numero-cuenta}`    | Consultar cuenta por número de cuenta   |
 | POST   | `/cuentas`                                  | Crear nueva cuenta                      |
-| PUT    | `/cuentas/{numero-cuenta}`                  | Actualizar cuenta                       |
-| GET    | `/cuentas/reportes?`                        | Consulta el reporte de estado de cuenta |
+| PUT    | `/cuentas/{numero-cuenta}`                  | Actualizar datos de una cuenta          |
+| GET    | `/cuentas/reportes?identificacionCliente={identificacion}&desde={fecha1}&hasta={fecha2}`                        | Reporte de estado de cuenta por cliente y rango de fechas |
+>  El reporte de estado de cuenta incluye el saldo actual de cada cuenta asociada y el detalle de movimientos en el rango de fechas solicitado.
+
 
 <br> <!-- Salto de línea -->
 ### - Movimientos (`/movimientos`)
@@ -118,7 +131,7 @@ Esta sección describe los principales endpoints expuestos por los microservicio
 | GET    | `/movimientos`                              | Consultar todos los movimientos        |
 | GET    | `/movimientos/{id}`                         | Consultar movimiento por Id             |
 | GET    | `/movimientos/cuenta/{id}`                  | Consultar movimientos por cuentaId        |
-
+> Al registrar un movimiento, si el saldo es insuficiente, se lanza una excepción con una respuesta controlada.
 
 ---
 <br> <!-- Salto de línea -->
