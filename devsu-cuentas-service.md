@@ -107,15 +107,15 @@ docker-compose up --build
 
 ---
 <br> <!-- Salto de línea -->
-## 🚨 Manejo de Excepciones (Darle prioridad a las excepciones que piden)
+## 🚨 Manejo de Excepciones
 
 La aplicación implementa un sistema centralizado y controlado para el manejo de errores.
 
-### 🎯 Enfoque Adoptado
+### Enfoque Adoptado
 Cada microservicio define sus propias excepciones personalizadas dentro de la capa de dominio. Estas excepciones son lanzadas desde los casos de uso (use cases) ubicados en la capa de aplicación. 
 Posteriormente, un manejador global de excepciones captura y procesa estas excepciones, devolviendo respuestas HTTP claras, estructuradas y con información relevante para el cliente.
 
-
+<br> <!-- Salto de línea -->
 ### Ejemplo de Respuesta de Error
 Cuando ocurre una excepción, el cliente recibe una respuesta estructurada como esta:
 
@@ -127,8 +127,8 @@ Cuando ocurre una excepción, el cliente recibe una respuesta estructurada como 
     "timestamp": "2025-04-20 19:13:35"
 }
 ```
-
-
+<br> <!-- Salto de línea -->
+### Excepciones Personalizadas y sus Códigos
 
 
 | Excepción                     | Códgio | Descripción
