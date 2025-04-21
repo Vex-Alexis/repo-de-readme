@@ -353,19 +353,6 @@ Estas pruebas están escritas en JUnit 5 y se ejecutan como parte del ciclo est�
 ### 🔁 Prueba de integración
 Se implementó una prueba de integración utilizando Karate para validar el comportamiento del endpoint de creación de clientes en el microservicio `clientes-service`.
 
-<br> <!-- Salto de línea -->
-#### Ejecutar las pruebas
-> Antes de ejecutar las pruebas, asegúrate de tener el entorno levantado con Docker
-1. Abre otra ventana de terminal nueva.
-2. Navega al directorio raíz del microservicio en el que se ejecutarán pruebas:
-```bash
-cd clientes-service
-```
-3. Desde el directorio del microservicio, corre el siguiente comando:
-```bash
-mvn clean verify
-```
-> Este comando ejecutará todas las pruebas unitarias, de integración y las de Karate, y generará un informe con los resultados.
 
 ---
 <br> <!-- Salto de línea -->
