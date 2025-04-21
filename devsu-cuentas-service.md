@@ -14,6 +14,7 @@ Para simplificar la ejecución y despliegue, se utilizó Docker junto con docker
 - [Funcionalidades Principales]()
 - [Clonar y levantar el proyecto](#-clonar-y-levantar-el-proyecto)
 - [Endpoints](#-endpoints)
+- [Comunicación entre microservicios](#-endpoints)
 - [Excepciones](#excepciones)
 - [Pruebas](#-pruebas)
 - [Arquitectura](#arquitectura)
@@ -286,8 +287,17 @@ http://localhost:8081/cuentas/reportes?identificacionCliente=1234567890&desde=20
     - Valores negativos representan egresos.
     - `saldo`: Es el saldo resultante después de aplicar ese movimiento.
 
+---
+<br> <!-- Salto de línea -->
+## 🛰️ Comunicación entre microservicios
+Este sistema está compuesto por dos microservicios principales:
+- `clientes-service`: Gestión de clientes
+- `cuentas-service`: Gestión de cuentas, movimientos y generación de reportes
+La comunicación entre los microservicios `clientes-service` y `cuentas-service` se realiza de forma síncrona mediante llamadas HTTP utilizando el cliente RestTemplate.
 
-
+Este tipo de integración se da principalmente en el flujo de generación del reporte de estado de cuenta dentro del `cuentas-service`, donde es necesario consultar los datos del cliente desde el `clientes-service`. Para esto, `cuentas-service` consume un endpoint REST expuesto por `clientes-service`.
+Para esto, `cuentas-service` consume un endpoint REST expuesto por `clientes-service`.
+> La relación entre los servicios es directa, se requiere una respuesta inmediata para completar el proceso. El microservicio `cuentas-service` solicita los datos del cliente y espera la respuesta para continuar con la generación del reporte.
 
 ---
 <br> <!-- Salto de línea -->
