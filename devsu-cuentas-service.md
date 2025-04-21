@@ -367,9 +367,8 @@ Este comando ejecutará todas las pruebas unitarias, de integración y las de Ka
 
 El sistema está compuesto por dos microservicios independientes: `clientes-service` y `cuentas-service`. Cada uno está diseñado bajo principios de arquitectura limpia, y expone sus funcionalidades a través de una API REST.
 
-Ambos servicios están contenerizados con Docker y orquestados mediante Docker Compose, lo que permite levantar toda la solución de manera sencilla. Son microservicios independientes, pero comparten la misma base de datos PostgreSQL, cada uno accediendo a sus propias tablas.
+Ambos servicios están contenerizados con Docker y orquestados mediante Docker Compose, lo que permite levantar toda la solución de manera sencilla. Son microservicios independientes, comparten la misma base de datos PostgreSQL, cada uno accediendo a sus propias tablas.
 
-![Diagrama de Arquitectura General](diagrama-arquitectura-general.png)
 
 <p align="center">
   <img src="diagrama-arquitectura-general.png" alt="Arquitectura general" width="600"/>
