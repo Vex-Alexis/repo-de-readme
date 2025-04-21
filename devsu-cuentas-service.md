@@ -193,7 +193,7 @@ Actualiza los datos de una cuenta existente.
 ---
 #### 📍 POST /movimientos
 Crea un nuevo movimiento.
-> El valor positivo representa un depósito, y el valor negativo un retiro.
+> El valor positivo representa un ingreso, y el valor negativo un egreso.
 ##### Ejemplo de Depósito:
 ```json
 {
@@ -273,9 +273,11 @@ http://localhost:8081/cuentas/reportes?identificacionCliente=1234567890&desde=20
 ####📘 Explicación de la Estructura
 - `cliente`: Información básica del cliente consultado.
 - `cuentas`: Lista de todas las cuentas activas del cliente dentro del rango de fechas.
-  - `movimientos`: Movimientos financieros asociados a cada cuenta.
-    - Valores positivos representan depósitos o reversiones.
-    - Valores negativos representan retiros u otros débitos.
+  - `saldoActual`: Monto actual en la cuenta, considerando todos los movimientos aplicados.
+  - `movimientos`: Lista de movimientos realizadas en el rango de fechas.
+    - `tipoMovimiento`: Describe la naturaleza del movimiento (Ej: "Pago de factura", "Transferencia recibida", "Reversión de retiro").
+    - Valores positivos representan ingresos.
+    - Valores negativos representan egresos.
     - `saldo`: Es el saldo resultante después de aplicar ese movimiento.
 
 
