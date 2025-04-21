@@ -55,12 +55,12 @@ Para simplificar la ejecución y despliegue, se utilizó Docker junto con docker
 <br> <!-- Salto de línea -->
 1. Clona el repositorio:
 ```bash
-git clone https://github.com/Vex-Alexis/devsu-sistema-bancario
+git clone https://github.com/Vex-Alexis/devsu-sistema-bancario.git
 ```
 <br> <!-- Salto de línea -->
 2. Navega al directorio del proyecto:
 ```bash
-cd devsu-cuentas-sevice/docker-compose
+cd devsu-sistema-bancario/docker-compose
 ```
 3. Levanta los servicios:
 ```bash
@@ -106,7 +106,7 @@ Puedes usar la colección de Postman para probar rápidamente todos los endpoint
 
 Ruta dentro del repositorio:
 
-./docs/Devsu-Postman-Collection.json -> [📄 Devsu Postman Collection](./docs/Devsu-Postman-Collection.json)
+.devsu.postman_collection.json -> [📄 Devsu Postman Collection](./devsu.postman_collection.json)
 
 > Asegúrate de tener los servicios levantados (clientes-service en 8080, cuentas-service en 8081) antes de hacer peticiones.
 
