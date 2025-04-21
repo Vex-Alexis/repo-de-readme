@@ -361,6 +361,7 @@ El sistema está compuesto por dos microservicios independientes: `clientes-serv
 
 Ambos servicios están contenerizados con Docker y orquestados mediante Docker Compose, lo que permite levantar toda la solución de manera sencilla. Son microservicios independientes, pero comparten la misma base de datos PostgreSQL, cada uno accediendo a sus propias tablas.
 
+![Diagrama de Arquitectura General](diagrama-arquitectura.png)
 
 
 <br> <!-- Salto de línea -->
