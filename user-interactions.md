@@ -217,7 +217,6 @@ Aplicadas a:
 - Mapper y lógica del handler (reactive-web)
 
 #### Ejecuta las pruebas con el siguiente comando:
-- 
 ```bash
 ./gradlew test
 ```
