@@ -3,8 +3,16 @@
 Este documento presenta el desarrollo de un microservicio construido en Java con Spring Boot, utilizando arquitectura limpia basada en el scaffold de Bancolombia. El objetivo principal del servicio es exponer un endpoint POST para almacenar información en DynamoDB y publicar un evento en RabbitMQ. El proyecto está completamente dockerizado, permitiendo su despliegue local de forma rápida y sencilla.
 <br> <!-- Salto de línea -->
 
+#  Funcionalidades
+Puedes usar viñetas o un diagrama (si tienes tiempo, un diagrama tipo flujo es ideal). Aquí un ejemplo simple:
 
-# Tecnologías Utilizadas
+1. Se recibe una solicitud POST con los datos del usuario.
+2. Se valida y transforma el payload a una entidad de dominio.
+3. Se guarda la información en DynamoDB.
+4. Se genera un evento y se envía a RabbitMQ.
+<br> <!-- Salto de línea -->
+
+# Tecnologías
 
 - ☕ Java 17
 - ⚙️ Spring Boot
@@ -33,13 +41,12 @@ infrastructure/
 <br> <!-- Salto de línea -->
 
 
-#  Flujo de la Aplicación
-Puedes usar viñetas o un diagrama (si tienes tiempo, un diagrama tipo flujo es ideal). Aquí un ejemplo simple:
+#  Ejecutar proyecto
 
-1. Se recibe una solicitud POST con los datos del usuario.
-2. Se valida y transforma el payload a una entidad de dominio.
-3. Se guarda la información en DynamoDB.
-4. Se genera un evento y se envía a RabbitMQ.
+1. Clonar
+2. Levantar entorno
+3. Configuraciones
+4. 
 <br> <!-- Salto de línea -->
 
 
@@ -82,6 +89,45 @@ Respuesta esperada:
     }
 }
 ```
+<br> <!-- Salto de línea -->
+
+
+#  Pruebas
+
+1. Clonar
+2. Levantar entorno
+3. Configuraciones
+4. 
+<br> <!-- Salto de línea -->
+
+
+
+>  End
+<br> <!-- Salto de línea -->
+
+# Author
+### Alexis Chavarría
+Email: alexischavarria@hotmail.com
+4. 
+<br> <!-- Salto de línea -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # Instalación y Ejecución del Proyecto (Docker Compose)
