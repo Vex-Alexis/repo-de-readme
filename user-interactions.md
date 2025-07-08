@@ -80,7 +80,7 @@ docker-compose up --build
 
 > El Microservicio `user-interactions` estará disponible en: `http://localhost:8080`
 
-
+<br> <!-- Salto de línea -->
 
 ## ⚙️ Configuraciones Iniciales
 Una vez los servicios esten corriendo, realiza las siguientes configruaciones iniciales.
