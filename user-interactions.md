@@ -132,7 +132,7 @@ Para publicar eventos en RabbitMQ debe exitir la cola `event.stats.validated`, v
 <br> <!-- Salto de línea -->
 
 
-# Endpoint Expuesto
+## Endpoint Expuesto
 
 | Método | Endpoint                              | Descripción                                      |
 |--------|---------------------------------------|--------------------------------------------------|
@@ -181,10 +181,41 @@ Para publicar eventos en RabbitMQ debe exitir la cola `event.stats.validated`, v
 
 <br> <!-- Salto de línea -->
 
+## 🧯 Manejo de Errores
+La API maneja los errores de forma controlada y descriptiva, devolviendo una estructura estándar en las respuestas fallidas:
+```json
+{
+  "httpStatus": 400,
+  "success": false,
+  "message": "No fue posible procesar la estadística",
+  "timestamp": "2025-07-08 02:45:01",
+  "errorDetail": "Hash inválido para los datos proporcionados"
+}
+```
 
-#  Pruebas
+### Manejadores personalizados
+El flujo de errores está definido usando operadores como .onErrorResume() en la capa Handler, y se pueden capturar los siguientes tipos de error:
 
-### Ejecuta pruebas unitarias e integración
+| Tipo de Error          | Código HTTP       | Descripción                                      |
+|------------------------|-------------------|--------------------------------------------------|
+| InvalidHashException   | 400               | Recepción de estadísticas y procesamiento        |
+| DataPersistenceException   | 500               | Error al guardar en DynamoDB        |
+| MessagePublishingException   | 503               | Error al enviar evento a RabbitMQ        |
+| Throwable (genérico)   | 500               | Cualquier otro error inesperado     |
+
+
+##  🧪 Pruebas
+
+El proyecto contiene una cobertura de pruebas >70%, distribuidas de la siguiente forma:
+
+### ✅ Pruebas Unitarias
+
+Aplicadas a:
+- Casos de uso (usecase)
+- Adaptadores (dynamo-db, mq-sender)
+- Mapper y lógica del handler (reactive-web)
+
+#### Ejecuta las pruebas con el siguiente comando:
 - 
 ```bash
 ./gradlew test
