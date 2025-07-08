@@ -7,7 +7,7 @@ Este proyecto representa una aplicación basada en un microservicio, diseñada p
 
 - Recepción de estadísticas de interacciones vía API REST
 - Validación de integridad mediante hash MD5
-- Persistencia de datos en Amazon DynamoDB
+- Persistencia de datos en Amazon DynamoDB (Local)
 - Publicación de eventos en RabbitMQ si el guardado es exitoso
 - Manejo de errores controlado con tipos de excepciones específicas
 - Pruebas unitarias y de integración
@@ -66,11 +66,11 @@ docker-compose up --build
 
 
 #### Esto levantará:
-| Servicio                | Puerto
-|-------------------------|------
-| Microservicio           | `8080`
-| Dynamodb-local          | `8081`
-| RabbitMQ                | puertos `5672` (AMQP) y `15672` (UI)
+| Servicio                              | Puerto
+|---------------------------------------|------
+| Microservicio   user-interactions     | puerto `8080`
+| Dynamodb-local                        | puerto `8081`
+| RabbitMQ                              | puertos `5672` (AMQP) y `15672` (UI)
 
 > El Microservicio estará disponible en: `http://localhost:8080`
 > Asegúrate de que no estén siendo usados por otros procesos.
