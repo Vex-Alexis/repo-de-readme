@@ -112,7 +112,7 @@ Para publicar eventos en RabbitMQ debe exitir la cola `event.stats.validated`, v
     - usuario: guest
     - contraseña: guest
 3. Ve a la sección Queues and Streams → Add a new queue
-4. Nombre: event.stats.validated
+4. Nombre: `event.stats.validated`
 5. Tipo: classic
 6. Haz clic en Add queue
 
