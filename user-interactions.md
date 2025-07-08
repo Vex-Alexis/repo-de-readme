@@ -21,7 +21,7 @@ Este proyecto representa una aplicación basada en un microservicio, diseñada p
 - Spring WebFlux
 - Reactor (programación reactiva)
 - Amazon DynamoDB (Local)
-- RabbitMQ
+- RabbitMQ (Local)
 - Docker y Docker Compose
 - Scaffold Bancolombia (Arquitectura Limpia)
 
