@@ -85,7 +85,7 @@ docker-compose up --build
 ## ⚙️ Configuraciones Iniciales
 Una vez los servicios estén corriendo, realiza las siguientes configuraciones iniciales.
 
-### Crear tabla en DynamoDB
+### 1. Crear tabla en DynamoDB
 
 Para crear la tabla `interaction_stats` en DynamoDB Local, sigue estos pasos:
 #### ✅ Requisitos:
@@ -102,10 +102,11 @@ aws dynamodb create-table --table-name interaction_stats --attribute-definitions
 ```bash
 aws dynamodb list-tables --endpoint-url http://localhost:8000
 ```
+<br> <!-- Salto de línea -->
 
-
-### Crear cola en RabbitMQ
+### 2. Crear cola en RabbitMQ
 Para publicar evento en RabbitMQ debe exitir la cola `event.stats.validated`, verifica que ya exista o creala con los siguientes pasos:
+
 1. Abre http://localhost:15672
 2. Ingresa con:
   - usuario: guest
