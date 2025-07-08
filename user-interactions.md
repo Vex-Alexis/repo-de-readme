@@ -57,12 +57,12 @@ infrastructure/
 
 1. Clona el repositorio:
 ```bash
-git clone https://github.com/Vex-Alexis/................
+git clone https://github.com/Vex-Alexis/mueblessas-user-interactions.git
 ```
 <br> <!-- Salto de línea -->
 2. Navega al directorio del proyecto:
 ```bash
-cd data-power-bancolombia
+cd mueblessas-user-interactions
 ```
 3. Levanta los servicios:
 ```bash
