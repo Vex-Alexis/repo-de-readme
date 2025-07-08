@@ -105,12 +105,12 @@ aws dynamodb list-tables --endpoint-url http://localhost:8000
 <br> <!-- Salto de línea -->
 
 ### 2. Crear cola en RabbitMQ
-Para publicar evento en RabbitMQ debe exitir la cola `event.stats.validated`, verifica que ya exista o creala con los siguientes pasos:
+Para publicar eventos en RabbitMQ debe exitir la cola `event.stats.validated`, verifica que ya exista o creala con los siguientes pasos:
 
 1. Abre http://localhost:15672
 2. Ingresa con:
-  - usuario: guest
-  - contraseña: guest
+    - usuario: guest
+    - contraseña: guest
 3. Ve a la sección Queues and Streams → Add a new queue
 4. Nombre: event.stats.validated
 5. Tipo: classic
@@ -118,13 +118,7 @@ Para publicar evento en RabbitMQ debe exitir la cola `event.stats.validated`, ve
 
 > 💡 Puedes verificar que los eventos lleguen correctamente a RabbitMQ desde esta UI, en la cola creada, haciendo clic en Get Messages .
 
-
-
-- Crear una tabla en DynamoDB llamada `interaction_stats`
-- Crear cola en RabbitMQ manualmente desde `http://localhost:15672` con el nombre `event.stats.validated`
-
 <br> <!-- Salto de línea -->
-
 
 ## 🌐 Flujo de la Aplicación
 1. Se recibe una petición POST /api/stats con los datos de interacciones.
