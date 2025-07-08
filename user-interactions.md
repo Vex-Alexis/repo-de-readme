@@ -10,7 +10,7 @@ Este proyecto representa una aplicación basada en un microservicio, diseñada p
 - Persistencia de datos en Amazon DynamoDB (Local)
 - Publicación de eventos en RabbitMQ si el guardado es exitoso
 - Manejo de errores controlado con tipos de excepciones específicas
-- Pruebas unitarias y de integración
+- Pruebas unitarias
 <br> <!-- Salto de línea -->
 
 ## 🛠️ Tecnologías
@@ -29,7 +29,7 @@ Java 21
 
 ```css
 application/
-  ├── app-service/               <- Arma y configura toda la aplicación (Inyecta dependencias y ejecuta el main).
+  └─ app-service/               <- Arma y configura toda la aplicación (Inyecta dependencias y ejecuta el main).
 
 domain/
   └─ model/                      <- Entidades del dominio y gateways (puertos)
@@ -64,7 +64,6 @@ cd data-power-bancolombia
 docker-compose up --build
 ```
 
-
 #### Esto levantará:
 | Servicio                               | Puerto
 |----------------------------------------|------
@@ -75,11 +74,11 @@ docker-compose up --build
 > El Microservicio estará disponible en: `http://localhost:8080`
 > Asegúrate de que no estén siendo usados por otros procesos.
 
-
 4. Configuraciones Iniciales
 
 - Crear una tabla en DynamoDB llamada `interaction_stats`
 - Crear cola en RabbitMQ manualmente desde `http://localhost:15672` con el nombre `event.stats.validated`
+- 
 <br> <!-- Salto de línea -->
 
 
@@ -152,13 +151,6 @@ docker-compose up --build
 ```
 ---
 
-
-
-<br> <!-- Salto de línea -->
-
-
-
->  End
 <br> <!-- Salto de línea -->
 
 ## Author
