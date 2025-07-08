@@ -1,6 +1,7 @@
 # 📊 Sistema de Registro de Estadísticas de Interacciones
 
 Este proyecto representa una aplicación basada en un microservicio, diseñada para procesar estadísticas de interacciones de usuarios, almacenar los datos en una base NoSQL (DynamoDB) y publicar eventos en una cola de mensajería (RabbitMQ). La solución está construida siguiendo los principios de la Arquitectura Limpia, empleando el Scaffold de Bancolombia. El proyecto está completamente dockerizado, permitiendo su despliegue local de forma rápida y sencilla.
+
 <br> <!-- Salto de línea -->
 
 ## 🚀 Funcionalidades
@@ -11,17 +12,19 @@ Este proyecto representa una aplicación basada en un microservicio, diseñada p
 - Publicación de eventos en RabbitMQ si el guardado es exitoso
 - Manejo de errores controlado con tipos de excepciones específicas
 - Pruebas unitarias
+
 <br> <!-- Salto de línea -->
 
 ## 🛠️ Tecnologías
 
-Java 21
+- Java 21
 - Spring WebFlux
 - Reactor (programación reactiva)
 - Amazon DynamoDB (Local)
 - RabbitMQ
 - Docker y Docker Compose
 - Scaffold Bancolombia (Arquitectura Limpia)
+
 <br> <!-- Salto de línea -->
 
 
@@ -39,6 +42,7 @@ infrastructure/
   └─ driven-adapters/            <- Adaptadores, implementan puertos para conexiones externas (DB, APIs, Producer, etc)
   └─ entry-points/               <- Puntos de entrada (como controladores REST, Kafka, GraphQL, consumer, etc) 
 ```
+
 <br> <!-- Salto de línea -->
 
 
@@ -78,7 +82,7 @@ docker-compose up --build
 
 - Crear una tabla en DynamoDB llamada `interaction_stats`
 - Crear cola en RabbitMQ manualmente desde `http://localhost:15672` con el nombre `event.stats.validated`
-- 
+
 <br> <!-- Salto de línea -->
 
 
@@ -90,6 +94,7 @@ docker-compose up --build
    - Se publica un evento a RabbitMQ
 4. Si el hash es inválido o ocurre un error:
    - Se responde mensaje de error
+
 <br> <!-- Salto de línea -->
 
 
@@ -139,6 +144,7 @@ docker-compose up --build
     }
 }
 ```
+
 <br> <!-- Salto de línea -->
 
 
