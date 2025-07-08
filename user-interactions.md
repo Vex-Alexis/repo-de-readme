@@ -1,7 +1,8 @@
-# 🏦 Recto tecnico Java Scaffold
+# 🏦 Reto técnico Java Scaffold
 
 Este documento presenta el desarrollo de un microservicio construido en Java con Spring Boot, utilizando arquitectura limpia basada en el scaffold de Bancolombia. El objetivo principal del servicio es exponer un endpoint POST para almacenar información en DynamoDB y publicar un evento en RabbitMQ. El proyecto está completamente dockerizado, permitiendo su despliegue local de forma rápida y sencilla.
 <br> <!-- Salto de línea -->
+
 
 # Tecnologías Utilizadas
 
