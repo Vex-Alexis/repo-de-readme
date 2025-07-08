@@ -51,6 +51,7 @@ infrastructure/
 ### Requisitos: 
 - Java 21
 - Docker Compose
+- AWS CLI
 
 ### Clonar y levantar
 
@@ -78,7 +79,29 @@ docker-compose up --build
 > El Microservicio estará disponible en: `http://localhost:8080`
 > Asegúrate de que no estén siendo usados por otros procesos.
 
-4. Configuraciones Iniciales
+
+## ⚙️ Configuraciones Iniciales
+Una vez los servicios esten corriendo, realiza las siguientes configruaciones iniciales.
+
+### Crear tabla en DynamoDB
+- Debes tener instalado AWS CLI para crear la tabla requerida (interaction_stats) ejecutando el siguiente comando:
+```bash
+aws dynamodb create-table --table-name interaction_stats --attribute-definitions AttributeName=timestamp,AttributeType=S --key-schema AttributeName=timestamp,KeyType=HASH --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5 --endpoint-url http://localhost:8000 --region us-east-1
+```
+
+### Crear cola en RabbitMQ
+- Para publicar evento en RabbitMQ debe exitir la cola `event.stats.validated`, verifica que ya exista o creala con los siguientes pasos:
+1. Abre http://localhost:15672
+2. Ingresa con:
+  - usuario: guest
+  - contraseña: guest
+3. Ve a la sección Queues and Streams → Add a new queue
+4. Nombre: event.stats.validated
+5. Tipo: classic
+6. Haz clic en Add queue
+
+
+
 
 - Crear una tabla en DynamoDB llamada `interaction_stats`
 - Crear cola en RabbitMQ manualmente desde `http://localhost:15672` con el nombre `event.stats.validated`
