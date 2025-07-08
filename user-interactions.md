@@ -83,16 +83,29 @@ docker-compose up --build
 <br> <!-- Salto de línea -->
 
 ## ⚙️ Configuraciones Iniciales
-Una vez los servicios esten corriendo, realiza las siguientes configruaciones iniciales.
+Una vez los servicios estén corriendo, realiza las siguientes configuraciones iniciales.
 
 ### Crear tabla en DynamoDB
-- Debes tener instalado AWS CLI para crear la tabla requerida (interaction_stats) ejecutando el siguiente comando:
+
+Para crear la tabla `interaction_stats` en DynamoDB Local, sigue estos pasos:
+#### ✅ Requisitos:
+- Tener Docker Compose corriendo (es decir, que DynamoDB ya esté levantado)
+- Tener instalado AWS CLI
+
+#### 🧩 Pasos:
+1. Abre una terminal nueva en la raíz del proyecto.
+2. Ejecuta el siguiente comando para crear la tabla:
 ```bash
 aws dynamodb create-table --table-name interaction_stats --attribute-definitions AttributeName=timestamp,AttributeType=S --key-schema AttributeName=timestamp,KeyType=HASH --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5 --endpoint-url http://localhost:8000 --region us-east-1
 ```
+3. Verifica que la tabla fue creada exitosamente:
+```bash
+aws dynamodb list-tables --endpoint-url http://localhost:8000
+```
+
 
 ### Crear cola en RabbitMQ
-- Para publicar evento en RabbitMQ debe exitir la cola `event.stats.validated`, verifica que ya exista o creala con los siguientes pasos:
+Para publicar evento en RabbitMQ debe exitir la cola `event.stats.validated`, verifica que ya exista o creala con los siguientes pasos:
 1. Abre http://localhost:15672
 2. Ingresa con:
   - usuario: guest
@@ -102,6 +115,7 @@ aws dynamodb create-table --table-name interaction_stats --attribute-definitions
 5. Tipo: classic
 6. Haz clic en Add queue
 
+> 💡 Puedes verificar que los eventos lleguen correctamente a RabbitMQ desde esta UI, en la cola creada, haciendo clic en Get Messages .
 
 
 
