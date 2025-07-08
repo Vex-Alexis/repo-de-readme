@@ -132,7 +132,7 @@ Para publicar eventos en RabbitMQ debe exitir la cola `event.stats.validated`, v
 <br> <!-- Salto de línea -->
 
 
-## Endpoint Expuesto
+## 📬 Endpoint Expuesto
 
 | Método | Endpoint                              | Descripción                                      |
 |--------|---------------------------------------|--------------------------------------------------|
@@ -203,6 +203,7 @@ El flujo de errores está definido usando operadores como .onErrorResume() en la
 | MessagePublishingException   | 503               | Error al enviar evento a RabbitMQ        |
 | Throwable (genérico)   | 500               | Cualquier otro error inesperado     |
 
+<br> <!-- Salto de línea -->
 
 ##  🧪 Pruebas
 
