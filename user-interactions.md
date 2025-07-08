@@ -1,61 +1,112 @@
-# 🏦 Reto técnico Java Scaffold
+# 📊 Sistema de Registro de Estadísticas de Interacciones
 
-Este documento presenta el desarrollo de un microservicio construido en Java con Spring Boot, utilizando arquitectura limpia basada en el scaffold de Bancolombia. El objetivo principal del servicio es exponer un endpoint POST para almacenar información en DynamoDB y publicar un evento en RabbitMQ. El proyecto está completamente dockerizado, permitiendo su despliegue local de forma rápida y sencilla.
+Este proyecto representa una aplicación basada en un microservicio, diseñada para procesar estadísticas de interacciones de usuarios, almacenar los datos en una base NoSQL (DynamoDB) y publicar eventos en una cola de mensajería (RabbitMQ). La solución está construida siguiendo los principios de la Arquitectura Limpia, empleando el Scaffold de Bancolombia. El proyecto está completamente dockerizado, permitiendo su despliegue local de forma rápida y sencilla.
 <br> <!-- Salto de línea -->
 
-#  Funcionalidades
-Puedes usar viñetas o un diagrama (si tienes tiempo, un diagrama tipo flujo es ideal). Aquí un ejemplo simple:
+# 🚀 Funcionalidades
 
-1. Se recibe una solicitud POST con los datos del usuario.
-2. Se valida y transforma el payload a una entidad de dominio.
-3. Se guarda la información en DynamoDB.
-4. Se genera un evento y se envía a RabbitMQ.
+- Recepción de estadísticas de interacciones vía API REST
+- Validación de integridad mediante hash MD5
+- Persistencia de datos en Amazon DynamoDB
+- Publicación de eventos en RabbitMQ si el guardado es exitoso
+- Manejo de errores controlado con tipos de excepciones específicas
+- Pruebas unitarias y de integración
 <br> <!-- Salto de línea -->
 
-# Tecnologías
+# 🛠️ Tecnologías
 
-- ☕ Java 17
-- ⚙️ Spring Boot
-- 🧱 Arquitectura Limpia (Scaffold Bancolombia)
-- 🐳 Docker & Docker Compose
-- 📦 DynamoDB (LocalStack)
-- 🐇 RabbitMQ
-- 🌐 REST API (POST)
+Java 21
+- Spring WebFlux
+- Reactor (programación reactiva)
+- Amazon DynamoDB (Local)
+- RabbitMQ
+- Docker y Docker Compose
+- Scaffold Bancolombia (Arquitectura Limpia)
 <br> <!-- Salto de línea -->
 
 
-# Estructura del Proyecto
-Aquí puedes insertar una imagen del árbol de carpetas o escribirlo de forma visual.
+# 📁 Estructura del Proyecto
+
 ```css
 application/
-  ├── usecase/               <- Casos de uso o servicios de aplicación
+  ├── app-service/               <- Arma y configura toda la aplicación (Inyecta dependencias y ejecuta el main)
 
 domain/
-  └─ model/                  <- Entidades del dominio y gateways (interfaces)
-  └─ useCase/                <- Interfaces de los casos de uso
+  └─ model/                      <- Entidades del dominio y gateways (puertos)
+  └─ useCase/                    <- Casos de uso que contienen la lógica y reglas de negocio.
 
 infrastructure/
-  └─ adapters/               <- Adaptadores de salida (Base de datos, clientes REST, colas, etc)
-  └─ entry-points/           <- Adaptadores de entrada (REST controllers, GraphQL, solicitudes externas) 
+  └─ driven-adapters/            <- Adaptadores, implementan puertos para conexiones externas (DB, APIs, Producer, etc)
+  └─ entry-points/               <- Puntos de entrada (como controladores REST, Kafka, GraphQL, consumer, etc) 
 ```
 <br> <!-- Salto de línea -->
 
 
-#  Ejecutar proyecto
+# 📢 Ejecutar proyecto
 
-1. Clonar
-2. Levantar entorno
-3. Configuraciones
-4. 
+### Requisitos: 
+- Java 21
+- Docker Compose
+
+### Clonar y levantar
+
+1. Clona el repositorio:
+```bash
+git clone https://github.com/Vex-Alexis/................
+```
+<br> <!-- Salto de línea -->
+2. Navega al directorio del proyecto:
+```bash
+cd data-power-bancolombia
+```
+3. Levanta los servicios:
+```bash
+docker-compose up --build
+```
+
+
+#### Esto levantará:
+| Servicio                | Puerto
+|-------------------------|------
+| Microservicio           | `8080`
+| Dynamodb-local          | `8081`
+| RabbitMQ                | puertos `5672` (AMQP) y `15672` (UI)
+
+> El Microservicio estará disponible en: `http://localhost:8080`
+> Asegúrate de que no estén siendo usados por otros procesos.
+
+
+4. Configuraciones Iniciales
+
+- Crear una tabla en DynamoDB llamada `interaction_stats`
+- Crear cola en RabbitMQ manualmente desde `http://localhost:15672` con el nombre `event.stats.validated`
+<br> <!-- Salto de línea -->
+
+
+# 🌐 Flujo de la Aplicación
+1. Se recibe una petición POST /api/stats con los datos de interacciones.
+2. Se valida el hash MD5 del contenido.
+3. Si el hash es válido:
+   - Se almacena en DynamoDB
+   - Se publica un evento a RabbitMQ
+4. Si el hash es inválido o ocurre un error:
+   - Se responde mensaje de error
 <br> <!-- Salto de línea -->
 
 
 # Endpoint Expuesto
-Incluye el detalle del endpoint:
 
-Método: POST
-Ruta: /api/stats
-Body de ejemplo:
+| Método | Endpoint                              | Descripción                                      |
+|--------|---------------------------------------|--------------------------------------------------|
+| POST   | `/api/stats`                          | Recepción de estadísticas y procesamiento        |
+| GET    | `/api/stats/test`                     | Verificación de disponibilidad del servicio      |
+
+
+### Detalle del endpoint (`/api/stats`):
+
+- Método: POST
+- Ruta: `http://localhost:8080/api/stats`
+- Body de ejemplo:
 
 ```json
 {
@@ -69,7 +120,7 @@ Body de ejemplo:
   "hash": "2692af3c8d7a895a40bb0be1fd160c3b"
 }
 ```
-Respuesta esperada:
+- Respuesta esperada:
 ```json
 {
     "httpStatus": 201,
