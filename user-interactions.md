@@ -51,7 +51,6 @@ infrastructure/
 ### Requisitos: 
 - Java 21
 - Docker Compose
-- AWS CLI
 
 ### Clonar y levantar
 
@@ -207,7 +206,7 @@ Aplicadas a:
 
 <br> <!-- Salto de línea -->
 
-## Author
+## 👤 Author
 ### Alexis Chavarría
 Email: alexischavarria@hotmail.com
 <br> <!-- Salto de línea -->
