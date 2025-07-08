@@ -76,8 +76,10 @@ docker-compose up --build
 | Dynamodb-local                         | puerto `8081`
 | RabbitMQ                               | puertos `5672` (AMQP) y `15672` (UI)
 
-> El Microservicio estará disponible en: `http://localhost:8080`
-> Asegúrate de que no estén siendo usados por otros procesos.
+> Asegúrate que estos puertos no estén siendo usados por otros procesos.
+
+> El Microservicio `user-interactions` estará disponible en: `http://localhost:8080`
+
 
 
 ## ⚙️ Configuraciones Iniciales
