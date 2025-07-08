@@ -3,7 +3,7 @@
 Este proyecto representa una aplicación basada en un microservicio, diseñada para procesar estadísticas de interacciones de usuarios, almacenar los datos en una base NoSQL (DynamoDB) y publicar eventos en una cola de mensajería (RabbitMQ). La solución está construida siguiendo los principios de la Arquitectura Limpia, empleando el Scaffold de Bancolombia. El proyecto está completamente dockerizado, permitiendo su despliegue local de forma rápida y sencilla.
 <br> <!-- Salto de línea -->
 
-# 🚀 Funcionalidades
+## 🚀 Funcionalidades
 
 - Recepción de estadísticas de interacciones vía API REST
 - Validación de integridad mediante hash MD5
@@ -13,7 +13,7 @@ Este proyecto representa una aplicación basada en un microservicio, diseñada p
 - Pruebas unitarias y de integración
 <br> <!-- Salto de línea -->
 
-# 🛠️ Tecnologías
+## 🛠️ Tecnologías
 
 Java 21
 - Spring WebFlux
@@ -25,11 +25,11 @@ Java 21
 <br> <!-- Salto de línea -->
 
 
-# 📁 Estructura del Proyecto
+## 📁 Estructura del Proyecto
 
 ```css
 application/
-  ├── app-service/               <- Arma y configura toda la aplicación (Inyecta dependencias y ejecuta el main)
+  ├── app-service/               <- Arma y configura toda la aplicación (Inyecta dependencias y ejecuta el main).
 
 domain/
   └─ model/                      <- Entidades del dominio y gateways (puertos)
@@ -42,7 +42,7 @@ infrastructure/
 <br> <!-- Salto de línea -->
 
 
-# 📢 Ejecutar proyecto
+## 📢 Ejecutar proyecto
 
 ### Requisitos: 
 - Java 21
@@ -66,11 +66,11 @@ docker-compose up --build
 
 
 #### Esto levantará:
-| Servicio                              | Puerto
-|---------------------------------------|------
-| Microservicio   user-interactions     | puerto `8080`
-| Dynamodb-local                        | puerto `8081`
-| RabbitMQ                              | puertos `5672` (AMQP) y `15672` (UI)
+| Servicio                               | Puerto
+|----------------------------------------|------
+| Microservicio   `user-interactions`    | puerto `8080`
+| Dynamodb-local                         | puerto `8081`
+| RabbitMQ                               | puertos `5672` (AMQP) y `15672` (UI)
 
 > El Microservicio estará disponible en: `http://localhost:8080`
 > Asegúrate de que no estén siendo usados por otros procesos.
@@ -83,7 +83,7 @@ docker-compose up --build
 <br> <!-- Salto de línea -->
 
 
-# 🌐 Flujo de la Aplicación
+## 🌐 Flujo de la Aplicación
 1. Se recibe una petición POST /api/stats con los datos de interacciones.
 2. Se valida el hash MD5 del contenido.
 3. Si el hash es válido:
@@ -145,10 +145,15 @@ docker-compose up --build
 
 #  Pruebas
 
-1. Clonar
-2. Levantar entorno
-3. Configuraciones
-4. 
+### Ejecuta pruebas unitarias e integración
+- 
+```bash
+./gradlew test
+```
+---
+
+
+
 <br> <!-- Salto de línea -->
 
 
@@ -156,50 +161,10 @@ docker-compose up --build
 >  End
 <br> <!-- Salto de línea -->
 
-# Author
+## Author
 ### Alexis Chavarría
 Email: alexischavarria@hotmail.com
-4. 
 <br> <!-- Salto de línea -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Instalación y Ejecución del Proyecto (Docker Compose)
-Incluye instrucciones claras para clonar y levantar el proyecto.
-
-1. Clona el repositorio:
-```bash
-git clone https://github.com/Vex-Alexis/................
-```
-<br> <!-- Salto de línea -->
-2. Navega al directorio del proyecto:
-```bash
-cd data-power-bancolombia
-```
-3. Levanta los servicios:
-```bash
-docker-compose up --build
-```
-> El servicio estará disponible en: http://localhost:8080/api/stats
-
-
 
 
 
