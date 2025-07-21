@@ -223,19 +223,36 @@ postman_collection.json -> [📄 Postman Collection](./postman_collection.json)
 ## 🧪 Pruebas implementadas
 Este proyecto implementa pruebas unitarias y de integración para asegurar el correcto funcionamiento de los microservicios.
 
+<br> <!-- Salto de línea -->
 ### 📦 Product Service
 
-- Pruebas Unitarias
+- ✅ Pruebas Unitarias
     - Crear un producto.
     - Consultar producto por ID (exitoso y no encontrado).
     -  Consultar todos los productos.
 
+- 🔗 Pruebas de integración
+    - Crear un producto y consultarlo por ID.
+    - Consultar todos los productos existentes.
+    - Validar error cuando se consulta un producto inexistente.
 
+<br> <!-- Salto de línea -->
+🏪 Inventory Service
 
+✅ Pruebas unitarias
+- Consultar detalles de inventario (exitoso y no encontrado).
+- Actualizar cantidad del inventario (exitoso y no encontrado).
+- Registrar movimientos de inventario:
+    - Venta (reduce stock).
+    - Compra (aumenta stock).
+    - Ajuste directo de stock.
+- Validar reglas de negocio:
+    - No permitir cantidad cero.
+    - Tipo de movimiento obligatorio y soportado.
+    - No permitir ventas si no hay suficiente stock.
 
-
-
-
+🔗 Prueba de integración
+- Registrar una venta y verificar que el inventario disminuye correctamente.
 
 
 
