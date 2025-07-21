@@ -220,7 +220,24 @@ postman_collection.json -> [📄 Postman Collection](./postman_collection.json)
 ## 🚨 Manejo de Excepciones
 
 <br> <!-- Salto de línea -->
-## 🧪 Pruebas
+## 🧪 Pruebas implementadas
+Este proyecto implementa pruebas unitarias y de integración para asegurar el correcto funcionamiento de los microservicios.
+
+### 📦 Product Service
+
+- Pruebas Unitarias
+    - Crear un producto.
+    - Consultar producto por ID (exitoso y no encontrado).
+    -  Consultar todos los productos.
+
+
+
+
+
+
+
+
+
 
 - Test Containers Prueba unitarias y de integracion
 
