@@ -116,7 +116,7 @@ En esta capa, se detallarán las tecnologías e implementaciones de los puertos 
 
 
 <p align="center">
-  <img src="estructura-microservicio.png" alt="Estructura Microservicio" width="600"/>
+  <img src="diagrama-interaccion-microservicios.png" alt="Interaccion microservicios" width="600"/>
 </p>
 
 
