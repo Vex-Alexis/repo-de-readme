@@ -141,8 +141,8 @@ Esto permitiría desacoplar los servicios y procesar eventos de forma eventual.
 - **Manejador global de excepciones:** Se creó un handler global que captura errores controlados y lanza respuestas claras al cliente. Sse definieron excepciones personalizadas que son lanzadas desde la lógica de negocio ante casos esperados (como no existencia de un producto, datos inválidos, etc.), permitiendo separar la gestión de errores de la lógica principal.
 
 
-- #### Flujo de compra (justificación de no implementarlo):
-- Se consideró que un flujo de compra completo correspondería a un microservicio dedicado de órdenes o compras, siguiendo el principio de responsabilidad única y evitando un alto acoplamiento.
+### Flujo de compra (justificación de no implementarlo):
+Se consideró que un flujo de compra completo correspondería a un microservicio dedicado de órdenes o compras, siguiendo el principio de responsabilidad única y evitando un alto acoplamiento.
 En lugar de esto, se implementó en `inventory-service` un **flujo de movimientos** (SALE o PURCHASE) que permite registrar salidas o ingresos de stock. La petición recibe el ID del producto, la cantidad y el tipo de movimiento; en el caso de venta se descuenta del stock y en compra se suma, validando siempre que los valores sean positivos.
 - **Circuit breaker (Resilience4j):** Se implementó un circuit breaker usando Resilience4j para proteger el `inventory-service` de fallas o latencias excesivas al consumir el `product-service`. Este patrón gestiona reintentos, fallback y timeout, evitando fallos en cascada y mejorando la resiliencia general del sistema.
 
