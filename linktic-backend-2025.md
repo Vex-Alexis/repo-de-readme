@@ -81,9 +81,9 @@ docker-compose up -d
 
 
 <br> <!-- Salto de línea -->
-## 🏗️ Descripción de la arquitectura y patrones
+## 🏛️ Descripción de la arquitectura y patrones
 
-El proyecto implementa una arquitectura limpia (Clean Architecture) basada en principios de separación de responsabilidades y dependencia inversa. 
+El proyecto está implementado una **arquitectura limpia** con el patrón Ports & Adapters (arquitectura hexagonal) y aplicando principios de DDD (Domain-Driven Design) para una mejor separación de responsabilidades y mantenibilidad. Cada capa tiene su responsabilidad: 
 
 #### - Domain
 Contiene los modelos y entidades de dominio, que representan las reglas y la lógica de negocio También define los puertos como interfaces ("Gateways") que se utilizarán en la capa de negocio.
@@ -94,9 +94,16 @@ En esta capa, se detallarán las tecnologías e implementaciones de los puertos 
   - `driven-adapters` son los módulos implementan las interfaces ("Gateways") para conectar tecnologías externas al sistema, como conexiones a bases de datos, servicios REST, SOAP, lectura de archivos planos y, en particular, cualquier fuente de datos con la que debamos interactuar.
   - `entry-poits` son los puntos de entrada de la aplicación o el inicio de los flujos de negocio. Estos pueden ser controladores REST, consumidores de Kafka, SQS, etc, además de manejo centralizado de excepciones.
 
-## patrones de diseño
+## ✏️ patrones de diseño
 
-
+- **Dependency Injection:** facilita la inversión de dependencias y el desac acoplamiento de componentes.
+- **Repository Pattern:** abstrae el acceso a la persistencia, ocultando detalles del almacenamiento.
+- **Adapter Pattern:** permite integrar tecnologías o servicios externos sin acoplar el dominio.
+- **Service Layer:** encapsula la lógica de negocio de la aplicación.
+- **Transactional:** asegura la integridad de los datos durante operaciones críticas.
+- **DTO & Mapper:** se usan para transferir datos entre capas y evitar exponer directamente las entidades de dominio.
+- **Resilience Patterns:** implementación de reintentos, timeouts u otros mecanismos para mayor tolerancia a fallos.
+- **Exception Handler:** manejo centralizado de errores para devolver respuestas consistentes.
 
 
 
