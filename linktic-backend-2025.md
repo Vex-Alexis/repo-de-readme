@@ -140,15 +140,6 @@ Esto permitiría desacoplar los servicios y procesar eventos de forma eventual.
 
 - **Manejador global de excepciones:** Se creó un handler global que captura errores controlados y lanza respuestas claras al cliente. Sse definieron excepciones personalizadas que son lanzadas desde la lógica de negocio ante casos esperados (como no existencia de un producto, datos inválidos, etc.), permitiendo separar la gestión de errores de la lógica principal.
 
-
-### Flujo de compra (Endpoint de Movimientos):
-Se consideró que un flujo de compra completo correspondería a un microservicio dedicado de órdenes o compras, siguiendo el principio de responsabilidad única y evitando un alto acoplamiento.
-En lugar de esto, se implementó en `inventory-service` un **flujo de movimientos** (SALE o PURCHASE) que permite registrar salidas o ingresos de stock. La petición recibe el ID del producto, la cantidad y el tipo de movimiento; en el caso de venta se descuenta del stock y en compra se suma, validando siempre que los valores sean positivos.
-Decisión sobre el endpoint de compra:
-En lugar de implementar un endpoint de “compra” completo, se optó por exponer un endpoint que registra movimientos (SALE o PURCHASE). Esto se hizo porque un flujo de compra completo suele corresponder a otro contexto de dominio, como un microservicio de órdenes o compras, evitando así sobrecargar al inventory-service con lógica que no le corresponde.
-La URL de este endpoint recibe el ID del producto, valida el cuerpo del request para conocer la cantidad y el tipo de movimiento. Si es una venta (SALE) se descuenta stock; si es una compra (PURCHASE) se suma stock.
-
-
 - **Circuit breaker (Resilience4j):** Se implementó un circuit breaker usando Resilience4j para proteger el `inventory-service` de fallas o latencias excesivas al consumir el `product-service`. Este patrón gestiona reintentos, fallback y timeout, evitando fallos en cascada y mejorando la resiliencia general del sistema.
 
 
@@ -161,10 +152,30 @@ Esto se traduce en un endpoint REST:
 ```http
 POST /inventory/products/{productId}/movements
 ```
+> donde el cuerpo indica el tipo de movimiento (SALE o PURCHASE) y la cantidad.
 
+###  Justificación
+**Separación de responsabilidades y bajo acoplamiento**
+- Un flujo de compra completo suele pertenecer a un dominio distinto, típicamente gestionado por un microservicio de ordenes o compras (order-service o purchase-service).
+- Mantener la lógica del proceso completo de compra dentro del inventory-service violaría el principio de responsabilidad única (SRP), mezclando la gestión de inventario con la gestión de pedidos.
 
+###  Flujo implementado
+1. Recibe en la URL el productId y en el cuerpo: cantidad + tipo de movimiento.
+2. Valida: la cantidad debe ser > 0 y el tipo de movimiento debe estar definido.
+3. Consulta inventario por productId:
+  - Si no existe → lanza excepción.
+4. Actualiza stock:
+  - Si es SALE: descuenta stock solo si hay suficiente.
+  - Si es PURCHASE: suma al stock.
+5. Guarda el movimiento en la base de datos.
+6. Retorna respuesta enriquecida con datos del producto, tipo de movimiento, cantidad y stock actualizado.
 
-
+### Consistencia y manejo de errores
+- Se usa una transacción (@Transactional) para asegurar que tanto la actualización del inventario como el registro del movimiento se realicen de forma atómica.
+- Se lanzan errores claros si:
+    - El producto no existe.
+    - La cantidad es inválida.
+    - No hay stock suficiente para la venta.
 
 
 
