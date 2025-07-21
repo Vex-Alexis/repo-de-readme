@@ -2,15 +2,14 @@
 
 Prueba técnica implementada como sistema distribuido basado en dos microservicios:
 
-- product-service y inventory-service desarrollados en Java 21 y Spring Boot 3.5.3.
+- `product-service` y `inventory-service` desarrollados en Java 21 y Spring Boot 3.5.3.
 El proyecto está dockerizado para facilitar su despliegue, levantando toda la infraestructura (microservicios, bases de datos PostgreSQL y scripts SQL para crear y poblar tablas) con un solo comando.
 
 Cada microservicio sigue el principio de arquitectura limpia, incluye autenticación mediante API Keys, manejo global de errores con excepciones personalizadas y respuestas que cumplen el estándar JSON:API.
-Toda la configuración se gestiona a través de archivos application.yml.
+Toda la configuración se gestiona a través de archivos `application.yml`.
 
 <br> <!-- Salto de línea -->
 ## Contenido
-
 
 
 - [Funcionalidades Principales](#-funcionalidades-principales)
@@ -27,23 +26,18 @@ Toda la configuración se gestiona a través de archivos application.yml.
 
 
 
-
 <br> <!-- Salto de línea -->
 ## 🧩 Funcionalidades Principales
 
-- Crear producto, consultar por ID y obtener lista de productos
-- Consultar stock de producto y obtener su informacion desde el otro microservicio
-- Actualizar cantidad disponible de producto
-- Endpoint de movimientos (para integrar flujo de compras o transacciones)
-- Comunicacion sincronica entre microservicios mediante HTTP
-- Arquitectura limpia y patrones de diseño
-- Se implementa transaccion para mantener la consistencia de datos entre ambos servicios (atomicidad)
-- Manejo de exepciones, se implementan personalizadas y se crean un manejador global de excepciones
-- Respuestas del API cumpliendo los estandares de JSON:API
-- Autenticacion basica mediante API keys
-- Manejo de timeouts y reintentos basicos con circuit braker
+- Registrar productos y consultar inventario.
+- Registrar movimientos de stock (entradas/salidas).
+- Comunicación síncrona entre microservicios usando WebClient.
+- Operaciones atómicas y consistentes mediante transacciones.
+- Tolerancia a fallos con Circuit Breaker (Resilience4j).
+- Autenticación mediante API Keys.
+- Respuestas compatibles con JSON:API.
+- Manejo global de excepciones con excepciones personalizadas.
   
-
 
 
 <br> <!-- Salto de línea -->
