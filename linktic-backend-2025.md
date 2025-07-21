@@ -237,7 +237,7 @@ Este proyecto implementa pruebas unitarias y de integración para asegurar el co
     - Validar error cuando se consulta un producto inexistente.
 
 <br> <!-- Salto de línea -->
-🏪 Inventory Service
+### 🏪 Inventory Service
 
 ✅ Pruebas unitarias
 - Consultar detalles de inventario (exitoso y no encontrado).
@@ -254,13 +254,50 @@ Este proyecto implementa pruebas unitarias y de integración para asegurar el co
 🔗 Prueba de integración
 - Registrar una venta y verificar que el inventario disminuye correctamente.
 
+<br> <!-- Salto de línea -->
+### ▶️ Cómo ejecutar las pruebas
 
+Para ejecutar las pruebas unitarias/integración:
+1. Clona el repositorio.
+2. Si aun no has levantado los contenedores necesarios ejecuta:
+```bash
+docker compose up -d
+```
+3. Entra a la carpeta del microservicio que quieres probar.
+4. Ejecuta las pruebas:
+- En Windows
+```bash
+mvnw.cmd test
+```
+### 📌 Ejemplo de ejecución por microservicio
 
-- Test Containers Prueba unitarias y de integracion
+#### 📦 Product Service
+```bash
+cd product-service
+```
+```bash
+mvnw.cmd test
+```
+
+#### 🏪 Inventory Service
+```bash
+cd inventory-service
+```
+```bash
+mvnw.cmd test
+```
+
 
 <br> <!-- Salto de línea -->
 ## 🤖 Documentación sobre el uso de herramientas de IA
 
+Durante el desarrollo de este proyecto se utilizaron herramientas de IA para apoyar principalmente en:
+  - **Redacción de documentación:** se empleó ChatGPT para redactar descripciones técnicas, justificar decisiones de arquitectura y crear textos para el README.
+  - **Asistencia en generación de código:** se consultaron sugerencias para patrones de diseño, manejo de excepciones y estructura de controladores y servicios.
+  - **Optimización y revisión:** se usó IA para mejorar la claridad de nombres de clases, métodos y refactorizar fragmentos de código repetitivo.
+
+**Verificación de calidad:**
+Todo el código sugerido por IA fue revisado manualmente, adaptado a las necesidades del proyecto y probado localmente para asegurar que cumpliera con las reglas de negocio, principios de arquitectura y buenas prácticas establecidas.
 
 
 
