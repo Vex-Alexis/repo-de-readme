@@ -1,7 +1,12 @@
 # 📦 Sistema de Gestión de Inventario
 
-Sistema de gestión de inventario basado en **microservicios**, desarrollado en **Java 21** con **Spring Boot 3.5.3**.  
-Permite registrar productos, consultar su inventario y registrar movimientos de stock
+Prueba técnica implementada como sistema distribuido basado en dos microservicios:
+
+- product-service y inventory-service desarrollados en Java 21 y Spring Boot 3.5.3.
+El proyecto está dockerizado para facilitar su despliegue, levantando toda la infraestructura (microservicios, bases de datos PostgreSQL y scripts SQL para crear y poblar tablas) con un solo comando.
+
+Cada microservicio sigue el principio de arquitectura limpia, incluye autenticación mediante API Keys, manejo global de errores con excepciones personalizadas y respuestas que cumplen el estándar JSON:API.
+Toda la configuración se gestiona a través de archivos application.yml.
 
 <br> <!-- Salto de línea -->
 ## Contenido
