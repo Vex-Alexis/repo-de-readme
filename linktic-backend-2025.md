@@ -159,7 +159,7 @@ POST /inventory/products/{productId}/movements
 - Un flujo de compra completo suele pertenecer a un dominio distinto, típicamente gestionado por un microservicio de ordenes o compras (order-service o purchase-service).
 - Mantener la lógica del proceso completo de compra dentro del inventory-service violaría el principio de responsabilidad única (SRP), mezclando la gestión de inventario con la gestión de pedidos.
 
-###  Flujo implementado
+### ⚙️ Flujo implementado
 1. Recibe en la URL el productId y en el cuerpo: cantidad + tipo de movimiento.
 2. Valida: la cantidad debe ser > 0 y el tipo de movimiento debe estar definido.
 3. Consulta inventario por productId:
@@ -170,17 +170,33 @@ POST /inventory/products/{productId}/movements
 5. Guarda el movimiento en la base de datos.
 6. Retorna respuesta enriquecida con datos del producto, tipo de movimiento, cantidad y stock actualizado.
 
-### Consistencia y manejo de errores
+### 🧪 Consistencia y manejo de errores
 - Se usa una transacción (@Transactional) para asegurar que tanto la actualización del inventario como el registro del movimiento se realicen de forma atómica.
 - Se lanzan errores claros si:
     - El producto no existe.
     - La cantidad es inválida.
     - No hay stock suficiente para la venta.
 
+### ✅ Ventajas de este diseño
+- Bajo acoplamiento: el servicio de inventario solo gestiona inventario, no lógica de negocio de compras/órdenes.
+- Escalable: un futuro order-service puede coordinar con el inventory-service para registrar movimientos de stock, sin duplicar lógica.
+- Simple y claro: cumple con el requerimiento de actualizar y verificar stock.
+- Extensible: permite otros tipos de movimientos como ajustes o devoluciones.
+
+
+
 
 
 <br> <!-- Salto de línea -->
 ## 📡 Endpoints
+
+Puedes usar la colección de Postman para probar rápidamente todos los endpoints disponibles.
+
+Ruta dentro del repositorio:
+postman_collection.json -> [📄 Postman Collection](./postman_collection.json)
+
+
+
 
 <br> <!-- Salto de línea -->
 ## 📄 Documentación de endpoints
