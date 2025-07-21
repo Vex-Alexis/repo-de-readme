@@ -8,18 +8,18 @@ Permite registrar productos, consultar su inventario y registrar movimientos de 
 
 
 
-- [Funcionalidades Principales](#-funcionalidades-principales)
-- [Tecnologías Utilizadas](#%EF%B8%8F-tecnologías-utilizadas)
-- [Instalación y ejecución](#%EF%B8%8F-clonar-y-levantar-el-proyecto)
-- [Descripción de la arquitectura y patrones](#%EF%B8%8F-clonar-y-levantar-el-proyecto)
-- [Diagrama de interacción entre servicios](#%EF%B8%8F-clonar-y-levantar-el-proyecto)
-- [Decisiones técnicas y justificaciones](#%EF%B8%8F-clonar-y-levantar-el-proyecto)
-- [Explicación del flujo de compra implementado](#%EF%B8%8F-clonar-y-levantar-el-proyecto)
-- [Endpoints](#-endpoints)
-- [Documentacion de endpoints](#-ejemplos-de-request-body)
-- [Manejo de Excepciones](#-manejo-de-excepciones)
-- [Pruebas](#-pruebas)
-- [Documentación sobre el uso de herramientas de IA](#%EF%B8%8F-clonar-y-levantar-el-proyecto)
+- [🧩 Funcionalidades Principales](#-funcionalidades-principales)
+- [🛠️ Tecnologías Utilizadas](#%EF%B8%8F-tecnologías-utilizadas)
+- [📦 Instalación y ejecución](#-instalación-y-ejecución)
+- [🏗️ Descripción de la arquitectura y patrones de diseño](#%EF%B8%8F-descripción-de-la-arquitectura-y-patrones)
+- [🔄 Diagrama de interacción entre servicios](#-diagrama-de-interacción-entre-servicios)
+- [⚙️ Decisiones técnicas y justificaciones](#%EF%B8%8F-decisiones-técnicas-y-justificaciones)
+- [🛒 Explicación del flujo de compra implementado](#-explicación-del-flujo-de-compra-implementado)
+- [📡 Endpoints](#-endpoints)
+- [📄 Documentación de endpoints](#-documentación-de-endpoints)
+- [🚨 Manejo de Excepciones](#-manejo-de-excepciones)
+- [🧪 Pruebas](#-pruebas)
+- [🤖 Documentación sobre el uso de herramientas de IA](#-documentación-sobre-el-uso-de-herramientas-de-ia)
 
 
 
@@ -44,15 +44,35 @@ Permite registrar productos, consultar su inventario y registrar movimientos de 
 
 <br> <!-- Salto de línea -->
 ## 🛠️ Tecnologías Utilizadas
+
+<br> <!-- Salto de línea -->
 ## 📦 Instalación y ejecución
+
+<br> <!-- Salto de línea -->
 ## 🏗️ Descripción de la arquitectura y patrones
+
+<br> <!-- Salto de línea -->
 ## 🔄 Diagrama de interacción entre servicios
+
+<br> <!-- Salto de línea -->
 ## ⚙️ Decisiones técnicas y justificaciones
+
+<br> <!-- Salto de línea -->
 ## 🛒 Explicación del flujo de compra implementado
+
+<br> <!-- Salto de línea -->
 ## 📡 Endpoints
+
+<br> <!-- Salto de línea -->
 ## 📄 Documentación de endpoints
+
+<br> <!-- Salto de línea -->
 ## 🚨 Manejo de Excepciones
+
+<br> <!-- Salto de línea -->
 ## 🧪 Pruebas
+
+<br> <!-- Salto de línea -->
 ## 🤖 Documentación sobre el uso de herramientas de IA
 
 
