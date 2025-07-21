@@ -163,10 +163,10 @@ POST /inventory/products/{productId}/movements
 1. Recibe en la URL el productId y en el cuerpo: cantidad + tipo de movimiento.
 2. Valida: la cantidad debe ser > 0 y el tipo de movimiento debe estar definido.
 3. Consulta inventario por productId:
-  - Si no existe → lanza excepción.
+    - Si no existe → lanza excepción.
 4. Actualiza stock:
-  - Si es SALE: descuenta stock solo si hay suficiente.
-  - Si es PURCHASE: suma al stock.
+    - Si es SALE: descuenta stock solo si hay suficiente.
+    - Si es PURCHASE: suma al stock.
 5. Guarda el movimiento en la base de datos.
 6. Retorna respuesta enriquecida con datos del producto, tipo de movimiento, cantidad y stock actualizado.
 
@@ -178,12 +178,10 @@ POST /inventory/products/{productId}/movements
     - No hay stock suficiente para la venta.
 
 ### ✅ Ventajas de este diseño
-- Bajo acoplamiento: el servicio de inventario solo gestiona inventario, no lógica de negocio de compras/órdenes.
-- Escalable: un futuro order-service puede coordinar con el inventory-service para registrar movimientos de stock, sin duplicar lógica.
-- Simple y claro: cumple con el requerimiento de actualizar y verificar stock.
-- Extensible: permite otros tipos de movimientos como ajustes o devoluciones.
-
-
+- **Bajo acoplamiento:** el servicio de inventario solo gestiona inventario, no lógica de negocio de compras/órdenes.
+- **Escalable:** un futuro order-service puede coordinar con el inventory-service para registrar movimientos de stock, sin duplicar lógica.
+- **Simple y claro:** cumple con el requerimiento de actualizar y verificar stock.
+- **Extensible:** permite otros tipos de movimientos como ajustes o devoluciones.
 
 
 
@@ -195,6 +193,23 @@ Puedes usar la colección de Postman para probar rápidamente todos los endpoint
 Ruta dentro del repositorio:
 postman_collection.json -> [📄 Postman Collection](./postman_collection.json)
 
+<br> <!-- Salto de línea -->
+### 📦 Product Service (`/clientes`)
+
+| Método | Endpoint                                     | Descripción                             |
+|--------|----------------------------------------------|-----------------------------------------|
+| POST   | `/products`                                  | Crear un nuevo producto                 |
+| GET    | `/products/{productId}`                      | Obtener detalle de un producto          |
+| GET    | `/products`                                  | Listar todos los productos              |
+
+<br> <!-- Salto de línea -->
+### 🏪 Inventory Service 
+
+| Método | Endpoint                                     | Descripción                             |
+|--------|----------------------------------------------|-----------------------------------------|
+| GET    | `/inventory/{productId}`                     | Obtener inventario de un producto                     |
+| PUT    | `/inventory/{productId}`                     | Actualizar cantidad disponible de inventario          |
+| POST   | `/inventory/products/{productId}/movements`  | Registrar un movimiento (SALE, PURCHASE, ADJUSTMENT)       |
 
 
 
