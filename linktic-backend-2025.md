@@ -85,14 +85,14 @@ docker-compose up -d
 
 El proyecto implementa una arquitectura limpia (Clean Architecture) basada en principios de separación de responsabilidades y dependencia inversa. 
 
-#### Domain
+#### - Domain
 Contiene los modelos y entidades de dominio, que representan las reglas y la lógica de negocio También define los puertos como interfaces ("Gateways") que se utilizarán en la capa de negocio.
-#### Business
+#### - Business
 Define la lógica de la aplicación y reacciona a las invocaciones de los `entry-poits`, orquestando los flujos y utilizando los puertos definidos.
-#### Infraestructure
+#### - Infraestructure
 En esta capa, se detallarán las tecnologías e implementaciones de los puertos definidos en la capa de dominio. Esta capa está compuesta por dos grupos de módulos llamados `entry-points` y `driven-adapters`.
-`driven-adapters` son los módulos implementan las interfaces ("Gateways") para conectar tecnologías externas al sistema, como conexiones a bases de datos, servicios REST, SOAP, lectura de archivos planos y, en particular, cualquier fuente de datos con la que debamos interactuar.
-`entry-poits` son los puntos de entrada de la aplicación o el inicio de los flujos de negocio. Estos pueden ser controladores REST, consumidores de Kafka, SQS, etc, además de manejo centralizado de excepciones.
+  - `driven-adapters` son los módulos implementan las interfaces ("Gateways") para conectar tecnologías externas al sistema, como conexiones a bases de datos, servicios REST, SOAP, lectura de archivos planos y, en particular, cualquier fuente de datos con la que debamos interactuar.
+  - `entry-poits` son los puntos de entrada de la aplicación o el inicio de los flujos de negocio. Estos pueden ser controladores REST, consumidores de Kafka, SQS, etc, además de manejo centralizado de excepciones.
 
 ## patrones de diseño
 
