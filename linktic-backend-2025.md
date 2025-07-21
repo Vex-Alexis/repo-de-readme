@@ -16,9 +16,8 @@ Permite registrar productos, consultar su inventario y registrar movimientos de 
 - [Decisiones técnicas y justificaciones](#%EF%B8%8F-decisiones-técnicas-y-justificaciones)
 - [Explicación del flujo de compra implementado](#-explicación-del-flujo-de-compra-implementado)
 - [Endpoints](#-endpoints)
-- [Documentación de endpoints](#-documentación-de-endpoints)
-- [Manejo de Excepciones](#-manejo-de-excepciones)
-- [Pruebas](#-pruebas)
+- [Pruebas implementadas](#-pruebas-implementadas)
+- [Cómo ejecutar las pruebas](#%EF%B8%8F-cómo-ejecutar-las-pruebas)
 - [Documentación sobre el uso de herramientas de IA](#-documentación-sobre-el-uso-de-herramientas-de-ia)
 
 
@@ -269,6 +268,7 @@ docker compose up -d
 ```bash
 mvnw.cmd test
 ```
+<br> <!-- Salto de línea -->
 ### 📌 Ejemplo de ejecución por microservicio
 
 #### 📦 Product Service
