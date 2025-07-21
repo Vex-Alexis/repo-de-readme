@@ -134,6 +134,22 @@ Esto permitiría desacoplar los servicios y procesar eventos de forma eventual.
 <br> <!-- Salto de línea -->
 ## ⚙️ Decisiones técnicas y justificaciones
 
+- **Base de datos (PostgreSQL por microservicio):** Se eligió PostgreSQL por ser una base de datos relacional robusta, ampliamente adoptada, con soporte avanzado para integridad referencial y transacciones. Además, cada microservicio tiene su propia base de datos (Database per Service) para garantizar un mayor desacoplamiento, escalabilidad y evitar dependencias directas a nivel de datos entre servicios.
+- **Comunicación síncrona usando WebClient:** Se optó por una llamada HTTP REST síncrona entre `inventory-service` y `product-service` para resolver solicitudes en tiempo real (en este caso, consultar información actualizada del producto). Se eligió WebClient por su naturaleza reactiva, ligera y no bloqueante, mejorando el rendimiento y escalabilidad
+- **Registros atómicos y manejo transaccional:** Al registrar un movimiento de inventario (compra o venta) y actualizar el stock, se configuró la operación como transaccional. Esto asegura que las operaciones se realicen de forma atómica, manteniendo la consistencia de los datos incluso ante fallos parciales
+
+- **Manejador global de excepciones:** Se creó un handler global que captura errores controlados y lanza respuestas claras al cliente. Sse definieron excepciones personalizadas que son lanzadas desde la lógica de negocio ante casos esperados (como no existencia de un producto, datos inválidos, etc.), permitiendo separar la gestión de errores de la lógica principal.
+
+
+- #### Flujo de compra (justificación de no implementarlo):
+- Se consideró que un flujo de compra completo correspondería a un microservicio dedicado de órdenes o compras, siguiendo el principio de responsabilidad única y evitando un alto acoplamiento.
+En lugar de esto, se implementó en `inventory-service` un **flujo de movimientos** (SALE o PURCHASE) que permite registrar salidas o ingresos de stock. La petición recibe el ID del producto, la cantidad y el tipo de movimiento; en el caso de venta se descuenta del stock y en compra se suma, validando siempre que los valores sean positivos.
+- **Circuit breaker (Resilience4j):** Se implementó un circuit breaker usando Resilience4j para proteger el `inventory-service` de fallas o latencias excesivas al consumir el `product-service`. Este patrón gestiona reintentos, fallback y timeout, evitando fallos en cascada y mejorando la resiliencia general del sistema.
+
+
+
+
+
 <br> <!-- Salto de línea -->
 ## 🛒 Explicación del flujo de compra implementado
 
