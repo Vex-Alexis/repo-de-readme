@@ -8,18 +8,18 @@ Permite registrar productos, consultar su inventario y registrar movimientos de 
 
 
 
-- [🧩 Funcionalidades Principales](#-funcionalidades-principales)
-- [🛠️ Tecnologías Utilizadas](#%EF%B8%8F-tecnologías-utilizadas)
-- [📦 Instalación y ejecución](#-instalación-y-ejecución)
-- [🏗️ Descripción de la arquitectura y patrones de diseño](#%EF%B8%8F-descripción-de-la-arquitectura-y-patrones)
-- [🔄 Diagrama de interacción entre servicios](#-diagrama-de-interacción-entre-servicios)
-- [⚙️ Decisiones técnicas y justificaciones](#%EF%B8%8F-decisiones-técnicas-y-justificaciones)
-- [🛒 Explicación del flujo de compra implementado](#-explicación-del-flujo-de-compra-implementado)
-- [📡 Endpoints](#-endpoints)
-- [📄 Documentación de endpoints](#-documentación-de-endpoints)
-- [🚨 Manejo de Excepciones](#-manejo-de-excepciones)
-- [🧪 Pruebas](#-pruebas)
-- [🤖 Documentación sobre el uso de herramientas de IA](#-documentación-sobre-el-uso-de-herramientas-de-ia)
+- [Funcionalidades Principales](#-funcionalidades-principales)
+- [Tecnologías Utilizadas](#%EF%B8%8F-tecnologías-utilizadas)
+- [Instalación y ejecución](#-instalación-y-ejecución)
+- [Descripción de la arquitectura y patrones de diseño](#%EF%B8%8F-descripción-de-la-arquitectura-y-patrones)
+- [Diagrama de interacción entre servicios](#-diagrama-de-interacción-entre-servicios)
+- [Decisiones técnicas y justificaciones](#%EF%B8%8F-decisiones-técnicas-y-justificaciones)
+- [Explicación del flujo de compra implementado](#-explicación-del-flujo-de-compra-implementado)
+- [Endpoints](#-endpoints)
+- [Documentación de endpoints](#-documentación-de-endpoints)
+- [Manejo de Excepciones](#-manejo-de-excepciones)
+- [Pruebas](#-pruebas)
+- [Documentación sobre el uso de herramientas de IA](#-documentación-sobre-el-uso-de-herramientas-de-ia)
 
 
 
