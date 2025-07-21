@@ -85,6 +85,10 @@ docker-compose up -d
 
 El proyecto está implementado una **Arquitectura limpia** con el patrón **Ports & Adapters (arquitectura hexagonal)** y aplicando principios de **DDD (Domain-Driven Design)** para una mejor separación de responsabilidades y mantenibilidad. Cada capa tiene su responsabilidad: 
 
+<p align="center">
+  <img src="Captura de pantalla 2025-07-21 134814.png" alt="Arquitectura general" width="600"/>
+</p>
+
  #### - Domain
 Contiene los modelos y entidades de dominio, que representan las reglas y la lógica de negocio También define los puertos como interfaces ("Gateways") que se utilizarán en la capa de negocio.
  #### - Business
