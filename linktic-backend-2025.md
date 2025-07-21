@@ -114,6 +114,23 @@ En esta capa, se detallarán las tecnologías e implementaciones de los puertos 
 <br> <!-- Salto de línea -->
 ## 🔄 Diagrama de interacción entre servicios
 
+
+<p align="center">
+  <img src="estructura-microservicio.png" alt="Estructura Microservicio" width="600"/>
+</p>
+
+
+El sistema implementa una arquitectura de microservicios donde cada servicio tiene su propia base de datos (Database per Service) y se comunica de la siguiente forma:
+
+- Comunicación síncrona:
+`inventory-service` consume el API REST de `product-service` mediante WebClient, para obtener la información del producto.
+Para garantizar resiliencia se implementa un circuit breaker que maneja reintentos, fallback y timeout, evitando que fallas en `product-service` afecten a `inventory-service`.
+
+- Comunicación asíncrona (Planeado, no implementado):
+La idea era que `product-service` publicara un evento a AWS SQS al crear un nuevo producto, y `inventory-service` consumiera ese evento para crear automáticamente el inventario correspondiente.
+Esto permitiría desacoplar los servicios y procesar eventos de forma eventual.
+
+
 <br> <!-- Salto de línea -->
 ## ⚙️ Decisiones técnicas y justificaciones
 
