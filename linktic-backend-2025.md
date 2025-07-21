@@ -80,7 +80,7 @@ docker-compose up -d
 
 
 <br> <!-- Salto de línea -->
-## 🏛️ Descripción de la arquitectura y patrones
+## 🏛️ Descripción de la arquitectura y patrones de diseño
 
 El proyecto está implementado una **Arquitectura limpia** con el patrón **Ports & Adapters (arquitectura hexagonal)** y aplicando principios de **DDD (Domain-Driven Design)** para una mejor separación de responsabilidades y mantenibilidad. Cada capa tiene su responsabilidad: 
 
@@ -211,12 +211,6 @@ postman_collection.json -> [📄 Postman Collection](./postman_collection.json)
 | POST   | `/inventory/products/{productId}/movements`  | Registrar un movimiento (SALE, PURCHASE, ADJUSTMENT)       |
 
 
-
-<br> <!-- Salto de línea -->
-## 📄 Documentación de endpoints
-
-<br> <!-- Salto de línea -->
-## 🚨 Manejo de Excepciones
 
 <br> <!-- Salto de línea -->
 ## 🧪 Pruebas implementadas
